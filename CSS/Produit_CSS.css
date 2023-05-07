@@ -1,0 +1,137 @@
+@font-face {
+    font-family: "San Francisco";
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+*{
+    margin: 0;
+    font-family: 'San Francisco','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/*--- Taille Ecran ---*/
+#tailleEcran{
+    margin-bottom: 1rem;
+}
+
+#tailleEcran div input{
+    border: 1px solid black;
+    background-color: #627070;
+    border-radius: 5px;
+    color: #ffffff;
+    transition: all 200ms;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 1%;
+}
+
+#tailleEcran div input:hover{
+    background-color: #829494;
+}
+/*--- Taille Ecran Fin ---*/
+
+/*--- Corp de page ---*/
+#allDescriptionProduit{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#titre h1{
+    text-align: center;
+    margin-top: 1%;
+    font-size: 300%;
+}
+
+#divImg {
+    max-width: 20%;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+#divImg img{
+    max-width: 100%;
+}
+
+#description{
+    max-width: 50%;
+    background-color: #2C3333;
+    color: #b9f7e6;
+    padding: 1rem;
+    border-radius: 20px;
+    margin: auto;
+    font-size: 1.1rem;
+}
+
+#prix{
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f3f3;
+    border: 1px solid #333333;
+    padding: 2rem;
+    margin: auto;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+#prix p{
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+#prix #btAjoutPanier{
+    background-color: #129e00;
+    border: none;
+    padding: 8px;
+    color: white;
+    border-radius: 20px;
+}
+
+#prix #btAjoutPanier:hover{
+    background-color: #15b800;
+}
+
+#prix #enStock{
+    color: rgb(0, 161, 0);
+    font-size: 1.2rem;
+}
+
+#prix #ruptureStock{
+    color: rgb(161, 0, 0);
+    font-size: 1.2rem;
+}
+/*--- Corp de page Fin ---*/
+
+/*--- Tableau ---*/
+#divTableau h4{
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    text-decoration: underline;
+}
+
+table{
+    border-collapse: collapse;
+    width: 98%;
+    margin: 1%;
+}
+
+table .titre{
+    font-weight: 800;
+}
+
+table td{
+    border: 1px solid black;
+    padding: 1%;
+}
+table tr{
+    transition: all 150ms;
+}
+
+table tr:hover{
+    border: 1px solid black;
+    background-color: rgb(233, 233, 233);
+    padding: 1%;
+}
+/*--- Tableau Fin ---*/

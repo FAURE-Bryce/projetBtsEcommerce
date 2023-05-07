@@ -1,0 +1,165 @@
+*{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*--- Panier ---*/
+#all_panier{
+    background-color: #d8d8d8;
+}
+
+#all_panier #erreur_quantite{
+    margin: 1%;
+    padding: 0.5%;
+    text-align: center;
+    background-color: rgb(161, 0, 0);
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+#all_panier #commandeOk{
+    margin: 1%;
+    padding: 0.5%;
+    text-align: center;
+    background-color: rgb(0, 161, 0);
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+#all_panier h4{
+    font-size: 2rem;
+    text-align: center;
+    padding: 1%;
+    font-weight: 100;
+}
+
+/*--- Produit ---*/
+
+#all_panier #div_produit_prix_total{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
+#all_panier #div_produit_prix_total #div_tout_produit{
+    width: 75%;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #ffffff;
+    border: 5px solid #395B64;
+    margin-bottom: 1%;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit img{
+    width: 15%;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit .libelle_qte{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit .libelle_qte h3{
+    margin-bottom: 5%;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit .libelle_qte .stock_pouce_qte{
+    display: flex;
+    justify-content: space-between;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit .libelle_qte .stock_pouce_qte .enStock{
+    color: rgb(0, 161, 0);
+    font-size: 120%;
+    margin-bottom: 10%;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit .libelle_qte .stock_pouce_qte .ruptureStock{
+    color: rgb(161, 0, 0);
+    font-size: 120%;
+    margin-bottom: 10%;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit .libelle_qte .stock_pouce_qte .qte div{
+    display: flex;
+    justify-content: space-around;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit .libelle_qte .stock_pouce_qte .qte div a{
+    text-decoration: none;
+    width: 100%;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit .libelle_qte .stock_pouce_qte .qte div input{
+    color: #c9f7ea;
+    background-color: #395B64;
+    border: 1px solid #c9f7ea;
+    text-decoration: none;
+    font-size: 1.25rem;
+    width: 100%;
+    transition: all 100ms;
+}
+
+#all_panier #div_produit_prix_total #div_tout_produit .div_produit .libelle_qte .stock_pouce_qte .qte div input:hover{
+    background-color: #4a7683;
+}
+/*--- Produit Fin ---*/
+
+/*--- Prix Total ---*/
+#all_panier form{
+    width: 20%;
+}
+
+#all_panier form #div_prix_total{
+    text-align: center;
+    background-color: #ffffff;
+    border: 5px solid #395B64;
+}
+
+#all_panier form #div_prix_total h3{
+    font-size: 170%;
+    text-decoration: underline;
+    margin: 5%;
+}
+
+#all_panier form #div_prix_total p{
+    font-size: 130%;
+    margin-bottom: 2%;
+}
+
+#all_panier form #div_prix_total input{
+    background-color: #129e00;
+    padding: 2%;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    transition: all 100ms;
+    margin-bottom: 2%;
+}
+
+#all_panier form #div_prix_total input:hover{
+    background-color: #15b800;
+}
+
+#all_panier form #div_prix_total #modePaiement{
+    margin: 2%;
+}
+
+#all_panier form #div_prix_total #modePaiement select{
+    margin-bottom: 3%;
+    color: #c9f7ea;
+    background-color: #395B64;
+    border: 1px solid #c9f7ea;
+    padding: 0.5%;
+}
+/*--- Prix Total Fin ---*/
+
+/*--- Panier Fin ---*/

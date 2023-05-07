@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "San Francisco";
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+*{
+    margin: 0;
+    font-family: 'San Francisco','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#all_admin_page{
+    width: 98%;
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+#all_admin_page form{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#all_admin_page table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#all_admin_page table th{
+    padding: 0.3%;
+}
+
+#all_admin_page th, td{
+    border: 1px solid black;
+}
+
+#all_admin_page table td{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    width: 25%;
+}
+
+#all_admin_page table td input{
+    width: 98%;
+    border: none;
+    text-align: center;
+    transition: 200ms;
+    background-color: #ffffff;
+}
+
+#all_admin_page table td #submit_bt:hover{
+    background-color: #ebebeb;
+}
+
+/*--- Modification ---*/
+#idForm{
+    border: #2C3333 1px solid;
+    border-radius: 15px;
+    background-color: #395B64;
+    padding: 0.5%;
+    color: white;
+}
+
+#idForm div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#idForm div input{
+    width: 95%;
+}
+/*--- Modification Fin ---*/

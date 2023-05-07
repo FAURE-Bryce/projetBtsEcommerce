@@ -1,0 +1,23 @@
+# Turn rewrite engine on
+Options +FollowSymlinks
+RewriteEngine on
+
+# map neat URL to internal URL
+RewriteRule ^gestionCompte/compte/$   index.php?controller=gestionCompte&action=compte [nc]
+RewriteRule ^gestionCompte/deconnexion/$   index.php?controller=gestionCompte&action=deconnexion [nc]
+RewriteRule ^gestionCompte/authentification/$   index.php?controller=gestionCompte&action=authentification [nc]
+RewriteRule ^gestionCompte/inscription/$   index.php?controller=gestionCompte&action=inscription [nc]
+RewriteRule ^gestionCompte/historique/$   index.php?controller=gestionCompte&action=historique [nc]
+RewriteRule ^typeEcran/([a-zA-Z]+)/$   index.php?controller=produit&action=listTrier&typeEcran=$1 [nc,qsa]
+RewriteRule ^produit/recherche/$   index.php?controller=produit&action=rechercheProduit [nc,qsa]
+RewriteRule ^produit/detail/([0-9]+)/$   index.php?controller=produit&action=detail&idProduit=$1 [nc,qsa]
+RewriteRule ^panier/list/$   index.php?controller=panier&action=list [nc,qsa]
+RewriteRule ^panier/ajout/$   index.php?controller=panier&action=ajout [nc,qsa]
+RewriteRule ^panier/ajout/([0-9]+)/$   index.php?controller=panier&action=ajout&idProduit=$1 [nc,qsa]
+RewriteRule ^panier/quantitePlusMoins/([a-zA-Z]+)/([0-9]+)/$   index.php?controller=panier&action=quantitePlusMoins&plusMoins=$1&idProduit=$2 [nc,qsa]
+RewriteRule ^panier/passerCommande/$   index.php?controller=panier&action=passerCommande [nc]
+
+RewriteRule ^commandes/$   index.php?data=commandes [nc,qsa]
+RewriteRule ^produitUpdate/$   index.php?action=produitUpdate [nc,qsa]
+RewriteRule ^produitsACommander/$   index.php?data=produitsACommander [nc,qsa]
+RewriteRule ^statutCommande/([0-9]+)/$   index.php?data=statutCommande&refCommande=$1 [nc,qsa]

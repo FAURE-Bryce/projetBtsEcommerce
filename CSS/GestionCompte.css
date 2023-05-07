@@ -1,0 +1,421 @@
+@font-face {
+    font-family: "San Francisco";
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+*{
+    margin: 0;
+    font-family: 'San Francisco','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#div_all_Compte{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*--- Connexion ---*/
+
+#all_connexion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3%;
+    width: 40%;
+    background-color: #395B64;
+    border: 2px solid #2C3333;
+    border-radius: 20px;
+    color: #c9f7ea;
+    text-align: center;
+}
+
+#all_connexion h1{
+    margin: 3%;
+    font-weight: 900;
+    font-size: 240%;
+}
+
+#all_connexion form{
+    width: 50%;
+    margin-bottom: 2%;
+}
+
+#all_connexion form input{
+    transition: all 500ms;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#all_connexion form input:focus{
+    background-color: #395B64;
+    border-radius: 20px;
+    color: #c9f7ea;
+    box-shadow: 0px 0px 10px #c9f7ea;
+}
+
+#all_connexion form div{
+    border-radius: 10px;
+    transition: all 200ms;
+    width: 100%;
+}
+
+#all_connexion div:hover{
+    color: #c9f7ea;
+    background-color: #436a75;
+}
+
+#all_connexion form div p{
+    margin: 3%;
+}
+
+#all_connexion a{
+    color: #c9f7ea;
+}
+
+#all_connexion #bt_connexion{
+    border: 2px solid #2C3333;
+    box-shadow: 0px 0px 5px #c9f7ea;
+    color: #c9f7ea;
+    font-size: 1rem;
+    background-color: #2C3333;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    padding: 1%;
+    border-radius: 5px;
+    transition: all 300ms;
+}
+
+#all_connexion #bt_connexion:hover{
+    box-shadow: 0px 0px 15px #c9f7ea;
+}
+
+#all_connexion #erreur_mdp{
+    margin: 2%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    text-align: center;
+    background-color: rgb(161, 0, 0);
+    color: #ffffff;
+    border-radius: 5px;
+    transition: all 400ms;
+}
+
+#all_connexion #erreur_mdp:hover{
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px black;
+}
+/*--- Connexion Fin ---*/
+
+/*--- Inscription ---*/
+ #all_inscription{
+    display: flex;
+    flex-direction: column;
+    margin: 3%;
+    width: 30%;
+    background-color: #395B64;
+    border: 2px solid #2C3333;
+    border-radius: 20px;
+    color: #c9f7ea;
+    text-align: center;
+}
+
+#all_inscription h1{
+    margin: 3%;
+    font-weight: 900;
+    font-size: 240%;
+}
+
+#all_inscription #div_form{
+    display: flex;
+    justify-content: center;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 1%;
+    border-radius: 20px;
+    text-align: center;
+} 
+
+#all_inscription #div_form .sous_div_form div{
+    padding: 8%;
+    transition: all 200ms;
+}
+
+#all_inscription #div_form .sous_div_form div:hover{
+    background-color: #436a75;
+}
+
+#all_inscription #div_form .sous_div_form div input{
+    width: 80%;
+    transition: all 500ms;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+#all_inscription #div_form .sous_div_form div input:focus{
+    background-color: #395B64;
+    border-radius: 20px;
+    color: #c9f7ea;
+    box-shadow: 0px 0px 10px #c9f7ea;
+}
+
+#all_inscription form{
+   display: flex;
+   flex-direction: column;
+   margin: 1%;
+   align-items: center;
+}
+
+#all_inscription form a{
+   color: #c9f7ea;
+   margin-bottom: 3%;
+}
+
+#all_inscription form #button_inscription{
+    border: 2px solid #2C3333;
+    box-shadow: 0px 0px 5px #c9f7ea;
+    color: #c9f7ea;
+    width: 40%;
+    font-size: 1rem;
+    background-color: #2C3333;
+    margin-bottom: 2%;
+    padding: 1%;
+    border-radius: 5px;
+    transition: box-shadow 300ms, color 0ms, font-weight 0ms;
+}
+
+#all_inscription form #button_inscription:hover{
+    box-shadow: 0px 0px 15px #c9f7ea;
+}
+
+#all_inscription form #button_inscription:active{
+    background-color: #c9f7ea;
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+}
+
+#all_inscription form #erreur_ins{
+    margin: 2%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    text-align: center;
+    background-color: rgb(161, 0, 0);
+    color: #ffffff;
+    border-radius: 5px;
+    transition: all 400ms;
+}
+
+#all_inscription form #erreur_ins:hover{
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px black;
+}
+
+#all_inscription form #bon{
+    margin: 2%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    text-align: center;
+    background-color: #129e00;
+    color: #ffffff;
+    border-radius: 5px;
+    transition: all 400ms;
+}
+
+#all_inscription form #bon:hover{
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px black;
+}
+/*--- Inscription Fin ---*/
+
+/*--- Mon Compte ---*/
+#all_mon_compte{
+    width: 100%;
+    background-color: #d8d8d8;
+}
+
+#all_mon_compte #bonjourClient{
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 1%;
+    margin-bottom: 1%;
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+#all_mon_compte #divInfoModif{
+    border: #2C3333 1px solid;
+    border-radius: 15px;
+    background-color: #395B64;
+    padding: 0.5%;
+    color: white;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+#all_mon_compte h4{
+    font-size: 2rem;
+    text-align: center;
+}
+
+#all_mon_compte #divInfoModif form{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#all_mon_compte #divInfoModif form div{
+    width: 14%;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#all_mon_compte #divInfoModif form div input{
+    text-align: center;
+    width: 70%;
+    transition: all 500ms;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#all_mon_compte #divInfoModif form div input:focus{
+    background-color: #395B64;
+    border-radius: 20px;
+    color: #c9f7ea;
+    box-shadow: 0px 0px 10px #c9f7ea;
+}
+
+#all_mon_compte #divInfoModif form #submit{
+    background-color: #129e00;
+    padding: 0px;
+    height: 2rem;
+    width: 5%;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    transition: all 100ms;
+}
+
+#all_mon_compte #divInfoModif form #submit:hover{
+    background-color: #15b800;
+}
+
+#all_mon_compte #divlien{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#all_mon_compte a{
+    border: 2px solid #2C3333;
+    box-shadow: 2px 2px 15px #2C3333;
+    color: #c9f7ea;
+    font-size: 1rem;
+    background-color: #2C3333;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    padding: 1%;
+    border-radius: 5px;
+    transition: all 200ms;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+#all_mon_compte a:hover{
+    box-shadow: 0px 0px 0px #2C3333;
+}
+/*--- Mon Compte Fin ---*/
+
+/*--- Historique ---*/
+#all_historique 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #d8d8d8;
+}
+
+#all_historique h4
+{
+    font-size: 2rem;
+    text-align: center;
+    padding: 1%;
+    font-weight: 100;
+}
+
+#all_historique .commande_num
+{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    background-color: #ffffff;
+    border: 5px solid #395B64;
+    margin-bottom: 1%;
+}
+
+#all_historique .commande_num #libelle_commande_num
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: #395B64;
+}
+
+#all_historique .commande_num .num_Commande
+{
+    padding-right: 1%;
+    padding-left: 1%;
+    background-color: #395B64;
+    font-size: 1.5rem;
+    color: #b9f7e6;
+}
+
+#all_historique .commande_num .commande
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #c0c0c0;
+}
+
+#all_historique .commande_num .commande .produit
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0.5%;
+    border: 5px solid #395B64;
+    background-color: #ffffff;
+}
+
+#all_historique .commande_num .commande .produit img
+{
+    width: 10%;
+}
+
+#all_historique .commande_num .commande .produit .model_libelle
+{
+    width: 20%;
+    text-align: center;
+}
+
+#all_historique .commande_num .commande .produit .prix_qte
+{
+    width: 10%;
+    text-align: end;
+}
+
+
+
+
+
+
+/*--- Historique Fin ---*/

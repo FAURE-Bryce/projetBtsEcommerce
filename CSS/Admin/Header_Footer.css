@@ -1,0 +1,81 @@
+/*--- Admin ---*/
+
+/*--- Header ---*/
+#all_nav_bar_admin{
+    display: flex;
+    justify-content: space-between;
+    background-color: #395B64;
+    align-items: center;
+}
+
+#all_nav_bar_admin img{
+    max-width: 100%;
+    transition: all 1000ms;
+}
+
+#all_nav_bar_admin img:hover{
+    max-width: 120%;
+}
+
+#all_nav_bar_admin a{
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 200ms;
+    padding-right: 2%;
+}
+
+#all_nav_bar_admin a:hover{
+    color: #b9f7e6;
+    font-size: 1.6rem;
+}
+
+#all_nav_bar_admin form{
+    text-align: center;
+    font-size: 100%;
+    color: #ffffff;
+}
+
+#all_nav_bar_admin form input{
+    color: white;
+    background-color: #2C3333;
+    font-size: 110%;
+    text-align: center;
+    padding: 1%;
+    border-radius: 5px;
+    transition: all 200ms;
+    width: 70%;
+}
+
+#all_nav_bar_admin form input:hover{
+    box-shadow: #b9f7e6 0px 0px 25px 0px ;
+}
+
+#div_bonjour{
+    color: white;
+    background-color: #2C3333;
+    text-align: center;
+    padding: 0.5%;
+}
+/*--- Header Fin ---*/
+
+/*--- Footer ---*/
+footer{
+    width: 100%;
+    color: white;
+    background-color: #2C3333;
+    transition: all 200ms;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+footer a{
+    color: #b9f7e6;
+    padding: 0.5%;
+}
+
+footer p{
+    font-size: 0.85rem;
+}
+/*--- Footer Fin ---*/
