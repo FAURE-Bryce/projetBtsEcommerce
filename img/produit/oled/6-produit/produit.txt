@@ -1,0 +1,17 @@
+Model (nom-taille) : LG OLEDCS
+
+Libelle (nom) : LG OLED77CS
+
+Resume (description réduit) : Téléviseur OLED 4K UHD 77" (195 cm) - 120 Hz - Dolby Vision IQ - Wi-Fi/Bluetooth/AirPlay 2 - G-Sync/FreeSync Premium - 4x HDMI 2.1 - Google Assistant/Alexa - Son 2.2 40W Dolby Atmos
+
+description : Le téléviseur LG OLED77CS vous propose une expérience inoubliable. Que ce soit pour le jeu ou pour les films, retrouvez une qualité d'image supérieure 4K HDR Dolby Vision IQ, un système audio 2.2 canaux compatible Dolby Atmos, des fonctionnalités gaming optimales et un système connecté webOS 22.
+
+patchPhoto :
+
+prix : 2499
+
+Marque : LG
+
+Taille : 77
+
+Type : Oled

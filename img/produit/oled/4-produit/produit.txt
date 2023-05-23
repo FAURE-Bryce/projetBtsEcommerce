@@ -1,1 +1,17 @@
-https://www.ldlc.com/fiche/PB00437323.html
+Model (nom-taille) : Sony XR-A95K
+
+Libelle (nom) : Sony XR-65A95K
+
+Resume (description réduit) : Téléviseur QD-OLED 4K 65" (165 cm) - 100 Hz - HDR Dolby Vision - Google TV - Wi-Fi/Bluetooth/AirPlay - Google Assistant - 2 x HDMI 2.1 - Son 2.2 60W Dolby Atmos
+
+description : Le confort de l'OLED avec la luminosité en plus, le téléviseur QD-OLED Sony XR-65A95K possède de belles qualités pour transformer votre divertissement quotidien. Ce modèle 4K UHD Dolby Vision de 65" possède des fonctions connectées Google TV et une section gaming performante avec 2 ports HDMI 2.1.
+
+patchPhoto :
+ 
+prix : 3499.94
+
+Marque : Sony
+
+Taille : 65
+
+Type : Oled

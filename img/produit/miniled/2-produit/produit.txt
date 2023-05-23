@@ -1,1 +1,17 @@
-https://www.ldlc.com/fiche/PB00459001.html
+Model (nom-taille) : Hisense U8HQ
+
+Libelle (nom) : Hisense 55U8HQ
+
+Resume (description réduit) : Le téléviseur Mini LED QLED Hisense 55UH8Q se montre à la hauteur de vos attentes avec son image 4K UHD de 140 cm, sa prise en charge HDR10+ Adaptive et Dolby Vision IQ et son système audio 2.1.2 canaux de 70 Watts. Profitez d'un équipement de jeu optimisé (120 Hz, HDMI 2.1, FreeSync Premium).
+
+description : Le téléviseur Mini LED QLED Hisense 55UH8Q se montre à la hauteur de vos attentes avec son image 4K UHD de 140 cm, sa prise en charge HDR10+ Adaptive et Dolby Vision IQ et son système audio 2.1.2 canaux de 70 Watts. Profitez d'un équipement de jeu optimisé (120 Hz, HDMI 2.1, FreeSync Premium).
+
+patchPhoto :
+
+prix : 689.99
+
+Marque : Hisense
+
+Taille : 55
+
+Type : Mini Led

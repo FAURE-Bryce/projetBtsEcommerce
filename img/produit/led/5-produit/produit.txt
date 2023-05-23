@@ -1,0 +1,17 @@
+Model (nom-taille) : Sony KD-X81K
+
+Libelle (nom) : Sony KD-43X81K
+
+Resume (description réduit) : Téléviseur LED 4K 43" (109 cm) - HDR Dolby Vision - Google TV - Wi-Fi/Bluetooth/AirPlay 2 - Google Assistant - Son 2.0 20W Dolby Atmos
+
+description : Installez-vous confortablement et bénéficiez d'un divertissement 4K HDR connecté avec le téléviseur Sony KD-43X81K ! Avec ses lignes épurées, ses trois bords fins et ses technologies embarquées, ce modèle dévoile un large potentiel pour satisfaire toutes vos envies au quotidien.
+
+patchPhoto :
+
+prix : 749.95
+
+Marque : Sony
+
+Taille : 43
+
+Type : Led

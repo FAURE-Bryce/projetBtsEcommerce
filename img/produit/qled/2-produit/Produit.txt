@@ -1,1 +1,17 @@
-https://www.ldlc.com/fiche/PB00430468.html
+Model (nom-taille) : Samsung The Terrace QELST7T
+
+Libelle (nom) : Samsung The Terrace QE75LST7T
+
+Resume (description réduit) : TV extérieur QLED 4K 75" (190 cm) - 100 Hz - Full LED Local Dimming - 2000 cd/m² - HDR10+ - Wi-Fi/Bluetooth/AirPlay 2 - Son 2.0.20W - Anti-reflet - IP55
+
+description : Le téléviseur d'extérieur Samsung The Terrace 75" (QE75LST7T) assure une expérience très agréable en 4K HDR même dans les environnements lumineux. Luminosité maximale de 2000 cd/m², technologie anti-reflet et conception IP55, installez ce modèle pour une utilisation outdoor en toute sérénité.
+
+patchPhoto :
+
+prix : 4999
+
+Marque : Samsung
+
+Taille : 75
+
+Type : Qled

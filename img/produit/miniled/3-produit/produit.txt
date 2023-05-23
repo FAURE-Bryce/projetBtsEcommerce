@@ -1,1 +1,17 @@
-https://www.ldlc.com/fiche/PB00410236.html
+Model (nom-taille) : Samsung Neo QLED QEQN85B
+
+Libelle (nom) : Samsung Neo QLED QE55QN85B
+
+Resume (description réduit) : Téléviseur Mini LED 4K 55" (140 cm) - Dalle 100 Hz - HDR10+ Adaptive - Wi-Fi/Bluetooth/AirPlay 2 - HDMI 2.1/FreeSync - Son 2.2.2 60W - Dolby Atmos sans fil
+
+description : Associez les technologies Quantum Dots et Mini LED et profitez d'un spectacle inoubliable avec le téléviseur Samsung 55QN85B ! Ce modèle délivre une image 4K UHD avec prise en charge HDR10+ Adaptive et se pare d'un système audio performant de 60 Watts avec compatibilité Dolby Atmos via Wi-Fi.
+
+patchPhoto :
+
+prix : 990
+
+Marque : Samsung
+
+Taille : 55
+
+Type : Mini Led

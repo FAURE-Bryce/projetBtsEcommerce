@@ -1,7 +1,17 @@
-LG 43NANO756PR
-Téléviseur LED 4K UHD 43" (109 cm) - HDR10/HLG - Wi-Fi/Bluetooth/AirPlay 2 - Google Assistant/Alexa - Son 2.0 20W
+Model (nom-taille) : Philips The One PUS8807
 
-Des couleurs riches et naturelles, une image 4K HDR, un processeur performant et intelligent nouvelle génération, le téléviseur LG 43NANO756PR ne manque pas de qualités. Ce modèle bénéficie de fonctionnalités connectées avec webOS 6.0 et assistants vocaux et d'un système audio stéréo de 20 Watts.
+Libelle (nom) : Philips The One 86PUS8807
 
-https://www.ldlc.com/fiche/PB00466706.html
+Resume (description réduit) : Téléviseur LED 4K 86" (217 cm) - 120 Hz - Dolby Vision/HDR10+ - Wi-Fi/Bluetooth - 2 x HDMI 2.1 - Android TV - Google Assistant - Ambilight 3 côtés - Son 2.0 20W Dolby Atmos
 
+description : Gaming 4K/120 Hz, divertissement connecté, immersion Ambilight et image 4K HDR, le téléviseur Philips 86PUS8807 ne vous laissera pas indifférent ! Profitez d'un rendu exceptionnel, d'une belle fluidité et d'une connectique complète en plus d'une fonction Smart TV Android TV.
+
+patchPhoto :
+
+prix : 2599
+
+Marque : Philips
+
+Taille : 86
+
+Type : Led

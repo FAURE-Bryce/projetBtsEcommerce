@@ -1,1 +1,17 @@
-https://www.ldlc.com/fiche/PB00358960.html
+Model (nom-taille) : Philips OLED807
+
+Libelle (nom) : Philips 77OLED807
+
+Resume (description réduit) : TV OLED-EX 4K 77" (195 cm) - 120 Hz - Dolby Vision/HDR10+ Adaptive - IMAX Enhanced - HDMI 2.1 - FreeSync/G-Sync Compatible - Wi-Fi/Bluetooth - Android TV - Google Assistant - Ambilight 4 côtés - Son 2.1 70W Dolby Atmos
+
+description : Laissez-vous transporter vers un divertissement immersif avec une qualité d'image incroyable en installant le téléviseur Philips 77OLED807 dans votre salon. Profitez alors d'une image 4K HDR avec processeur ultra-performant, du système Ambilight sur 4 côtés et d'une section gaming supérieure.
+
+patchPhoto :
+
+prix : 3990
+
+Marque : Philips
+
+Taille : 77
+
+Type : Oled

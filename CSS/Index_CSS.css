@@ -8,23 +8,33 @@
     font-family: 'San Francisco','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+/*--- all ---*/
+#all{
+    background-color: #d8d8d8;
+}
+/*--- all fin ---*/
+
 /*--- DivG ---*/
 #divG{
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    background-color: #d8d8d8;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 /*--- DivG fin ---*/
 
 /*--- Produit ---*/
 .produit{
+    display: flex;
+    flex-direction: column;    
+    justify-content: space-between;
     padding: 5px;
     border-radius: 17px;
     background-color: white;
     margin-top: 1%;
-    margin: 10px;
-    width: 20%;
+    margin: 40px;
+    width: 25%;
     transition: all 300ms;
 }
 
@@ -43,7 +53,7 @@
     color: #c9f7ea;
 }
 
-.produit div input{
+.produit #btProtuit input{
     font-size: 90%;
     text-align: center;
     width: 100%;
@@ -55,12 +65,12 @@
     transition: all 200ms;
 }
 
-.produit div input:hover{
+.produit #btProtuit input:hover{
     background-color: #52828f;
     box-shadow: 0px 0px 0px #b9f7e6;
 }
 
-.produit div{
+.produit #btProtuit{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -106,3 +116,56 @@
 }
 /*--- Erreur fin ---*/
 
+/*--- Pagination début ---*/
+#paginationCadre{
+    display: flex;
+    justify-content: center;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a{
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    color: #969696;
+    background: #F0F0F0;
+    transform: all 200ms;
+}
+
+.pagination a:hover{
+    color: #0096c8;
+    background-color: #d9eef4;
+}
+
+.pagination p{
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    color: #969696;
+    background: #c9c9c9;
+}
+
+.pagination .pageActuel{
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    color: #0096c8;
+    background-color: #d9eef4;
+}
+/*--- Pagination fin ---*/

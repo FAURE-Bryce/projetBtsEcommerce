@@ -1,1 +1,17 @@
-https://www.ldlc.com/fiche/PB00461831.html
+Model (nom-taille) :Samsung Neo QLED QN90C
+
+Libelle (nom) : Samsung Neo QLED 43QN90C
+
+Resume (description réduit) : Téléviseur Mini LED 4K 43" (108 cm) - 144 Hz - HDR10+ Adaptive - Wi-Fi/Bluetooth/AirPlay 2 - HDMI 2.1 / FreeSync - Son 2.0 20W - Dolby Atmos sans fil
+
+description : Le téléviseur QN90C Serie 9 de Samsung associe les technologies Quantum Dots et Mini LED pour vous faire profiter d'une expérience vidéoludique inoubliable ! Ce modèle vous offre une image 4K UHD avec prise en charge HDR10+ Adaptive.
+
+patchPhoto :
+
+prix : 1289.95
+
+Marque : Samsung
+
+Taille : 43
+
+Type : Mini Led

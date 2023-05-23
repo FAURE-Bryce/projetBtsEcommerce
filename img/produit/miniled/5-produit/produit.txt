@@ -1,0 +1,17 @@
+Model (nom-taille) : TCL C935
+
+Libelle (nom) : TCL 75C935
+
+Resume (description réduit) : Téléviseur Mini LED OD5 QLED 4K UHD 75" (190 cm) - 144 Hz - Dolby Vision IQ/HDR10+ - Google TV - Wi-Fi AX/Bluetooth 5.0 - Assistant Google - 4x HDMI 2.1 - FreeSync Premium Pro - Son 2.1.2 90W Dolby Atmos
+
+description : Votre divertissement voit son potentiel augmenté en présence du téléviseur TCL 75C935. Ce modèle 75 pouces offre un spectacle exceptionnel avec résolution 4K HDR, rétro-éclairage Mini LED OD5, technologie Quantum Dot et système audio Onkyo 2.1.2 canaux 90 Watts.
+
+patchPhoto :
+
+prix : 2490
+
+Marque : TCL
+
+Taille : 75
+
+Type : Mini Led

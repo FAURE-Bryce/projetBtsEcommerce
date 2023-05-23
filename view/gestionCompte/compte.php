@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compte</title>
-    <base href="/Projet%20Web%20FAURE%20Bryce/">
+    <base href="/projetBtsEcommerce/">
         
     <!-- CSS only -->
     <link rel="stylesheet" href="CSS/GestionCompte.css">

@@ -17,10 +17,24 @@
          */
         public static function list($params){
 
+            if(empty($_GET['numPage'])){
+                $numPage = 1;
+            }else{
+                $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+            }
+
+            $nbElementParPage = 6;
+
+            $nbProduit = ProduitManager::getNbProduits();
+
+            $params['nbPage'] = ceil($nbProduit / $nbElementParPage);
+
+            $params['numPage'] = $numPage;
+
             /**
             * récupère les produits de la bdd
             */
-            $params['listProduits'] = ProduitManager::getLesProduits();
+            $params['listProduits'] = ProduitManager::getLesProduitsByPagination($nbElementParPage, $numPage);
 
             // appelle la vue
             require_once ROOT.'/view/produit/list.php';
@@ -41,6 +55,22 @@
                 $filtre = filter_input(INPUT_GET, 'typeEcran', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
             }
 
+            // pagination start
+            if(empty($_GET['numPage'])){
+                $numPage = 1;
+            }else{
+                $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+            }
+
+            $nbElementParPage = 1;
+
+            $nbProduit = ProduitManager::getNbProduits();
+
+            $params['nbPage'] = ceil($nbProduit / $nbElementParPage);
+
+            $params['numPage'] = $numPage;
+            // pagination end
+
             /**
             * Return les produit qui sont dans le typeEcran $libelle
             */
@@ -58,7 +88,7 @@
             switch($filtre)
             {
                 case 'tous':
-                    $lesProduits = ProduitManager::getLesProduits();
+                    $lesProduits = ProduitManager::getLesProduitsByPagination($nbElementParPage, $numPage);
                     break;
                 case 'LED':
                     $lesProduits = getLesProduitsByLibelleTypeEcran('LED');

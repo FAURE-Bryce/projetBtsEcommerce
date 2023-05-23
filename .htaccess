@@ -3,6 +3,7 @@ Options +FollowSymlinks
 RewriteEngine on
 
 # map neat URL to internal URL
+RewriteRule ^([0-9]+)/$   index.php?controller=Produit&action=list&numPage=$1 [nc]
 RewriteRule ^gestionCompte/compte/$   index.php?controller=gestionCompte&action=compte [nc]
 RewriteRule ^gestionCompte/deconnexion/$   index.php?controller=gestionCompte&action=deconnexion [nc]
 RewriteRule ^gestionCompte/authentification/$   index.php?controller=gestionCompte&action=authentification [nc]

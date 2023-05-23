@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <base href="/Projet%20Web%20FAURE%20Bryce/">
+    <base href="/projetBtsEcommerce/">
     <title>Panier</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="CSS/bootstrap-5.1.3-dist/css/bootstrap-grid.css">

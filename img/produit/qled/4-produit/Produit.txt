@@ -1,1 +1,17 @@
-https://www.ldlc.com/fiche/PB00446889.html
+Model (nom-taille) : TCL C835
+
+Libelle (nom) : TCL 65C835
+
+Resume (description réduit) : Téléviseur Mini LED QLED 4K UHD 65" (165 cm) - 144 Hz - Dolby Vision IQ/HDR10+ - Google TV - Wi-Fi AX/Bluetooth 5.0 - Assistant Google - 4x HDMI 2.1 - FreeSync Premium Pro - Son 2.1 60W Dolby Atmos
+
+description : Votre divertissement voit son potentiel augmenté en présence du téléviseur TCL 65C835. Ce modèle 65 pouces offre un spectacle exceptionnel avec résolution 4K HDR, rétro-éclairage Mini LED, technologie Quantum Dot et système audio Onkyo 2.1 canaux 60 Watts.
+
+patchPhoto :
+
+prix : 1090
+
+Marque : TCL
+
+Taille :65
+
+Type : Qled

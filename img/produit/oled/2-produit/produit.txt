@@ -1,1 +1,17 @@
-https://www.ldlc.com/fiche/PB00442626.html
+Model (nom-taille) : Panasonic TX-LZ2000E
+
+Libelle (nom) : Panasonic TX-77LZ2000E
+
+Resume (description réduit) : Téléviseur OLED 4K UHD 77" (195 cm) - 100 Hz - Dolby Vision IQ/HDR10+ Adaptive - HDMI 2.1 - AMD FreeSync Premium - Wi-Fi/Bluetooth - Google Assistant/Alexa - Son 4.1.2 170W Dolby Atmos
+
+description : Porté par une dalle OLED à haute luminosité et système audio 4.1.2 canaux de 170 Watts, le téléviseur Panasonic TX-77LZ2000 combine l'excellence de l'image et l'immersion sonore. Profitez alors d'un spectacle saisissant avec en prime une image 4K multi-HDR et une section gaming évoluée.
+
+patchPhoto :
+
+prix : 4999
+
+Marque : Panasonic
+
+Taille : 77
+
+Type : Oled

@@ -1,0 +1,17 @@
+Model (nom-taille) : TCL 85P735
+
+Libelle (nom) : TCL P735
+
+Resume (description réduit) : Téléviseur LED 4K UHD 85" (215 cm) - Dolby Vision/HDR10+ - Google TV - Wi-Fi/Bluetooth - Son 2.0 30W Dolby Atmos
+
+description : Diagonale de 85 pouces, spectacle 4K HDR, le téléviseur TCL 85P735 dévoile des qualités XXL pour transformer votre quotidien. Bénéficiez d'un système audio stéréo compatible Dolby Atmos, appréciez le contenu connecté depuis Google TV et découvrez un équipement aux lignes élégantes.
+
+patchPhoto :
+
+prix : 1290
+
+Marque : TCL
+
+Taille : 85
+
+Type : Led

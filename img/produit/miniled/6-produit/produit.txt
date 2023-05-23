@@ -1,0 +1,17 @@
+Model (nom-taille) : Samsung Neo QLED QN85C
+
+Libelle (nom) : Samsung Neo QLED 55QN85C
+
+Resume (description réduit) : Téléviseur Mini LED 4K 55" (138 cm) - Dalle 100 Hz - HDR10+ Adaptive - Wi-Fi/Bluetooth/AirPlay 2 - HDMI 2.1/FreeSync - Son 2.2.2 60W - Dolby Atmos sans fil
+
+description : Le téléviseur QN85C Serie 8 de Samsung associe les technologies Quantum Dots et Mini LED pour vous faire profiter d'une expérience vidéoludique inoubliable ! Ce modèle vous offre une image 4K UHD avec prise en charge HDR10+ Adaptive.
+
+patchPhoto :
+
+prix : 1789.94
+
+Marque : Samsung
+
+Taille : 55
+
+Type : Mini Led

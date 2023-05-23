@@ -3,7 +3,7 @@
 <head>
     <title>Connexion</title>
     <meta charset="UTF-8">
-    <base href="/Projet%20Web%20FAURE%20Bryce/">
+    <base href="/projetBtsEcommerce/">
 
     <!-- CSS only -->
     <link rel="stylesheet" href="CSS/bootstrap-5.1.3-dist/css/bootstrap-grid.css">

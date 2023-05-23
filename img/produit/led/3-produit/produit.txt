@@ -1,7 +1,17 @@
-Panasonic TX-40JX820E
-Téléviseur LED 4K UHD 40" (102 cm) 16/9 - Dolby Vision/HDR10+ Adaptive - Android TV - Wi-Fi/Bluetooth - Google Assistant - Chromecast - Son 2.0 20W
+Model (nom-taille) : Sony KD-X85K
 
-Avec Panasonic et son téléviseur TX-40JX820E, le divertissement quotidien devient une véritable partie de plaisir. Image 4K UHD, compatibilité HDR10+ Adaptive et Dolby Vision, fonction Smart TV avec Android TV et Google Assistant, ce modèle possède toutes les qualités pour accompagner vos envies.
+Libelle (nom) : Sony KD-85X85K
 
-https://www.ldlc.com/fiche/PB00442530.html
+Resume (description réduit) : Téléviseur LED 4K 85" (215 cm) - 100 Hz - HDR Dolby Vision - Google TV - Wi-Fi/Bluetooth/AirPlay 2 - Google Assistant - 2x HDMI 2.1 - Son 2.0 20W Dolby Atmos
 
+description : Le téléviseur Sony KD-85X85K propose une fluidité native de 100 Hz (120 Hz en optimisation), un système audio stéréo immersif avec prise en charge Dolby Atmos et une fonction Smart TV avec Google TV et Assistant Google. 2 connecteurs HDMI 2.1 avec fonctions VRR et ALLM sont présents pour les gamers.
+
+patchPhoto :
+
+prix : 1999.94
+
+Marque : Sony
+
+Taille : 85
+
+Type : Led

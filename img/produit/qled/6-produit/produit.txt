@@ -1,0 +1,17 @@
+Model (nom-taille) : Samsung Q50A
+
+Libelle (nom) : Samsung 32Q50A
+
+Resume (description réduit) : Téléviseur QLED Full HD 32" (81 cm) - Quantum HDR - Wi-Fi/Bluetooth - Son 2.0 20W
+
+description : Profitez d'une expérience Smart TV QLED sans limite avec ce téléviseur Samsung 32Q50A. Laissez parler votre curiosité et votre émerveillement en faisant la découverte de sublimes images Full HD enrichies par le HDR.
+
+patchPhoto :
+
+prix : 449.95
+
+Marque : Samsung
+
+Taille : 32
+
+Type : Qled

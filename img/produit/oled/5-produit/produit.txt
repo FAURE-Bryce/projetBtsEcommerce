@@ -1,0 +1,17 @@
+Model (nom-taille) : Samsung OLED TQS90C
+
+Libelle (nom) : Samsung OLED TQ65S90C
+
+Resume (description réduit) : Téléviseur OLED 4K 65" (165 cm) - 100 Hz - HDR10+ Gaming - Wi-Fi/Bluetooth/AirPlay 2 - HDMI 2.1/FreeSync Premium - Son 2.1 40W - Dolby Atmos sans fil
+
+description : Le téléviseur OLED Samsung TQ65S90C va vous permettre de vivre des moments de divertissement intenses grâce à des noirs plus profonds et des couleurs plus éclatantes. Les noirs plus purs et les contrastes plus profonds vous plongent au coeur d'une expérience cinématographique unique.
+
+patchPhoto :
+
+prix : 2789.95
+
+Marque : Samsung
+
+Taille : 65
+
+Type : Oled

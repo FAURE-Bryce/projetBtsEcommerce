@@ -1,0 +1,17 @@
+Model (nom-taille) :TCL C635
+
+Libelle (nom) : TCL 55C635
+
+Resume (description réduit) : Téléviseur QLED 4K UHD 55" (140 cm) - Dolby Vision/HDR10+ - Google TV - Wi-Fi/Bluetooth - Assistant Google - 3x HDMI 2.1 - Son 2.0 20W Dolby Atmos
+
+description : Offrez-vous un divertissement de haute qualité avec le téléviseur TCL 55C635. Equipé de la technologie QLED, d'une résolution 4K UHD et d'une prise en charge HDR étendue, ce modèle de 55 pouces possède toutes les qualités pour sublimer vos journées et soirées.
+
+patchPhoto :
+
+prix : 549
+
+Marque : TCL
+
+Taille : 55
+
+Type : Qled

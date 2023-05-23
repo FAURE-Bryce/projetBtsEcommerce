@@ -1,1 +1,17 @@
-https://www.ldlc.com/fiche/PB00431684.html
+Model (nom-taille) : TCL C735
+
+Libelle (nom) : TCL 98C735
+
+Resume (description réduit) : TV QLED 4K UHD 98" (248 cm) - 144 Hz - Dolby Vision IQ/HDR10+ - Google TV - Wi-Fi AC/Bluetooth 5.0 - Assistant Google - 4x HDMI 2.1 - FreeSync Premium - Son 2.1 70W Dolby Atmos
+
+description : Parfait pour le divertissement et idéal pour le gaming, la TV 98C735 signée TCL possède toutes les qualités pour accompagner toutes vos envies. Profitez d'une fluidité exceptionnelle de 144 Hz, d'une résolution 4K avec prise en charge HDR étendue et d'une connectique complète.
+
+patchPhoto :
+
+prix :
+
+Marque : TCL
+
+Taille : 98
+
+Type : Qled

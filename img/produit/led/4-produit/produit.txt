@@ -1,7 +1,17 @@
-Samsung UE75AU8075U
-Téléviseur LED 4K 75" (190 cm) - HDR - Wi-Fi/Bluetooth/AirPlay 2 - ALLM - HDMI eARC - 2300 PQI - Son 2.0 20W
+Model (nom-taille) : Samsung LED UEBU8005
 
-Découvrez des couleurs riches et fidèles, des détails élevés et un confort permanent avec le téléviseur Samsung 75AU8075. Ce modèle de 75 pouces délivre une image 4K UHD avec gestion du signal HDR10+ et HLG pour vous faire ressentir toutes les émotions de votre divertissement.
+Libelle (nom) : Samsung LED UE85BU8005
 
-https://www.ldlc.com/fiche/PB00410407.html
+Resume (description réduit) : Téléviseur LED 4K 85" (215 cm) - HDR10+ - Wi-Fi/Bluetooth/AirPlay 2 - HDMI 2.0 / ALLM - Son 2.0 20W
 
+description : Avec le téléviseur 4K HDR Samsung 85BU8005, votre divertissement passe un nouveau cap. Bénéficiez d'une qualité d'image supérieure, d'un système audio performant et de fonctionnalités connectées complètes. Ultra-fin, ce modèle se pare également de pieds ajustables pour une installation optimisée.
+
+patchPhoto : 
+
+prix : 1689.90
+
+Marque : Samsung
+
+Taille : 85
+
+Type : Led
