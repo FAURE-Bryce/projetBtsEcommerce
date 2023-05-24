@@ -45,7 +45,61 @@
                 echo '</div>';
                 echo '</div>';
             }
-        ?>  
+        ?>
+        <?php
+        $nbPage = $params['nbPage'];
+
+        $numPage = $params['numPage'];
+
+        if ($nbPage != 1) {
+            
+            $lienpagination = '<a href="gestionCompte/historique/';
+
+            echo '<div id="paginationCadre">';
+            echo '<div class="pagination">';
+
+            if ($numPage-1 == 0) {
+                echo '<p><</p>';
+            }
+            else{
+                echo $lienpagination.($numPage-1).'/"><</a>';
+            }
+
+            if (1 < ($numPage-1)) {
+                echo $lienpagination.'1/">1</a>';
+                echo '<p>...</p>';
+                // echo $lienpagination.($numPage-1).'/">'.($numPage-1).'</a>';
+            }
+            elseif (1 >= ($numPage-2)) {
+                for ($i=1; ($numPage - $i) == 1; $i++) { 
+                    echo $lienpagination.($numPage-$i).'/">'.($numPage-$i).'</a>';
+                }
+            }
+
+            echo '<p class="pageActuel">'.$numPage.'</p>';
+
+            if ($nbPage > ($numPage+1)) {
+                // echo $lienpagination.($numPage+1).'/">'.($numPage+1).'</a>';
+                echo '<p>...</p>';
+                echo $lienpagination.$nbPage.'/">'.$nbPage.'</a>';
+            }
+            elseif ($nbPage <= ($numPage+2)) {
+                for ($i=1; ($numPage+$i) == $nbPage; $i++) { 
+                    echo $lienpagination.($numPage+$i).'/">'.($numPage+$i).'</a>';
+                }
+            }
+
+            if ($numPage+1 > $nbPage) {
+                echo '<p>></p>';
+            }
+            else{
+                echo $lienpagination.($numPage+1).'/">></a>';
+            }
+
+            echo '</div>';
+            echo '</div>';
+        } 
+    ?>  
     </div>
     <?php FooterController::readAll($params); ?>
 </body>

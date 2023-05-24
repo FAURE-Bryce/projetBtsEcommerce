@@ -409,13 +409,62 @@
 
 #all_historique .commande_num .commande .produit .prix_qte
 {
-    width: 10%;
+    width: 15%;
     text-align: end;
 }
 
+/*--- Pagination début ---*/
+#paginationCadre{
+    display: flex;
+    justify-content: center;
+}
 
+.pagination{
+    display: flex;
+    justify-content: center;
+}
 
+.pagination a{
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    color: #969696;
+    background: #F0F0F0;
+    transform: all 200ms;
+}
 
+.pagination a:hover{
+    color: #0096c8;
+    background-color: #d9eef4;
+}
 
+.pagination p{
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    color: #969696;
+    background: #c9c9c9;
+}
+
+.pagination .pageActuel{
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    color: #0096c8;
+    background-color: #d9eef4;
+}
+/*--- Pagination fin ---*/
 
 /*--- Historique Fin ---*/

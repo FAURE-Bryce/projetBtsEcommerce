@@ -101,7 +101,7 @@ class ProduitManager {
             die('Erreur : ' . $e->getMessage());
         }
     }
-    
+
     public static function getNbProduits(){
         try{
             self::$cnx = DbManager::getConnection();
@@ -121,14 +121,67 @@ class ProduitManager {
             die('Erreur : ' . $e->getMessage());
         }
     }
+
+    public static function getNbProduitsByIdTypeEcran(int $id){
+        try{
+            self::$cnx = DbManager::getConnection();
+
+            $sql = 'select count(*) as countNbProduit';
+            $sql .= ' FROM produit';
+            $sql .= ' where idType = :idTypeEcran;';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $result->bindParam('idTypeEcran', $id, PDO::PARAM_INT);
+            $result->execute();
+            
+            $uneLigne = $result->fetch();
+
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            
+            return $uneLigne[0];
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function getNbProduitsBySearch(string $search){
+        try{
+            self::$cnx = DbManager::getConnection();
+
+            $sql = 'select count(*) as countNbProduit';
+            $sql .= ' from produit P';
+            $sql .= ' JOIN model M on M.id = P.idModel';
+            $sql .= ' WHERE M.libelle LIKE :search';
+            $sql .= ' OR P.libelle LIKE :search';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $search = "%".$search."%";
+
+            $result->bindParam('search', $search, PDO::PARAM_STR);
+            $result->execute();
+            
+            $uneLigne = $result->fetch();
+
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            
+            return $uneLigne[0];
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
     
     /**
      * Obtient un tableau des produits qui a pour idType $id
      * à l'aide d'une requête SQL
      * @return int 
      */
-    public static function getLesProduitsByIdTypeEcran(int $id){
+    public static function getLesProduitsByPaginationAndByIdTypeEcran(int $id, int $numPage, int $nbElementParPage){
         $lesProduits = array();
+        
+        $numPage = ($numPage-1)*$nbElementParPage;
+
         try{
             self::$cnx = DbManager::getConnection();
             
@@ -172,6 +225,58 @@ class ProduitManager {
         }
     }
     
+    public static function getLesProduitsBySearch(string $search, int $numPage, int $nbElementParPage){
+        $lesProduits = array();
+        
+        $numPage = ($numPage-1)*$nbElementParPage;
+
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'select P.id, idModel, P.libelle, resume, description, pathPhoto, qteEnStock, qteLimite, prixVenteUHT, idMarque, idTaille, idType';
+            $sql .= ' from produit P';
+            $sql .= ' JOIN model M on M.id = P.idModel';
+            $sql .= ' WHERE M.libelle LIKE :search';
+            $sql .= ' OR P.libelle LIKE :search';
+            $sql .= ' LIMIT :nbElementParPage OFFSET :numPage ;';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $search = "%".$search."%";
+
+            $result->bindParam('search', $search, PDO::PARAM_STR);
+            $result->bindParam('numPage', $numPage, PDO::PARAM_INT);
+            $result->bindParam('nbElementParPage', $nbElementParPage, PDO::PARAM_INT);
+            $result->execute();
+            
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            while ($uneLigne = $result->fetch()) {
+                $unProduit = new Produit();
+                $unProduit->SetId($uneLigne->id);
+                $unProduit->SetIdModel($uneLigne->idModel);
+                $unProduit->SetLibelle($uneLigne->libelle);
+                $unProduit->SetResume($uneLigne->resume);
+                $unProduit->SetDescription($uneLigne->description);
+                $unProduit->SetPathPhoto($uneLigne->pathPhoto);
+                $unProduit->SetQteEnStock($uneLigne->qteEnStock);
+                $unProduit->SetPrixVenteUht($uneLigne->prixVenteUHT);
+                $unProduit->SetIdMarque($uneLigne->idMarque);
+                $unProduit->SetIdTaille($uneLigne->idTaille);
+                $unProduit->SetIdType($uneLigne->idType);
+
+                $unProduit->SetType(TypeEcranManager::getTypeEcranById($uneLigne->idType));
+                $unProduit->SetMarque(MarqueManager::getMarqueById($uneLigne->idMarque));
+                $unProduit->SetTaille(TailleManager::getTailleById($uneLigne->idTaille));
+                $unProduit->SetModel(ModelManager::getModelById($uneLigne->idModel));
+                
+                array_push($lesProduits, $unProduit);
+            } 
+            return $lesProduits;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
     /**
      * Obtient un produits qui a pour id $id
      * à l'aide d'une requête SQL

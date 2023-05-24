@@ -38,8 +38,16 @@ class GestionCompteController
                             $_SESSION['nom'] = $listeUsers[$i]->GetNom();
                             $_SESSION['prenom'] = $listeUsers[$i]->GetPrenom();
                             $_SESSION['role'] = $listeUsers[$i]->GetRole();
-                            $_SESSION['panier'] = array();
-                            $erreur = "Pas d'erreur le mot de passe et le mail sont bons";
+                            if ($listeUsers[$i]->GetRole()->GetLibelle() == "Admin") {
+                                $_SESSION['isAdmin'] = true;
+                            }
+                            else {
+                                $_SESSION['isAdmin'] = false;
+                                $_SESSION['panier'] = array();
+                            }
+                            $erreur = "ok";
+                        } else {
+                            $erreur = "Mots de passe ou Email incorrect !";
                         }
                     } else {
                         $erreur = "Mots de passe ou Email incorrect !";
@@ -47,16 +55,22 @@ class GestionCompteController
                 } else {
                     $erreur = "Tous les champs doivent être complétés !";
                 }
-                if ($erreur == "Pas d'erreur le mot de passe et le mail sont bons") {
-                    ProduitController::list($params);
+                if ($erreur == "ok") {
+                    $vueAAppeller = "/view/gestionCompte/connexion.php";
                 }
                 else {
                     $params['erreur'] = $erreur;
+                    $vueAAppeller = "/view/gestionCompte/connexion.php";
                 }
             }
     
-            // appelle la vue
-            require_once ROOT . '/view/gestionCompte/connexion.php';
+            if (!empty($erreur) && $erreur == "ok") {
+                ProduitController::list(array_splice($params, 0));
+            }
+            else {
+                // appelle la vue
+                require_once ROOT . '/view/gestionCompte/connexion.php';
+            }
         }
     }
 
@@ -208,9 +222,22 @@ class GestionCompteController
     public static function historique($params){
 
         if (isset($_SESSION['id'])) {
-            $listeUsers = UserManager::getLesUsersByIdRole(RoleManager::getRoleByLibelle('Client')->getId());
-            
-            $params['listeCommande'] = CommandeManager::getLesCommandesByIdUser($_SESSION['id']);
+
+            if(empty($_GET['numPage'])){
+                $numPage = 1;
+            }else{
+                $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+            }
+
+            $nbElementParPage = 4;
+
+            $nbCommande = CommandeManager::getNbCommandesByIdUser($_SESSION['id']);
+
+            $params['nbPage'] = ceil($nbCommande / $nbElementParPage);
+
+            $params['numPage'] = $numPage;
+
+            $params['listeCommande'] = CommandeManager::getLesCommandesByIdUser($_SESSION['id'],$nbElementParPage,$numPage);
             
             require_once ROOT . '/view/gestionCompte/historique.php';
 

@@ -54,16 +54,23 @@ class CommandeManager {
         }
     }
 
-    public static function getLesCommandesByIdUser(int $idUser){
+    public static function getLesCommandesByIdUser(int $idUser, int $nbElementParPage, int $numPage){
         try{
+
+            
+            $numPage = ($numPage-1)*$nbElementParPage;
+
             self::$cnx = DbManager::getConnection();
             
             $sql = 'SELECT id, idModePaiement';
             $sql .= ' FROM commande';
             $sql .= ' WHERE idUser = :idUser';
+            $sql .= ' LIMIT :nbElementParPage OFFSET :numPage ;';
             
             $result = self::$cnx->prepare($sql);
             
+            $result->bindParam('numPage', $numPage, PDO::PARAM_INT);
+            $result->bindParam('nbElementParPage', $nbElementParPage, PDO::PARAM_INT);
             $result->bindParam('idUser', $idUser, PDO::PARAM_INT);
             $result->execute();
 
@@ -116,6 +123,29 @@ class CommandeManager {
                 
 
             return $uneCommande;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function getNbCommandesByIdUser(int $id){
+        try{
+            self::$cnx = DbManager::getConnection();
+
+            $sql = 'select count(*) as countNbProduit';
+            $sql .= ' FROM commande';
+            $sql .= ' where idUser = :id;';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $result->bindParam('id', $id, PDO::PARAM_INT);
+            $result->execute();
+            
+            $uneLigne = $result->fetch();
+
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            
+            return $uneLigne[0];
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }

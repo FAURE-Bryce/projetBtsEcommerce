@@ -61,7 +61,17 @@
 
                 $numPage = $params['numPage'];
 
-                if ($nbPage != 1) {
+                if ($nbPage != 1 || isset($params['rechercheProduits'])) {
+                    if (!empty($params['filtre']) && isset($params['filtre']) && $params['filtre'] != 'tous') {
+                        $lienpagination = '<a href="typeEcran/'.$params['filtre'].'/';
+                    }
+                    elseif (!empty($params['rechercheOk']) && isset($params['rechercheOk']) && $params['rechercheOk'] == true) {
+                        $lienpagination = '<a href="produit/recherche/';
+                    }
+                    else{
+                        $lienpagination = '<a href="';
+                    }
+
                     echo '<div id="paginationCadre">';
                     echo '<div class="pagination">';
 
@@ -69,30 +79,30 @@
                         echo '<p><</p>';
                     }
                     else{
-                        echo '<a href="'.($numPage-1).'\"><</a>';
+                        echo $lienpagination.($numPage-1).'/"><</a>';
                     }
 
                     if (1 < ($numPage-1)) {
-                        echo '<a href="1/">1</a>';
+                        echo $lienpagination.'1/">1</a>';
                         echo '<p>...</p>';
-                        // echo '<a href="'.($numPage-1).'/">'.($numPage-1).'</a>';
+                        // echo $lienpagination.($numPage-1).'/">'.($numPage-1).'</a>';
                     }
                     elseif (1 >= ($numPage-2)) {
                         for ($i=1; ($numPage - $i) == 1; $i++) { 
-                            echo '<a href="'.($numPage-$i).'/">'.($numPage-$i).'</a>';
+                            echo $lienpagination.($numPage-$i).'/">'.($numPage-$i).'</a>';
                         }
                     }
 
                     echo '<p class="pageActuel">'.$numPage.'</p>';
 
                     if ($nbPage > ($numPage+1)) {
-                        // echo '<a href="'.($numPage+1).'/">'.($numPage+1).'</a>';
+                        // echo $lienpagination.($numPage+1).'/">'.($numPage+1).'</a>';
                         echo '<p>...</p>';
-                        echo '<a href="'.$nbPage.'/">'.$nbPage.'</a>';
+                        echo $lienpagination.$nbPage.'/">'.$nbPage.'</a>';
                     }
                     elseif ($nbPage <= ($numPage+2)) {
                         for ($i=1; ($numPage+$i) == $nbPage; $i++) { 
-                            echo '<a href="'.($numPage+$i).'/">'.($numPage+$i).'</a>';
+                            echo $lienpagination.($numPage+$i).'/">'.($numPage+$i).'</a>';
                         }
                     }
 
@@ -100,7 +110,7 @@
                         echo '<p>></p>';
                     }
                     else{
-                        echo '<a href="'.($numPage+1).'\">></a>';
+                        echo $lienpagination.($numPage+1).'/">></a>';
                     }
 
                     echo '</div>';

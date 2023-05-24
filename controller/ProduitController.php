@@ -55,31 +55,26 @@
                 $filtre = filter_input(INPUT_GET, 'typeEcran', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
             }
 
-            // pagination start
-            if(empty($_GET['numPage'])){
-                $numPage = 1;
-            }else{
-                $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-            }
-
-            $nbElementParPage = 1;
-
-            $nbProduit = ProduitManager::getNbProduits();
-
-            $params['nbPage'] = ceil($nbProduit / $nbElementParPage);
-
-            $params['numPage'] = $numPage;
-            // pagination end
-
             /**
             * Return les produit qui sont dans le typeEcran $libelle
             */
-            function getLesProduitsByLibelleTypeEcran($libelle) : array
+            function getLesProduitsByLibelleTypeEcran(string $libelle) : array
             {
+                if(empty($_GET['numPage'])){
+                    $numPage = 1;
+                }else{
+                    $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+    
+                $nbElementParPage = 6;
+    
+                $nbProduit = ProduitManager::getNbProduitsByIdTypeEcran(TypeEcranManager::getIdTypeEcranByLibelle($libelle));
+
                 $typeEcranSelectionne = new TypeEcran();
                 $typeEcranSelectionne->setLibelle($libelle);
                 $typeEcranSelectionne->setId(TypeEcranManager::getIdTypeEcranByLibelle($libelle));
-                return ProduitManager::getLesProduitsByIdTypeEcran($typeEcranSelectionne->getId());
+
+                return array(ProduitManager::getLesProduitsByPaginationAndByIdTypeEcran($typeEcranSelectionne->getId(), $numPage, $nbElementParPage), $numPage, ceil($nbProduit / $nbElementParPage));
             }
 
             /**
@@ -88,22 +83,74 @@
             switch($filtre)
             {
                 case 'tous':
+                    if(empty($_GET['numPage'])){
+                        $numPage = 1;
+                    }else{
+                        $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    }
+        
+                    $nbElementParPage = 6;
+        
+                    $nbProduit = ProduitManager::getNbProduits();
+        
+                    $params['nbPage'] = ceil($nbProduit / $nbElementParPage);
+        
+                    $params['numPage'] = $numPage;
+
                     $lesProduits = ProduitManager::getLesProduitsByPagination($nbElementParPage, $numPage);
                     break;
                 case 'LED':
-                    $lesProduits = getLesProduitsByLibelleTypeEcran('LED');
+                    $tableauReturn = getLesProduitsByLibelleTypeEcran('LED');
+
+                    $params['nbPage'] = $tableauReturn[2];
+        
+                    $params['numPage'] = $tableauReturn[1];
+
+                    $lesProduits = $tableauReturn[0];
                     break;
                 case 'MiniLED':
-                    $lesProduits = getLesProduitsByLibelleTypeEcran('MiniLED');
+                    $tableauReturn = getLesProduitsByLibelleTypeEcran('MiniLED');
+
+                    $params['nbPage'] = $tableauReturn[2];
+        
+                    $params['numPage'] = $tableauReturn[1];
+                    
+                    $lesProduits = $tableauReturn[0];
                     break;
                 case 'OLED':
-                    $lesProduits = getLesProduitsByLibelleTypeEcran('OLED');
+                    $tableauReturn = getLesProduitsByLibelleTypeEcran('OLED');
+
+                    $params['nbPage'] = $tableauReturn[2];
+        
+                    $params['numPage'] = $tableauReturn[1];
+                    
+                    $lesProduits = $tableauReturn[0];
                     break;
                 case 'QLED':
-                    $lesProduits = getLesProduitsByLibelleTypeEcran('QLED');
+                    $tableauReturn = getLesProduitsByLibelleTypeEcran('QLED');
+
+                    $params['nbPage'] = $tableauReturn[2];
+        
+                    $params['numPage'] = $tableauReturn[1];
+                    
+                    $lesProduits = $tableauReturn[0];
                     break;
                 default :
-                    $lesProduits = ProduitManager::getLesProduits();
+                    if(empty($_GET['numPage'])){
+                        $numPage = 1;
+                    }else{
+                        $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    }
+                
+                    $nbElementParPage = 6;
+                
+                    $nbProduit = ProduitManager::getNbProduits();
+                
+                    $params['nbPage'] = ceil($nbProduit / $nbElementParPage);
+                
+                    $params['numPage'] = $numPage;
+
+                    $lesProduits = ProduitManager::getLesProduitsByPagination($nbElementParPage, $numPage);
                     break;
             }
 
@@ -111,6 +158,8 @@
             * récupère les produits de la bdd
             */
             $params['listProduits'] = $lesProduits;
+
+            $params['filtre'] = $filtre;
 
             // appelle la vue
             require_once ROOT.'/view/produit/list.php';
@@ -161,29 +210,62 @@
 
         public static function rechercheProduit($params){
 
-            /**
-            * récupère les produits de la bdd
-            */
-            $params['listProduits'] = ProduitManager::getLesProduits();
-
             if (isset($_POST['barreRecherche']) && !empty($_POST['barreRecherche'])) {
                 $recherche = filter_input(INPUT_POST, 'barreRecherche', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                $nombreElement = 0;
-                $listProduitsRecherche = array();
+                $listProduitsRechercher = array();
 
-                foreach ($params['listProduits'] as $produit) {
-                    if (strpos(strtolower($produit->GetModel()->GetLibelle()), strtolower($recherche))!== FALSE || strpos(strtolower($produit->GetLibelle()), strtolower($recherche)) !== FALSE) {
-                        array_push($listProduitsRecherche, $produit);
-                        $nombreElement++;
-                    }
+                if(empty($_GET['numPage'])){
+                    $numPage = 1;
+                }else{
+                    $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                 }
+    
+                $nbElementParPage = 700;
+    
+                $nbProduit = ProduitManager::getNbProduitsBySearch($recherche);
+    
+                $params['nbPage'] = ceil($nbProduit / $nbElementParPage);
+    
+                $params['numPage'] = $numPage;
 
-                if ($nombreElement == 0) {
+                $listProduitsRechercher = ProduitManager::getLesProduitsBySearch($recherche, $numPage, $nbElementParPage);
+                
+                if (count($listProduitsRechercher) == 0) {
                     $params['rechercheProduits'] = $recherche;
+
+                    $nbProduit = ProduitManager::getNbProduits();
+    
+                    $params['nbPage'] = ceil($nbProduit / $nbElementParPage);
+                    
+                    /**
+                    * récupère les produits de la bdd
+                    */
+                    $params['listProduits'] = ProduitManager::getLesProduitsByPagination($nbElementParPage, $numPage);
                 }
                 else {
-                    $params['listProduits'] = $listProduitsRecherche;
+                    $params['listProduits'] = $listProduitsRechercher;
+                    $params['rechercheOk'] = true;
                 }
+            }
+            else {
+                if(empty($_GET['numPage'])){
+                    $numPage = 1;
+                }else{
+                    $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+    
+                $nbElementParPage = 6;
+    
+                $nbProduit = ProduitManager::getNbProduits();
+    
+                $params['nbPage'] = ceil($nbProduit / $nbElementParPage);
+    
+                $params['numPage'] = $numPage;
+    
+                /**
+                * récupère les produits de la bdd
+                */
+                $params['listProduits'] = ProduitManager::getLesProduitsByPagination($nbElementParPage, $numPage);
             }
 
             // appelle la vue
