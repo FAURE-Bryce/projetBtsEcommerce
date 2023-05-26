@@ -11,8 +11,6 @@
 class MarqueManager {
     
     private static ?\PDO $cnx;
-    private static $uneMarque;
-    private static $lesMarques = array();
     
     /**
      * Obtient un marque qui a pour id $id
@@ -35,11 +33,35 @@ class MarqueManager {
             $result->setFetchMode(PDO::FETCH_OBJ);
             $uneLigne = $result->fetch();
 
-            self::$uneMarque = new Marque();
-            self::$uneMarque->SetId($uneLigne->id);
-            self::$uneMarque->SetLibelle($uneLigne->libelle);
+            $uneMarque = new Marque();
+            $uneMarque->SetId($uneLigne->id);
+            $uneMarque->SetLibelle($uneLigne->libelle);
             
-            return self::$uneMarque;
+            return $uneMarque;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+    
+    public static function getLesMarques(){
+        $lesMarques = array();
+        try{
+            self::$cnx = DbManager::getConnection();
+
+            $sql = 'select id, libelle';
+            $sql .= ' from marque';
+            
+            $result = self::$cnx->query($sql);
+            $result->execute();
+            
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            while ($uneLigne = $result->fetch()) {
+                $uneMarque = new Marque();
+                $uneMarque->SetId($uneLigne->id);
+                $uneMarque->SetLibelle($uneLigne->libelle);
+                array_push($lesMarques, $uneMarque);
+            } 
+            return $lesMarques;
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }

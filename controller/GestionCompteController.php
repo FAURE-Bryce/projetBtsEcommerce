@@ -19,7 +19,7 @@ class GestionCompteController
         }
         else{
             if (isset($_POST['formConnexion'])) {
-                $listeUsers = UserManager::getLesUsersByIdRole(RoleManager::getRoleByLibelle('Client')->getId());
+                $listeUsers = UserManager::getLesUsers();
     
                 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                 $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
@@ -47,24 +47,22 @@ class GestionCompteController
                             }
                             $erreur = "ok";
                         } else {
-                            $erreur = "Mots de passe ou Email incorrect !";
+                            $erreur = "Mots de passe ou Email incorrect 1!";
                         }
                     } else {
-                        $erreur = "Mots de passe ou Email incorrect !";
+                        $erreur = "Mots de passe ou Email incorrect 2!";
                     }
                 } else {
                     $erreur = "Tous les champs doivent être complétés !";
                 }
-                if ($erreur == "ok") {
-                    $vueAAppeller = "/view/gestionCompte/connexion.php";
-                }
-                else {
+                if ($erreur != "ok") {
                     $params['erreur'] = $erreur;
-                    $vueAAppeller = "/view/gestionCompte/connexion.php";
                 }
             }
-    
-            if (!empty($erreur) && $erreur == "ok") {
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
+                AdminController::listProduit(array_splice($params, 0));
+            }
+            else if (!empty($erreur) && $erreur == "ok") {
                 ProduitController::list(array_splice($params, 0));
             }
             else {

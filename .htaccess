@@ -21,7 +21,7 @@ RewriteRule ^panier/ajout/([0-9]+)/$   index.php?controller=panier&action=ajout&
 RewriteRule ^panier/quantitePlusMoins/([a-zA-Z]+)/([0-9]+)/$   index.php?controller=panier&action=quantitePlusMoins&plusMoins=$1&idProduit=$2 [nc,qsa]
 RewriteRule ^panier/passerCommande/$   index.php?controller=panier&action=passerCommande [nc]
 
-RewriteRule ^commandes/$   index.php?data=commandes [nc,qsa]
-RewriteRule ^produitUpdate/$   index.php?action=produitUpdate [nc,qsa]
-RewriteRule ^produitsACommander/$   index.php?data=produitsACommander [nc,qsa]
-RewriteRule ^statutCommande/([0-9]+)/$   index.php?data=statutCommande&refCommande=$1 [nc,qsa]
+# admin
+RewriteRule ^admin/listProduit/$   index.php?controller=admin&action=listProduit [nc,qsa]
+RewriteRule ^admin/listProduit/([0-9]+)/$   index.php?controller=admin&action=listProduit&numPage=$1 [nc,qsa]
+RewriteRule ^admin/updateProduit/([0-9]+)/$   index.php?controller=admin&action=updateProduit&idProduit=$1 [nc,qsa]

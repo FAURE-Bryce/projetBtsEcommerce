@@ -321,6 +321,29 @@ class ProduitManager {
             die('Erreur : ' . $e->getMessage());
         }
     }
+
+    public static function getIdModelByIdProduit(int $id){
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'select idModel';
+            $sql .= ' from produit';
+            $sql .= ' where id = :id';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $result->bindParam('id', $id, PDO::PARAM_INT);
+            $result->execute();
+            
+            $result->setFetchMode(PDO::FETCH_OBJ);
+
+            $uneLigne = $result->fetch();
+
+            return $uneLigne->idModel;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
     
     /**
      * Obtient un tableau des produits qui a pour idModel $idModel
@@ -373,7 +396,6 @@ class ProduitManager {
     }
 
     public static function setQteEnStock(int $idProduit, int $newQte){
-        $lesProduits = array();
         try{
             self::$cnx = DbManager::getConnection();
             
@@ -385,6 +407,56 @@ class ProduitManager {
             
             $result->bindParam('id', $idProduit, PDO::PARAM_INT);
             $result->bindParam('qteEnStock', $newQte, PDO::PARAM_INT);
+            $result->execute();
+            
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function updateProduitById(int $id, Produit $produit){
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'update produit';
+            $sql .= ' set libelle = :libelle,';
+            $sql .= ' resume = :resume,';
+            $sql .= ' description = :description,';
+            $sql .= ' pathPhoto = :patchPhoto,';
+            $sql .= ' qteEnStock = :qteEnStock,';
+            $sql .= ' qteLimite = :qteLimite,';
+            $sql .= ' prixVenteUHT = :prixVenteUHT,';
+            $sql .= ' idModel = :idModel,';
+            $sql .= ' idMarque = :idMarque,';
+            $sql .= ' idTaille = :idTaille,';
+            $sql .= ' idType = :idType';
+            $sql .= ' where id = :id';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $libelle = $produit->getLibelle();
+            $resume = $produit->getResume();
+            $description = $produit->getDescription();
+            $patchPhoto = $produit->getPathPhoto();
+            $qteEnStock = $produit->getQteEnStock();
+            $prixVenteUHT = $produit->getPrixVenteUHT();
+            $idModel = $produit->getIdModel();
+            $idMarque = $produit->getIdMarque();
+            $idTaille = $produit->getIdTaille();
+            $idType = $produit->getIdType();
+
+            $result->bindParam('id', $id, PDO::PARAM_INT);
+            $result->bindParam('libelle', $libelle, PDO::PARAM_STR);
+            $result->bindParam('resume', $resume, PDO::PARAM_STR);
+            $result->bindParam('description', $description, PDO::PARAM_STR);
+            $result->bindParam('patchPhoto', $patchPhoto, PDO::PARAM_STR);
+            $result->bindParam('qteEnStock', $qteEnStock, PDO::PARAM_STR);
+            $result->bindParam('qteLimite', $prixVenteUHT, PDO::PARAM_STR);
+            $result->bindParam('prixVenteUHT', $prixVenteUHT, PDO::PARAM_STR);
+            $result->bindParam('idModel', $idModel, PDO::PARAM_INT);
+            $result->bindParam('idMarque', $idMarque, PDO::PARAM_INT);
+            $result->bindParam('idTaille', $idTaille, PDO::PARAM_INT);
+            $result->bindParam('idType', $idType, PDO::PARAM_INT);
             $result->execute();
             
         } catch (Exception $e) {

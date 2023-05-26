@@ -11,8 +11,6 @@
 class ModelManager {
     
     private static ?\PDO $cnx;
-    private static $unModel;
-    private static $lesModels = array();
     
     /**
      * Obtient un model qui a pour id $id
@@ -35,11 +33,30 @@ class ModelManager {
             $result->setFetchMode(PDO::FETCH_OBJ);
             $uneLigne = $result->fetch();
 
-            self::$unModel = new Model();
-            self::$unModel->SetId($uneLigne->id);
-            self::$unModel->SetLibelle($uneLigne->libelle);
+            $unModel = new Model();
+            $unModel->SetId($uneLigne->id);
+            $unModel->SetLibelle($uneLigne->libelle);
             
-            return self::$unModel;
+            return $unModel;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function updateLibelleModelById(int $id, string $libelle){
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'update model';
+            $sql .= ' set libelle = :libelle';
+            $sql .= ' where id = :id';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $result->bindParam('id', $id, PDO::PARAM_INT);
+            $result->bindParam('libelle', $libelle, PDO::PARAM_STR);
+            $result->execute();
+            
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }

@@ -23,7 +23,9 @@
         <link rel="stylesheet" href="CSS/bootstrap-5.1.3-dist/css/bootstrap-grid.css">  <!-- à refaire sans Bootstrap -->
     </head>
     <body>
-        <?php NavBarreController::readAll($params); ?>
+        <?php 
+            NavBarreController::readAll($params); 
+        ?>
         <div id="all">
             <div id="divG">
                 <?php

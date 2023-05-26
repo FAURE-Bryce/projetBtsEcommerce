@@ -11,8 +11,6 @@
 class TailleManager {
     
     private static ?\PDO $cnx;
-    private static $uneTaille;
-    private static $lesTailles = array();
     
     /**
      * Obtient un typeEcran qui a pour id $id
@@ -35,11 +33,35 @@ class TailleManager {
             $result->setFetchMode(PDO::FETCH_OBJ);
             $uneLigne = $result->fetch();
 
-            self::$uneTaille = new Taille();
-            self::$uneTaille->SetId($uneLigne->id);
-            self::$uneTaille->SetLibelle($uneLigne->libelle);
+            $uneTaille = new Taille();
+            $uneTaille->SetId($uneLigne->id);
+            $uneTaille->SetLibelle($uneLigne->libelle);
             
-            return self::$uneTaille;
+            return $uneTaille;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function getLesTailles(){
+        $lesTailles = array();
+        try{
+            self::$cnx = DbManager::getConnection();
+
+            $sql = 'select id, libelle';
+            $sql .= ' from taille';
+            
+            $result = self::$cnx->query($sql);
+            $result->execute();
+            
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            while ($uneLigne = $result->fetch()) {
+                $uneTaille = new Taille();
+                $uneTaille->SetId($uneLigne->id);
+                $uneTaille->SetLibelle($uneLigne->libelle);
+                array_push($lesTailles, $uneTaille);
+            } 
+            return $lesTailles;
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }

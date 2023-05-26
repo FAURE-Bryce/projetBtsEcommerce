@@ -12,6 +12,42 @@ class UserManager {
     
     private static ?\PDO $cnx;
     
+    public static function getLesUsers(){
+        $lesUsers = array();
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'select id, nom, prenom, dateNaissance, numeroTelephone, adresse, ville, codePoste, adresseMail, motDePasse, idRole';
+            $sql .= ' from user';
+            
+            $result = self::$cnx->prepare($sql);
+            $result->execute();
+            
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            while ($uneLigne = $result->fetch()) {
+                $unUser = new User();
+                $unUser->SetId($uneLigne->id);
+                $unUser->SetNom($uneLigne->nom);
+                $unUser->SetPrenom($uneLigne->prenom);
+                $unUser->SetDateDeNaissance($uneLigne->dateNaissance);
+                $unUser->SetNumeroTelephone($uneLigne->numeroTelephone);
+                $unUser->SetAdresse($uneLigne->adresse);
+                $unUser->SetVille($uneLigne->ville);
+                $unUser->SetCodePostal($uneLigne->codePoste);
+                $unUser->SetEmail($uneLigne->adresseMail);
+                $unUser->SetMdp($uneLigne->motDePasse);
+                $unUser->SetIdRole($uneLigne->idRole);
+
+                $unUser->SetRole(RoleManager::getRoleById($uneLigne->idRole));
+                
+                array_push($lesUsers, $unUser);
+            } 
+            return $lesUsers;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+    
     public static function getLesUsersByIdRole(int $id){
         $lesUsers = array();
         try{

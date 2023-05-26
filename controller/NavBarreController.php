@@ -39,6 +39,18 @@
             require_once ROOT.'/view/navFooter/nav-barre.php';
 
         }
+
+        public static function readAdminAll($params){
+            
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
+                
+                // appelle la vue
+                require_once ROOT.'/view/navFooter/nav-barre-admin.php';
+
+            }
+
+
+        }
     }
 
 ?>

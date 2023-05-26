@@ -14,7 +14,20 @@
     padding-left: 1%;
 }
 
+#all_admin_page #commandeOk{
+    margin: 1%;
+    padding: 0.5%;
+    text-align: center;
+    background-color: rgb(0, 161, 0);
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
 #all_admin_page form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
@@ -62,13 +75,99 @@
 
 #idForm div{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #2b444b;
+}
+
+#idForm div #id{
+    width: 85%;
+    font-size: 1.2rem;
+}
+
+#idForm div p{
+    width: 25%;
+    font-size: 1.2rem;
 }
 
 #idForm div input{
-    width: 95%;
+    width: 60%;
+    font-size: 1.2rem;
+}
+
+#idForm div select{
+    width: 60%;
+    font-size: 1.2rem;
+}
+
+#idForm div #btSubmit{
+    width: 20%;
+    font-size: 1.5rem;
+    transition: all 200ms;
+    background-color: #21a836;
+    border: solid 2px #21a836;
+    color: #ffffff;
+}
+
+#idForm div #btSubmit:hover{
+    width: 25%;
+    background-color: #03ad1c;
 }
 /*--- Modification Fin ---*/
+
+/*--- Pagination début ---*/
+#paginationCadre{
+    display: flex;
+    justify-content: center;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a{
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    color: #969696;
+    background: #F0F0F0;
+    transform: all 200ms;
+}
+
+.pagination a:hover{
+    color: #0096c8;
+    background-color: #d9eef4;
+}
+
+.pagination p{
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    color: #969696;
+    background: #c9c9c9;
+}
+
+.pagination .pageActuel{
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    color: #0096c8;
+    background-color: #d9eef4;
+}
+/*--- Pagination fin ---*/
