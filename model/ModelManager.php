@@ -61,4 +61,28 @@ class ModelManager {
             die('Erreur : ' . $e->getMessage());
         }
     }
+    
+    public static function getLesModels(){
+        $lesModels = array();
+        try{
+            self::$cnx = DbManager::getConnection();
+
+            $sql = 'select id, libelle';
+            $sql .= ' from model';
+            
+            $result = self::$cnx->query($sql);
+            $result->execute();
+            
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            while ($uneLigne = $result->fetch()) {
+                $unModel = new Model();
+                $unModel->SetId($uneLigne->id);
+                $unModel->SetLibelle($uneLigne->libelle);
+                array_push($lesModels, $unModel);
+            } 
+            return $lesModels;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
 }

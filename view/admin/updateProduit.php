@@ -13,13 +13,33 @@
     <body>
         <?php NavBarreController::readAdminAll($params); ?>
         <div id="all_admin_page">
-            <?php echo '<form id="idForm" action="admin/updateProduit/'.$params['produit']->getId().'/" method="post">'; ?>
+            <?php 
+                if (isset($params['updated']) && $params['updated'] == false) {
+                    echo '<div id="erreur">';
+                    echo '<p>Un problème est survenu pendant l\'update</p>';
+                    echo '</div>';
+                }
+
+                echo '<form id="idForm" action="admin/updateProduit/'.$params['produit']->getId().'/" method="post">'; 
+            ?>
                 <div>
                     <p id="id">Id : <?php echo $params['produit']->getId(); ?></p>
                 </div>
                 <div>
                     <p>Model de produit :</p>
-                    <input type="text" name="model" value="<?php echo $params['produit']->getModel()->getLibelle(); ?>">
+                    
+                    <select name="idModel" id="idModel">
+                    <?php
+                        foreach ($params['listeModel'] as $model) {
+                            if ($model->getId() == $params['produit']->getModel()->getId()) {
+                                echo '<option value="'.$model->getId().'" selected>'.$model->getLibelle().'</option>';
+                            }
+                            else{
+                                echo '<option value="'.$model->getId().'">'.$model->getLibelle().'</option>';
+                            }
+                        }
+                    ?>
+                    </select>
                 </div>
                 <div>
                     <p>Libelle produit :</p>

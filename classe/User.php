@@ -83,6 +83,11 @@ class User
         return $this->mdp;
     }
 
+    public function GetIdRole(): int
+    {
+        return $this->idRole;
+    }
+
     public function GetRole(): Role
     {
         return $this->role;

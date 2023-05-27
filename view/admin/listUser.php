@@ -14,7 +14,7 @@
         <?php NavBarreController::readAdminAll($params); ?>
         <div id="all_admin_page">
             <div id="btAdd">
-                <a href="admin/addProduit/">Ajouter un produit</a>
+                <a href="admin/addUser/">Ajouter un user</a>
             </div>
             <?php
                 if (isset($params['updated']) && !empty($params['updated']) && $params['updated'] == true) {
@@ -24,25 +24,25 @@
                 }
                 elseif (isset($params['add']) && !empty($params['add']) && $params['add'] == true) {
                     echo '<div id="commandeOk">';
-                    echo '<p>Produit bien ajouté</p>';
+                    echo '<p>User bien ajouté</p>';
                     echo '</div>';
                 }
 
-                foreach ($params['listProduits'] as $produit) {
+                foreach ($params['listUsers'] as $user) {
                     ?>
                         <form action="" method="GET">
                             <table>
                                 <tr>
                                     <th>id</th>
-                                    <th>model</th>
-                                    <th>prix UHT</th>
+                                    <th>numero de telephone</th>
+                                    <th>email</th>
                                     <th>modifier</th>
                                 </tr>
                                 <tr>
-                                    <td><p><?php echo $produit->getId(); ?></p></td>
-                                    <td><p><?php echo $produit->getLibelle(); ?></p></td>
-                                    <td><p><?php echo $produit->GetPrixVenteUht(); ?></p></td>
-                                    <td><a href="admin/updateProduit/<?php echo $produit->getId(); ?>/"><input type="button" value="modifier" id="submit_bt"></a></td>
+                                    <td><p><?php echo $user->getId(); ?></p></td>
+                                    <td><p><?php echo $user->getRole()->getLibelle(); ?></p></td>
+                                    <td><p><?php echo $user->getEmail(); ?></p></td>
+                                    <td><a href="admin/updateUser/<?php echo $user->getId(); ?>/"><input type="button" value="modifier" id="submit_bt"></a></td>
                                 </tr>
                             </table>
                         </form>
@@ -55,7 +55,7 @@
                 $numPage = $params['numPage'];
 
                 if ($nbPage != 1) {
-                    $lienpagination = '<a href="admin/listProduit/';
+                    $lienpagination = '<a href="admin/listUser/';
 
                     echo '<div id="paginationCadre">';
                     echo '<div class="pagination">';

@@ -24,6 +24,32 @@
     border-radius: 10px;
 }
 
+#all_admin_page #erreur{
+    margin: 1%;
+    padding: 0.5%;
+    text-align: center;
+    background-color: rgb(161, 0, 0);
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+#all_admin_page #btAdd{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5%;
+    text-align: center;
+    background-color: rgb(0, 175, 206);
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+}
+
+#all_admin_page #btAdd a{
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+}
+
 #all_admin_page form{
     display: flex;
     justify-content: center;
@@ -84,6 +110,11 @@
 }
 
 #idForm div #id{
+    width: 85%;
+    font-size: 1.2rem;
+}
+
+#idForm div #emailId{
     width: 85%;
     font-size: 1.2rem;
 }

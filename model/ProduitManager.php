@@ -422,15 +422,52 @@ class ProduitManager {
             $sql .= ' set libelle = :libelle,';
             $sql .= ' resume = :resume,';
             $sql .= ' description = :description,';
-            $sql .= ' pathPhoto = :patchPhoto,';
+            $sql .= ' pathPhoto = :pathPhoto,';
             $sql .= ' qteEnStock = :qteEnStock,';
-            $sql .= ' qteLimite = :qteLimite,';
             $sql .= ' prixVenteUHT = :prixVenteUHT,';
             $sql .= ' idModel = :idModel,';
             $sql .= ' idMarque = :idMarque,';
             $sql .= ' idTaille = :idTaille,';
             $sql .= ' idType = :idType';
             $sql .= ' where id = :id';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $libelle = $produit->getLibelle();
+            $resume = $produit->getResume();
+            $description = $produit->getDescription();
+            $pathPhoto = $produit->getPathPhoto();
+            $qteEnStock = $produit->getQteEnStock();
+            $prixVenteUHT = $produit->getPrixVenteUHT();
+            $idModel = $produit->getIdModel();
+            $idMarque = $produit->getIdMarque();
+            $idTaille = $produit->getIdTaille();
+            $idType = $produit->getIdType();
+
+            $result->bindParam('id', $id, PDO::PARAM_INT);
+            $result->bindParam('libelle', $libelle, PDO::PARAM_STR);
+            $result->bindParam('resume', $resume, PDO::PARAM_STR);
+            $result->bindParam('description', $description, PDO::PARAM_STR);
+            $result->bindParam('pathPhoto', $pathPhoto, PDO::PARAM_STR);
+            $result->bindParam('qteEnStock', $qteEnStock, PDO::PARAM_STR);
+            $result->bindParam('prixVenteUHT', $prixVenteUHT, PDO::PARAM_STR);
+            $result->bindParam('idModel', $idModel, PDO::PARAM_INT);
+            $result->bindParam('idMarque', $idMarque, PDO::PARAM_INT);
+            $result->bindParam('idTaille', $idTaille, PDO::PARAM_INT);
+            $result->bindParam('idType', $idType, PDO::PARAM_INT);
+            $result->execute();
+            
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function addProduit(Produit $produit){
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'INSERT INTO produit (libelle, resume, description, pathPhoto, qteEnStock, prixVenteUHT, idModel, idMarque, idTaille, idType)';
+            $sql .= ' VALUES (:libelle, :resume, :description, :pathPhoto, :qteEnStock, :prixVenteUHT, :idModel, :idMarque, :idTaille, :idType)';
             
             $result = self::$cnx->prepare($sql);
             
@@ -444,14 +481,12 @@ class ProduitManager {
             $idMarque = $produit->getIdMarque();
             $idTaille = $produit->getIdTaille();
             $idType = $produit->getIdType();
-
-            $result->bindParam('id', $id, PDO::PARAM_INT);
+            
             $result->bindParam('libelle', $libelle, PDO::PARAM_STR);
             $result->bindParam('resume', $resume, PDO::PARAM_STR);
             $result->bindParam('description', $description, PDO::PARAM_STR);
-            $result->bindParam('patchPhoto', $patchPhoto, PDO::PARAM_STR);
+            $result->bindParam('pathPhoto', $patchPhoto, PDO::PARAM_STR);
             $result->bindParam('qteEnStock', $qteEnStock, PDO::PARAM_STR);
-            $result->bindParam('qteLimite', $prixVenteUHT, PDO::PARAM_STR);
             $result->bindParam('prixVenteUHT', $prixVenteUHT, PDO::PARAM_STR);
             $result->bindParam('idModel', $idModel, PDO::PARAM_INT);
             $result->bindParam('idMarque', $idMarque, PDO::PARAM_INT);

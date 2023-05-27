@@ -25,3 +25,9 @@ RewriteRule ^panier/passerCommande/$   index.php?controller=panier&action=passer
 RewriteRule ^admin/listProduit/$   index.php?controller=admin&action=listProduit [nc,qsa]
 RewriteRule ^admin/listProduit/([0-9]+)/$   index.php?controller=admin&action=listProduit&numPage=$1 [nc,qsa]
 RewriteRule ^admin/updateProduit/([0-9]+)/$   index.php?controller=admin&action=updateProduit&idProduit=$1 [nc,qsa]
+RewriteRule ^admin/addProduit/$   index.php?controller=admin&action=addProduit [nc,qsa]
+
+RewriteRule ^admin/listUser/$   index.php?controller=admin&action=listUser [nc,qsa]
+RewriteRule ^admin/listUser/([0-9]+)/$   index.php?controller=admin&action=listUser&numPage=$1 [nc,qsa]
+RewriteRule ^admin/updateUser/([0-9]+)/$   index.php?controller=admin&action=updateUser&idUser=$1 [nc,qsa]
+RewriteRule ^admin/addUser/$   index.php?controller=admin&action=addUser [nc,qsa]

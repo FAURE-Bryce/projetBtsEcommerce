@@ -237,4 +237,146 @@ class UserManager {
             die('Erreur : ' . $e->getMessage());
         }
     }
+
+    public static function getNbUsers(){
+        try{
+            self::$cnx = DbManager::getConnection();
+
+            $sql = 'select count(*) as countNbProduit';
+            $sql .= ' FROM user';
+            
+            $result = self::$cnx->prepare($sql);
+            $result->execute();
+            
+            $uneLigne = $result->fetch();
+
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            
+            return $uneLigne[0];
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function getLesUsersByPagination(int $nbElementParPage, int $numPage){
+        $lesUsers = array();
+
+        $numPage = ($numPage-1)*$nbElementParPage;
+
+        try{
+            self::$cnx = DbManager::getConnection();
+
+            $sql = 'select id, nom, prenom, dateNaissance, numeroTelePhone, adresse, ville, codePoste, adresseMail, idRole';
+            $sql .= ' FROM user';
+            $sql .= ' LIMIT :nbElementParPage OFFSET :numPage';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $result->bindParam('numPage', $numPage, PDO::PARAM_INT);
+            $result->bindParam('nbElementParPage', $nbElementParPage, PDO::PARAM_INT);
+            $result->execute();
+            
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            while ($uneLigne = $result->fetch()) {
+                $unUser = new User();
+                $unUser->SetId($uneLigne->id);
+                $unUser->SetNom($uneLigne->nom);
+                $unUser->SetPrenom($uneLigne->prenom);
+                $unUser->SetDateDeNaissance($uneLigne->dateNaissance);
+                $unUser->SetNumeroTelephone($uneLigne->numeroTelePhone);
+                $unUser->SetAdresse($uneLigne->adresse);
+                $unUser->SetVille($uneLigne->ville);
+                $unUser->SetCodePostal($uneLigne->codePoste);
+                $unUser->SetEmail($uneLigne->adresseMail);
+                $unUser->SetIdRole($uneLigne->idRole);
+
+                $unUser->SetRole(RoleManager::getRoleById($uneLigne->idRole));
+                
+                array_push($lesUsers, $unUser);
+            } 
+            return $lesUsers;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function updateUserById(int $id, User $user){
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'update user';
+            $sql .= ' set nom = :nom,';
+            $sql .= ' prenom = :prenom,';
+            $sql .= ' dateNaissance = :dateNaissance,';
+            $sql .= ' numeroTelePhone = :numeroTelePhone,';
+            $sql .= ' adresse = :adresse,';
+            $sql .= ' ville = :ville,';
+            $sql .= ' codePoste = :codePost,';
+            $sql .= ' idRole = :idRole';
+            $sql .= ' where id = :id';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $nom = $user->getNom();
+            $prenom = $user->getPrenom();
+            $dateNaissance = $user->getDateDeNaissance();
+            $numeroTelePhone = $user->getNumeroTelephone();
+            $adresse = $user->getAdresse();
+            $ville = $user->getVille();
+            $codePostal = $user->getCodePostal();
+            $idRole = $user->getIdRole();
+
+            $result->bindParam('id', $id, PDO::PARAM_INT);
+            $result->bindParam('nom', $nom, PDO::PARAM_STR);
+            $result->bindParam('prenom', $prenom, PDO::PARAM_STR);
+            $result->bindParam('dateNaissance', $dateNaissance, PDO::PARAM_STR);
+            $result->bindParam('numeroTelePhone', $numeroTelePhone, PDO::PARAM_STR);
+            $result->bindParam('adresse', $adresse, PDO::PARAM_STR);
+            $result->bindParam('ville', $ville, PDO::PARAM_STR);
+            $result->bindParam('codePost', $codePostal, PDO::PARAM_STR);
+            $result->bindParam('idRole', $idRole, PDO::PARAM_INT);
+            $result->execute();
+            
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function addUserWithObjet(User $user){
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'INSERT INTO user (nom, prenom, dateNaissance, numeroTelePhone, adresse, ville, codePoste, idRole, adresseMail, motDePasse)';
+            $sql .= ' VALUES (:nom, :prenom, :dateNaissance, :numeroTelePhone, :adresse, :ville, :codePoste, :idRole, :adresseMail, :motDePasse)';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $nom = $user->getNom();
+            $prenom = $user->getPrenom();
+            $dateNaissance = $user->getDateDeNaissance();
+            $numeroTelePhone = $user->getNumeroTelephone();
+            $adresse = $user->getAdresse();
+            $ville = $user->getVille();
+            $codePostal = $user->getCodePostal();
+            $email = $user->getEmail();
+            $mdp = $user->getMdp();
+            $idRole = $user->getIdRole();
+
+            $result->bindParam('nom', $nom, PDO::PARAM_STR);
+            $result->bindParam('prenom', $prenom, PDO::PARAM_STR);
+            $result->bindParam('dateNaissance', $dateNaissance, PDO::PARAM_STR);
+            $result->bindParam('numeroTelePhone', $numeroTelePhone, PDO::PARAM_STR);
+            $result->bindParam('adresse', $adresse, PDO::PARAM_STR);
+            $result->bindParam('ville', $ville, PDO::PARAM_STR);
+            $result->bindParam('codePoste', $codePostal, PDO::PARAM_STR);
+            $result->bindParam('idRole', $idRole, PDO::PARAM_INT);
+            $result->bindParam('adresseMail', $email, PDO::PARAM_STR);
+            $result->bindParam('motDePasse', $mdp, PDO::PARAM_STR);
+
+            $result->execute();
+            
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
 }
