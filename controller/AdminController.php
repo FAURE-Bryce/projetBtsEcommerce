@@ -54,43 +54,77 @@
                 $params['listeType'] = TypeEcranManager::getLesTypesEcrans();
                 $params['listeTaille'] = TailleManager::getLesTailles();
 
-                if(isset($_POST['formModification']) && !empty($_POST['formModification']) && isset($_POST['idModel']) && !empty($_POST['idModel']) && isset($_POST['libelle']) && !empty($_POST['libelle']) && isset($_POST['resume']) && !empty($_POST['resume']) && isset($_POST['description']) && !empty($_POST['description']) && isset($_POST['patchPhoto']) && !empty($_POST['patchPhoto']) && isset($_POST['qteEnStock']) && !empty($_POST['qteEnStock']) && isset($_POST['prixVenteUht']) && !empty($_POST['prixVenteUht']) && isset($_POST['idMarque']) && !empty($_POST['idMarque']) && isset($_POST['idTaille']) && !empty($_POST['idTaille']) && isset($_POST['idType']) && !empty($_POST['idType'])){
-                    $idModel = filter_input(INPUT_POST, 'idModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $resume = filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $patchPhoto = filter_input(INPUT_POST, 'patchPhoto', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $qteEnStock = filter_input(INPUT_POST, 'qteEnStock', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $prixVenteUht = filter_input(INPUT_POST, 'prixVenteUht', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $idMarque = filter_input(INPUT_POST, 'idMarque', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $idTaille = filter_input(INPUT_POST, 'idTaille', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $idType = filter_input(INPUT_POST, 'idType', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                $updated = 1;
+
+                if (isset($_POST['formModification']) && !empty($_POST['formModification'])) {
                     
-                    $produit = new Produit;
-                    $produit->setLibelle($libelle);
-                    $produit->setIdModel($idModel);
-                    $produit->setResume($resume);
-                    $produit->setDescription($description);
-                    $produit->SetPathPhoto($patchPhoto);
-                    $produit->setQteEnStock($qteEnStock);
-                    $produit->setPrixVenteUHT($prixVenteUht);
-                    $produit->setIdMarque($idMarque);
-                    $produit->setIdTaille($idTaille);
-                    $produit->setIdType($idType);
+                    $updated = 2;
 
-                    ProduitManager::updateProduitById($idProduit, $produit);
-                    $updated = true;
-                }
+                    if(isset($_POST['idModel']) && !empty($_POST['idModel']) && isset($_POST['libelle']) && !empty($_POST['libelle']) && isset($_POST['resume']) && !empty($_POST['resume']) && isset($_POST['description']) && !empty($_POST['description']) && isset($_POST['patchPhoto']) && !empty($_POST['patchPhoto']) && isset($_POST['qteEnStock']) && !empty($_POST['qteEnStock']) && isset($_POST['prixVenteUht']) && !empty($_POST['prixVenteUht']) && isset($_POST['idMarque']) && !empty($_POST['idMarque']) && isset($_POST['idTaille']) && !empty($_POST['idTaille']) && isset($_POST['idType']) && !empty($_POST['idType'])){
+                    
+                    
+                        $idModel = filter_input(INPUT_POST, 'idModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $resume = filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $patchPhoto = filter_input(INPUT_POST, 'patchPhoto', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $qteEnStock = filter_input(INPUT_POST, 'qteEnStock', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $prixVenteUht = filter_input(INPUT_POST, 'prixVenteUht', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $idMarque = filter_input(INPUT_POST, 'idMarque', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $idTaille = filter_input(INPUT_POST, 'idTaille', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $idType = filter_input(INPUT_POST, 'idType', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (ctype_digit($qteEnStock)) {
+                            if (ctype_digit($idModel)) {
+                                if (ctype_digit($idMarque)) {
+                                    if (ctype_digit($idTaille)) {
+                                        if (ctype_digit($idType)) {
+                                            if (strlen($libelle) <= 128){
+                                                if (strlen($resume) <= 100){
+                                                    if (strlen($description) <= 500){
+                                                        if (strlen($patchPhoto) <= 100){
+                                                            $prixVenteUht_en_float = floatval($prixVenteUht);
+                                                            if (is_float($prixVenteUht_en_float) && preg_match('/^\d+(\.\d{1,2})?$/', $prixVenteUht_en_float)) {
+                                                                $produit = new Produit;
+                                                                $produit->setLibelle($libelle);
+                                                                $produit->setIdModel($idModel);
+                                                                $produit->setResume($resume);
+                                                                $produit->setDescription($description);
+                                                                $produit->SetPathPhoto($patchPhoto);
+                                                                $produit->setQteEnStock($qteEnStock);
+                                                                $produit->setPrixVenteUHT($prixVenteUht);
+                                                                $produit->setIdMarque($idMarque);
+                                                                $produit->setIdTaille($idTaille);
+                                                                $produit->setIdType($idType);
+    
+                                                                ProduitManager::updateProduitById($idProduit, $produit);
+                                                                $updated = 3;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }                
 
-                if (isset($updated) && $updated == true) {
+                if (isset($updated) && $updated == 3) {
                     $params['updated'] = $updated;
                     AdminController::listProduit(array_splice($params, 0));
                 }
-                else {
+                else if (isset($updated) && $updated == 2) {
+                    $params['updated'] = $updated;
                     // appelle la vue
                     require_once ROOT.'/view/admin/updateProduit.php';
                 }
-                
+                elseif ($updated == 1){
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateProduit.php';
+                }
             }
             
         }
@@ -104,45 +138,86 @@
                 $params['listeType'] = TypeEcranManager::getLesTypesEcrans();
                 $params['listeTaille'] = TailleManager::getLesTailles();
 
-                if(isset($_POST['formAdd']) && !empty($_POST['formAdd']) && isset($_POST['idModel']) && !empty($_POST['idModel']) && isset($_POST['libelle']) && !empty($_POST['libelle']) && isset($_POST['resume']) && !empty($_POST['resume']) && isset($_POST['description']) && !empty($_POST['description']) && isset($_POST['patchPhoto']) && !empty($_POST['patchPhoto']) && isset($_POST['qteEnStock']) && !empty($_POST['qteEnStock']) && isset($_POST['prixVenteUht']) && !empty($_POST['prixVenteUht']) && isset($_POST['idMarque']) && !empty($_POST['idMarque']) && isset($_POST['idTaille']) && !empty($_POST['idTaille']) && isset($_POST['idType']) && !empty($_POST['idType'])){
-                    $idModel = filter_input(INPUT_POST, 'idModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $resume = filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $patchPhoto = filter_input(INPUT_POST, 'patchPhoto', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $qteEnStock = filter_input(INPUT_POST, 'qteEnStock', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $prixVenteUht = filter_input(INPUT_POST, 'prixVenteUht', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $idMarque = filter_input(INPUT_POST, 'idMarque', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $idTaille = filter_input(INPUT_POST, 'idTaille', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    $idType = filter_input(INPUT_POST, 'idType', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                
-                    $produit = new Produit;
-                    $produit->setLibelle($libelle);
-                    $produit->setIdModel($idModel);
-                    $produit->setResume($resume);
-                    $produit->setDescription($description);
-                    $produit->SetPathPhoto($patchPhoto);
-                    $produit->setQteEnStock($qteEnStock);
-                    $produit->setPrixVenteUHT($prixVenteUht);
-                    $produit->setIdMarque($idMarque);
-                    $produit->setIdTaille($idTaille);
-                    $produit->setIdType($idType);
+                $add = 1;
 
-                    ProduitManager::addProduit($produit);
-                    $add = true;
-                }
-                
-
-                if (isset($add) && $add == true) {
-                    $params['add'] = $add;
+                if (isset($_POST['formAdd']) && !empty($_POST['formAdd'])) {
+                    $add = 2;
+                    if(isset($_POST['idModel']) && !empty($_POST['idModel']) && isset($_POST['libelle']) && !empty($_POST['libelle']) && isset($_POST['resume']) && !empty($_POST['resume']) && isset($_POST['description']) && !empty($_POST['description']) && isset($_POST['patchPhoto']) && !empty($_POST['patchPhoto']) && isset($_POST['qteEnStock']) && !empty($_POST['qteEnStock']) && isset($_POST['prixVenteUht']) && !empty($_POST['prixVenteUht']) && isset($_POST['idMarque']) && !empty($_POST['idMarque']) && isset($_POST['idTaille']) && !empty($_POST['idTaille']) && isset($_POST['idType']) && !empty($_POST['idType'])){
+                        $idModel = filter_input(INPUT_POST, 'idModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $resume = filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $patchPhoto = filter_input(INPUT_POST, 'patchPhoto', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $qteEnStock = filter_input(INPUT_POST, 'qteEnStock', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $prixVenteUht = filter_input(INPUT_POST, 'prixVenteUht', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $idMarque = filter_input(INPUT_POST, 'idMarque', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $idTaille = filter_input(INPUT_POST, 'idTaille', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $idType = filter_input(INPUT_POST, 'idType', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                     
+
+                        if (ctype_digit($qteEnStock)) {
+                            if (ctype_digit($idModel)) {
+                                if (ctype_digit($idMarque)) {
+                                    if (ctype_digit($idTaille)) {
+                                        if (ctype_digit($idType)) {
+                                            if (strlen($libelle) <= 128){
+                                                if (strlen($resume) <= 100){
+                                                    if (strlen($description) <= 500){
+                                                        if (strlen($patchPhoto) <= 100){
+                                                            $prixVenteUht_en_float = floatval($prixVenteUht);
+                                                            if (is_float($prixVenteUht_en_float) && preg_match('/^\d+(\.\d{1,2})?$/', $prixVenteUht_en_float)) {
+                                                                $produit = new Produit;
+                                                                $produit->setLibelle($libelle);
+                                                                $produit->setIdModel($idModel);
+                                                                $produit->setResume($resume);
+                                                                $produit->setDescription($description);
+                                                                $produit->SetPathPhoto($patchPhoto);
+                                                                $produit->setQteEnStock($qteEnStock);
+                                                                $produit->setPrixVenteUHT($prixVenteUht);
+                                                                $produit->setIdMarque($idMarque);
+                                                                $produit->setIdTaille($idTaille);
+                                                                $produit->setIdType($idType);
+
+                                                                ProduitManager::addProduit($produit);
+                                                                $add = 3;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (isset($add) && $add == 3) {
+                    $params['add'] = $add;
                     AdminController::listProduit(array_splice($params, 0));
                 }
-                else {
+                else if (isset($add) && $add == 2) {
+                    $params['add'] = $add;
+
+                    $params['idModel'] = filter_input(INPUT_POST, 'idModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    $params['resume'] = filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    $params['description'] = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    $params['patchPhoto'] = filter_input(INPUT_POST, 'patchPhoto', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    $params['qteEnStock'] = filter_input(INPUT_POST, 'qteEnStock', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    $params['prixVenteUht'] = filter_input(INPUT_POST, 'prixVenteUht', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    $params['idMarque'] = filter_input(INPUT_POST, 'idMarque', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    $params['idTaille'] = filter_input(INPUT_POST, 'idTaille', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    $params['idType'] = filter_input(INPUT_POST, 'idType', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);    
+
                     // appelle la vue
                     require_once ROOT.'/view/admin/addProduit.php';
                 }
-                
+                elseif ($add == 1){
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addProduit.php';
+                }
             }
             
         }
@@ -187,6 +262,8 @@
 
                 $params['user'] = UserManager::getUserById($idUser);
                 $params['listeRole'] = RoleManager::getLesRoles();
+                
+                $updated = 1;
 
                 if(isset($_POST['formUser']) && !empty($_POST['formUser']) && isset($_POST['nom']) && !empty($_POST['nom']) && isset($_POST['prenom']) && !empty($_POST['prenom']) && isset($_POST['dateDeNaissance']) && !empty($_POST['dateDeNaissance']) && isset($_POST['numeroTelephone']) && !empty($_POST['numeroTelephone']) && isset($_POST['adresse']) && !empty($_POST['adresse']) && isset($_POST['ville']) && !empty($_POST['ville']) && isset($_POST['codePostal']) && !empty($_POST['codePostal']) && isset($_POST['idRole']) && !empty($_POST['idRole'])){
                     $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
@@ -198,7 +275,7 @@
                     $codePostal = filter_input(INPUT_POST, 'codePostal', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                     $idRole = filter_input(INPUT_POST, 'idRole', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                     
-                    $updated = false;
+                    $updated = 2;
 
                     if (strlen($nom) < 40) {
                         if (strlen($prenom) < 40) {
@@ -222,7 +299,7 @@
                                                     $user->setIdRole($idRole);
 
                                                     UserManager::updateUserById($idUser, $user);
-                                                    $updated = true;        
+                                                    $updated = 3;        
                                                 }
                                             }
                                         }
@@ -233,16 +310,16 @@
                     }
                 }
 
-                if (isset($updated) && $updated == true) {
+                if (isset($updated) && $updated == 3) {
                     $params['updated'] = $updated;
                     AdminController::listUser(array_splice($params, 0));
                 }
-                else if (isset($updated) && $updated == false) {
+                else if (isset($updated) && $updated == 2) {
                     $params['updated'] = $updated;
                     // appelle la vue
                     require_once ROOT.'/view/admin/updateUser.php';
                 }
-                else {
+                elseif ($updated == 1){
                     // appelle la vue
                     require_once ROOT.'/view/admin/updateUser.php';
                 }
@@ -258,7 +335,7 @@
                 $params['listeRole'] = RoleManager::getLesRoles();
 
                 $add = 1;
-
+                
                 if(isset($_POST['formUser']) && !empty($_POST['formUser'])){
                     
                     $add = 2;
@@ -288,13 +365,13 @@
                                             if (strlen($ville) < 50) {
                                                 if (strlen($codePostal) == 5 && ctype_digit($codePostal)) {
                                                     if (is_numeric($idRole)) {
-                                                        if ($email == $emailComfirmation) {
+                                                        if ($email == $emailConfirmation) {
                                                             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                                                                 $listeEmailsUsers = UserManager::getLesEmailsUsersByIdRole(RoleManager::getRoleByLibelle('Client')->getId());
                                                                 if (in_array($email, $listeEmailsUsers) == false) {
                                                                     if (UtilitaireController::check_password($mdp)) {
                                                                         $mot_de_passe_hache = password_hash($mdp, PASSWORD_DEFAULT);
-                                                                        if (password_verify($mdpComfirmation, $mot_de_passe_hache)) {
+                                                                        if (password_verify($mdpConfirmation, $mot_de_passe_hache)) {
                                                                             $user = new User;
                                                                             $user->setNom($nom);
                                                                             $user->setPrenom($prenom);
@@ -305,25 +382,14 @@
                                                                             $user->setCodePostal($codePostal);
                                                                             $user->setIdRole($idRole);
                                                                             $user->setEmail($email);
-                                                                            $user->setMdp($mdp);
+                                                                            $user->setMdp($mot_de_passe_hache);
 
                                                                             UserManager::addUserWithObjet($user);
                                                                             $add = 3; 
 
-                                                                        } else {
-                                                                            $params['erreur'] = "Vos mots de passes ne correspondent pas !";
-                                                                        }
-                                                                    }
-                                                                    else {
-                                                                        $params['erreur'] = "Le mot de passe n'est pas valide, le mot de passe doit contenir une majuscule, une minuscule, un chiffre, un caractère spécial et au moins 12 caractères";
+                                                                        } 
                                                                     }
                                                                 }
-                                                                else {
-                                                                    $params['erreur'] = "Adresse email déjà utilisée !";
-                                                                }
-                                                            }
-                                                            else {
-                                                                $params['erreur'] = "Votre adresse email n'est pas valide !";
                                                             }
                                                         }      
                                                     }
@@ -362,6 +428,727 @@
                 elseif ($add == 1) {
                     // appelle la vue
                     require_once ROOT.'/view/admin/addUser.php';
+                }
+             
+            }
+         
+        }
+
+        /* Commande */
+
+        public static function listCommande($params){   
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+                
+                if(empty($_GET['numPage'])){
+                    $numPage = 1;
+                }else{
+                    $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+    
+                $nbElementParPage = 10;
+    
+                $nbCommande = CommandeManager::getNbCommandes();
+    
+                $params['nbPage'] = ceil($nbCommande / $nbElementParPage);
+    
+                $params['numPage'] = $numPage;
+    
+                /**
+                * récupère les produits de la bdd
+                */
+                $params['listCommandes'] = CommandeManager::getLesCommandesByPaginationAndIdRoleUser($nbElementParPage, $numPage, RoleManager::getRoleByLibelle('Client')->getId());
+    
+                // appelle la vue
+                require_once ROOT.'/view/admin/listCommande.php';
+            }
+            
+        }
+
+        public static function updateCommande($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+             
+                if(isset($_GET['idCommande'])){
+                    $idCommande = filter_input(INPUT_GET, 'idCommande', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+
+                $params['commande'] = CommandeManager::getLaCommandeById($idCommande);
+                
+                $params['listeUserClient'] = UserManager::getLesUsersByIdRole(RoleManager::getRoleByLibelle('Client')->getId());
+                $params['listeModePaiement'] = ModePaiementManager::getModePaiement();
+                $updated = 1;
+
+                if (isset($_POST['formCommande']) && !empty($_POST['formCommande'])) {
+                    $updated = 2;
+
+                    if(isset($_POST['idModePaiement']) && !empty($_POST['idModePaiement']) && isset($_POST['idUser']) && !empty($_POST['idUser'])){
+                        $idModePaiement = filter_input(INPUT_POST, 'idModePaiement', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        $idUser = filter_input(INPUT_POST, 'idUser', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+    
+                        if (ctype_digit($idModePaiement)) {
+                            if (ctype_digit($idModePaiement)) {
+                                $commande = new Commande;
+                                $commande->setId($idCommande);
+                                $commande->setIdModePaiement($idModePaiement);
+                                $commande->setIdUser($idUser);
+
+                                CommandeManager::updateCommandeById($idCommande, $commande);
+
+                                $updated = 3;
+                            }
+                        }
+                    }
+                }
+
+                if (isset($updated) && $updated == 3) {
+                    $params['updated'] = $updated;
+                    AdminController::listCommande(array_splice($params, 0));
+                }
+                else if (isset($updated) && $updated == 2) {
+                    $params['updated'] = $updated;
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateCommande.php';
+                }
+                elseif ($updated == 1){
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateCommande.php';
+                }
+             
+            }
+         
+        }
+
+        /* Detail commande */
+
+        public static function updateDetailCommande($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+             
+                if(isset($_GET['idCommande']) && isset($_GET['idProduit'])){
+                    $idCommande = filter_input(INPUT_GET, 'idCommande', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    $idProduit = filter_input(INPUT_GET, 'idProduit', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+
+                $params['detailCommande'] = DetailCommandeManager::getLesDetailCommandesByIdCommandeAndByIdProduit($idCommande, $idProduit);
+                
+                $updated = 1;
+                if (isset($_POST['formDetailCommande']) && !empty($_POST['formDetailCommande'])) {
+                    $updated = 2;
+
+                    if(isset($_POST['qte']) && !empty($_POST['qte'])){
+                        $qte = filter_input(INPUT_POST, 'qte', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (ctype_digit($qte)) {
+
+                            DetailCommandeManager::updateDetailCommandeByIdCOmmandeAndByIdProduit($idCommande, $idProduit, $qte);
+
+                            $updated = 3;
+                        }
+                    }
+                }
+
+                if (isset($updated) && $updated == 3) {
+                    $params['updated'] = $updated;
+                    AdminController::listCommande(array_splice($params, 0));
+                }
+                else if (isset($updated) && $updated == 2) {
+                    $params['updated'] = $updated;
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateDetailCommande.php';
+                }
+                elseif ($updated == 1){
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateDetailCommande.php';
+                }
+             
+            }
+         
+        }
+
+        /* Role */
+
+        public static function listRole($params){   
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+                
+                if(empty($_GET['numPage'])){
+                    $numPage = 1;
+                }else{
+                    $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+    
+                $nbElementParPage = 10;
+    
+                $nbRole = RoleManager::getNbRoles();
+    
+                $params['nbPage'] = ceil($nbRole / $nbElementParPage);
+    
+                $params['numPage'] = $numPage;
+    
+                /**
+                * récupère les produits de la bdd
+                */
+                $params['listRoles'] = RoleManager::getLesRolesByPagination($nbElementParPage, $numPage);
+                
+                // appelle la vue
+                require_once ROOT.'/view/admin/listRole.php';
+            }
+            
+        }
+
+        public static function updateRole($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+             
+                if(isset($_GET['idRole'])){
+                    $idRole = filter_input(INPUT_GET, 'idRole', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+
+                $params['role'] = RoleManager::getRoleById($idRole);
+
+                $updated = 1;
+
+                if (isset($_POST['formRole']) && !empty($_POST['formRole'])) {
+                    $updated = 2;
+
+                    if(isset($_POST['libelle']) && !empty($_POST['libelle'])){
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (strlen($libelle) <= 40) {
+                            RoleManager::updateRoleById($idRole, $libelle);
+
+                            $updated = 3;
+                        }
+                    }
+                }
+
+                if (isset($updated) && $updated == 3) {
+                    $params['updated'] = $updated;
+                    AdminController::listRole(array_splice($params, 0));
+                }
+                else if (isset($updated) && $updated == 2) {
+                    $params['updated'] = $updated;
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateRole.php';
+                }
+                elseif ($updated == 1){
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateRole.php';
+                }
+             
+            }
+         
+        }
+
+        public static function addRole($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+
+                $add = 1;
+                
+                if (isset($_POST['formRole']) && !empty($_POST['formRole'])) {
+                    $add = 2;
+
+                    if(isset($_POST['libelle']) && !empty($_POST['libelle'])){
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (strlen($libelle) <= 40) {
+                            $role = new Role;
+                            $role->setLibelle($libelle);
+
+                            RoleManager::AddRole($role);
+
+                            $add = 3;
+                        }
+                    }
+                }
+             
+                if (isset($add) && $add == 3) {
+                    $params['add'] = $add;
+                    AdminController::listRole(array_splice($params, 0));
+                }
+                else if (isset($add) && $add == 2) {
+                    $params['add'] = $add;
+
+                    $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addRole.php';
+                }
+                elseif ($add == 1) {
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addRole.php';
+                }
+             
+            }
+         
+        }
+
+        /* Model */
+
+        public static function listModel($params){   
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+                
+                if(empty($_GET['numPage'])){
+                    $numPage = 1;
+                }else{
+                    $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+    
+                $nbElementParPage = 10;
+    
+                $nbModel = ModelManager::getNbModels();
+    
+                $params['nbPage'] = ceil($nbModel / $nbElementParPage);
+    
+                $params['numPage'] = $numPage;
+    
+                /**
+                * récupère les produits de la bdd
+                */
+                $params['listModels'] = ModelManager::getLesModelsByPagination($nbElementParPage, $numPage);
+                
+                // appelle la vue
+                require_once ROOT.'/view/admin/listModel.php';
+            }
+            
+        }
+
+        public static function updateModel($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+             
+                if(isset($_GET['idModel'])){
+                    $idModel = filter_input(INPUT_GET, 'idModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+
+                $params['model'] = ModelManager::getModelById($idModel);
+
+                $updated = 1;
+
+                if (isset($_POST['formModel']) && !empty($_POST['formModel'])) {
+                    $updated = 2;
+
+                    if(isset($_POST['libelle']) && !empty($_POST['libelle'])){
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (strlen($libelle) <= 40) {
+                            ModelManager::updateModelById($idModel, $libelle);
+
+                            $updated = 3;
+                        }
+                    }
+                }
+
+                if (isset($updated) && $updated == 3) {
+                    $params['updated'] = $updated;
+                    AdminController::listModel(array_splice($params, 0));
+                }
+                else if (isset($updated) && $updated == 2) {
+                    $params['updated'] = $updated;
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateModel.php';
+                }
+                elseif ($updated == 1){
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateModel.php';
+                }
+             
+            }
+         
+        }
+
+        public static function addModel($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+
+                $add = 1;
+                
+                if (isset($_POST['formModel']) && !empty($_POST['formModel'])) {
+                    $add = 2;
+
+                    if(isset($_POST['libelle']) && !empty($_POST['libelle'])){
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (strlen($libelle) <= 40) {
+                            $model = new Model;
+                            $model->setLibelle($libelle);
+
+                            ModelManager::AddModel($model);
+
+                            $add = 3;
+                        }
+                    }
+                }
+             
+                if (isset($add) && $add == 3) {
+                    $params['add'] = $add;
+                    AdminController::listModel(array_splice($params, 0));
+                }
+                else if (isset($add) && $add == 2) {
+                    $params['add'] = $add;
+
+                    $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addModel.php';
+                }
+                elseif ($add == 1) {
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addModel.php';
+                }
+             
+            }
+         
+        }
+
+        /* Marque */
+
+        public static function listMarque($params){   
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+                
+                if(empty($_GET['numPage'])){
+                    $numPage = 1;
+                }else{
+                    $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+    
+                $nbElementParPage = 10;
+    
+                $nbMarque = MarqueManager::getNbMarques();
+    
+                $params['nbPage'] = ceil($nbMarque / $nbElementParPage);
+    
+                $params['numPage'] = $numPage;
+    
+                /**
+                * récupère les produits de la bdd
+                */
+                $params['listMarques'] = MarqueManager::getLesMarquesByPagination($nbElementParPage, $numPage);
+                
+                // appelle la vue
+                require_once ROOT.'/view/admin/listMarque.php';
+            }
+            
+        }
+
+        public static function updateMarque($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+             
+                if(isset($_GET['idMarque'])){
+                    $idMarque = filter_input(INPUT_GET, 'idMarque', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+
+                $params['marque'] = MarqueManager::getMarqueById($idMarque);
+
+                $updated = 1;
+
+                if (isset($_POST['formMarque']) && !empty($_POST['formMarque'])) {
+                    $updated = 2;
+
+                    if(isset($_POST['libelle']) && !empty($_POST['libelle'])){
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (strlen($libelle) <= 40) {
+                            MarqueManager::updateMarqueById($idMarque, $libelle);
+
+                            $updated = 3;
+                        }
+                    }
+                }
+
+                if (isset($updated) && $updated == 3) {
+                    $params['updated'] = $updated;
+                    AdminController::listMarque(array_splice($params, 0));
+                }
+                else if (isset($updated) && $updated == 2) {
+                    $params['updated'] = $updated;
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateMarque.php';
+                }
+                elseif ($updated == 1){
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateMarque.php';
+                }
+             
+            }
+         
+        }
+
+        public static function addMarque($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+
+                $add = 1;
+                
+                if (isset($_POST['formMarque']) && !empty($_POST['formMarque'])) {
+                    $add = 2;
+
+                    if(isset($_POST['libelle']) && !empty($_POST['libelle'])){
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (strlen($libelle) <= 40) {
+                            $marque = new Marque;
+                            $marque->setLibelle($libelle);
+
+                            MarqueManager::AddMarque($marque);
+
+                            $add = 3;
+                        }
+                    }
+                }
+             
+                if (isset($add) && $add == 3) {
+                    $params['add'] = $add;
+                    AdminController::listMarque(array_splice($params, 0));
+                }
+                else if (isset($add) && $add == 2) {
+                    $params['add'] = $add;
+
+                    $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addMarque.php';
+                }
+                elseif ($add == 1) {
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addMarque.php';
+                }
+             
+            }
+         
+        }
+
+        /* Taille */
+
+        public static function listTaille($params){   
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+                
+                if(empty($_GET['numPage'])){
+                    $numPage = 1;
+                }else{
+                    $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+    
+                $nbElementParPage = 10;
+    
+                $nbTaille = TailleManager::getNbTailles();
+    
+                $params['nbPage'] = ceil($nbTaille / $nbElementParPage);
+    
+                $params['numPage'] = $numPage;
+    
+                /**
+                * récupère les produits de la bdd
+                */
+                $params['listTailles'] = TailleManager::getLesTaillesByPagination($nbElementParPage, $numPage);
+                
+                // appelle la vue
+                require_once ROOT.'/view/admin/listTaille.php';
+            }
+            
+        }
+
+        public static function updateTaille($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+             
+                if(isset($_GET['idTaille'])){
+                    $idTaille = filter_input(INPUT_GET, 'idTaille', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+
+                $params['taille'] = TailleManager::getTailleById($idTaille);
+
+                $updated = 1;
+
+                if (isset($_POST['formTaille']) && !empty($_POST['formTaille'])) {
+                    $updated = 2;
+
+                    if(isset($_POST['libelle']) && !empty($_POST['libelle'])){
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (strlen($libelle) <= 40) {
+                            TailleManager::updateTailleById($idTaille, $libelle);
+
+                            $updated = 3;
+                        }
+                    }
+                }
+
+                if (isset($updated) && $updated == 3) {
+                    $params['updated'] = $updated;
+                    AdminController::listTaille(array_splice($params, 0));
+                }
+                else if (isset($updated) && $updated == 2) {
+                    $params['updated'] = $updated;
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateTaille.php';
+                }
+                elseif ($updated == 1){
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateTaille.php';
+                }
+             
+            }
+         
+        }
+
+        public static function addTaille($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+
+                $add = 1;
+                
+                if (isset($_POST['formTaille']) && !empty($_POST['formTaille'])) {
+                    $add = 2;
+
+                    if(isset($_POST['libelle']) && !empty($_POST['libelle'])){
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (strlen($libelle) <= 40) {
+                            $taille = new Taille;
+                            $taille->setLibelle($libelle);
+
+                            TailleManager::AddTaille($taille);
+
+                            $add = 3;
+                        }
+                    }
+                }
+             
+                if (isset($add) && $add == 3) {
+                    $params['add'] = $add;
+                    AdminController::listTaille(array_splice($params, 0));
+                }
+                else if (isset($add) && $add == 2) {
+                    $params['add'] = $add;
+
+                    $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addTaille.php';
+                }
+                elseif ($add == 1) {
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addTaille.php';
+                }
+             
+            }
+         
+        }
+
+        /* TypeEcran */
+
+        public static function listTypeEcran($params){   
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+                
+                if(empty($_GET['numPage'])){
+                    $numPage = 1;
+                }else{
+                    $numPage = filter_input(INPUT_GET, 'numPage', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+    
+                $nbElementParPage = 10;
+    
+                $nbTypeEcran = TypeEcranManager::getNbTypeEcrans();
+    
+                $params['nbPage'] = ceil($nbTypeEcran / $nbElementParPage);
+    
+                $params['numPage'] = $numPage;
+    
+                /**
+                * récupère les produits de la bdd
+                */
+                $params['listTypeEcrans'] = TypeEcranManager::getLesTypeEcransByPagination($nbElementParPage, $numPage);
+                
+                // appelle la vue
+                require_once ROOT.'/view/admin/listTypeEcran.php';
+            }
+            
+        }
+
+        public static function updateTypeEcran($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+             
+                if(isset($_GET['idTypeEcran'])){
+                    $idTypeEcran = filter_input(INPUT_GET, 'idTypeEcran', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                }
+
+                $params['typeEcran'] = TypeEcranManager::getTypeEcranById($idTypeEcran);
+
+                $updated = 1;
+
+                if (isset($_POST['formTypeEcran']) && !empty($_POST['formTypeEcran'])) {
+                    $updated = 2;
+
+                    if(isset($_POST['libelle']) && !empty($_POST['libelle'])){
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (strlen($libelle) <= 40) {
+                            TypeEcranManager::updateTypeEcranById($idTypeEcran, $libelle);
+
+                            $updated = 3;
+                        }
+                    }
+                }
+
+                if (isset($updated) && $updated == 3) {
+                    $params['updated'] = $updated;
+                    AdminController::listTypeEcran(array_splice($params, 0));
+                }
+                else if (isset($updated) && $updated == 2) {
+                    $params['updated'] = $updated;
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateTypeEcran.php';
+                }
+                elseif ($updated == 1){
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/updateTypeEcran.php';
+                }
+             
+            }
+         
+        }
+
+        public static function addTypeEcran($params){
+
+            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
+
+                $add = 1;
+                
+                if (isset($_POST['formTypeEcran']) && !empty($_POST['formTypeEcran'])) {
+                    $add = 2;
+
+                    if(isset($_POST['libelle']) && !empty($_POST['libelle'])){
+                        $libelle = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                        
+                        if (strlen($libelle) <= 40) {
+                            $typeEcran = new TypeEcran;
+                            $typeEcran->setLibelle($libelle);
+
+                            TypeEcranManager::AddTypeEcran($typeEcran);
+
+                            $add = 3;
+                        }
+                    }
+                }
+             
+                if (isset($add) && $add == 3) {
+                    $params['add'] = $add;
+                    AdminController::listTypeEcran(array_splice($params, 0));
+                }
+                else if (isset($add) && $add == 2) {
+                    $params['add'] = $add;
+
+                    $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+                    
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addTypeEcran.php';
+                }
+                elseif ($add == 1) {
+                    // appelle la vue
+                    require_once ROOT.'/view/admin/addTypeEcran.php';
                 }
              
             }

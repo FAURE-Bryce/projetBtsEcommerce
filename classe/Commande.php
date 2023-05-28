@@ -15,7 +15,7 @@ class Commande
     private $idUser;
 
     /* -- Objet -- */ 
-    private $modePaiment;
+    private $modePaiement;
     private $user;
     
 
@@ -41,14 +41,14 @@ class Commande
         return $this->idUser;
     }
 
-    public function GetModePaiement(): ModePaiment
+    public function GetModePaiement(): ModePaiement
     {
-        return $this->idModePaiment;
+        return $this->modePaiement;
     }
 
     public function GetUser(): User
     {
-        return $this->idUser;
+        return $this->user;
     }
 
     /* -- Get -- */ 
@@ -73,9 +73,9 @@ class Commande
         $this->idUser = $idUser;
     }
 
-    public function SetModePaiement(ModePaiement $modePaiment)
+    public function SetModePaiement(ModePaiement $modePaiement)
     {
-        $this->modePaiment = $modePaiment;
+        $this->modePaiement = $modePaiement;
     }
 
     public function SetUser(User $user)

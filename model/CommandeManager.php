@@ -95,6 +95,85 @@ class CommandeManager {
         }
     }
 
+    public static function getLesCommandesByPagination(int $nbElementParPage, int $numPage){
+        try{
+
+            
+            $numPage = ($numPage-1)*$nbElementParPage;
+
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'SELECT id, idModePaiement, idUser';
+            $sql .= ' FROM commande';
+            $sql .= ' LIMIT :nbElementParPage OFFSET :numPage ;';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $result->bindParam('numPage', $numPage, PDO::PARAM_INT);
+            $result->bindParam('nbElementParPage', $nbElementParPage, PDO::PARAM_INT);
+            $result->execute();
+
+            $listCommandeUser = array();
+
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            while ($uneLigne = $result->fetch()) {
+                $uneCommande = new Commande();
+                $uneCommande->SetId($uneLigne->id);
+                $uneCommande->SetIdModePaiement($uneLigne->idModePaiement);
+                $uneCommande->SetIdUser($uneLigne->idUser);
+
+                $uneCommande->SetModePaiement(ModePaiementManager::getModePaiementById($uneLigne->idModePaiement));
+                $uneCommande->SetUser(UserManager::getUserById($uneLigne->idUser));
+                
+                array_push($listCommandeUser, $uneCommande);
+            } 
+
+            return $listCommandeUser;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function getLesCommandesByPaginationAndIdRoleUser(int $nbElementParPage, int $numPage, int $idRole){
+        try{
+            $numPage = ($numPage-1)*$nbElementParPage;
+
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'SELECT C.id, idModePaiement, idUser';
+            $sql .= ' FROM commande C';
+            $sql .= ' JOIN User U on C.idUser = U.id';
+            $sql .= ' where U.idRole = :idRole';
+            $sql .= ' LIMIT :nbElementParPage OFFSET :numPage ;';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $result->bindParam('numPage', $numPage, PDO::PARAM_INT);
+            $result->bindParam('nbElementParPage', $nbElementParPage, PDO::PARAM_INT);
+            $result->bindParam('idRole', $idRole, PDO::PARAM_INT);
+            $result->execute();
+
+            $listCommandeUser = array();
+
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            while ($uneLigne = $result->fetch()) {
+                $uneCommande = new Commande();
+                $uneCommande->SetId($uneLigne->id);
+                $uneCommande->SetIdModePaiement($uneLigne->idModePaiement);
+                $uneCommande->SetIdUser($uneLigne->idUser);
+
+                $uneCommande->SetModePaiement(ModePaiementManager::getModePaiementById($uneLigne->idModePaiement));
+                $uneCommande->SetUser(UserManager::getUserById($uneLigne->idUser));
+                
+                array_push($listCommandeUser, $uneCommande);
+            } 
+
+            return $listCommandeUser;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
     public static function getLaCommandeById(int $id){
         try{
             self::$cnx = DbManager::getConnection();
@@ -146,6 +225,50 @@ class CommandeManager {
             $result->setFetchMode(PDO::FETCH_OBJ);
             
             return $uneLigne[0];
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function getNbCommandes(){
+        try{
+            self::$cnx = DbManager::getConnection();
+
+            $sql = 'select count(*) as countNbProduit';
+            $sql .= ' FROM commande';
+            
+            $result = self::$cnx->prepare($sql);
+            $result->execute();
+            
+            $uneLigne = $result->fetch();
+
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            
+            return $uneLigne[0];
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function updateCommandeById(int $id, Commande $commande){
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'update commande';
+            $sql .= ' set idUser = :idUser,';
+            $sql .= ' idModePaiement = :idModePaiement';
+            $sql .= ' where id = :id';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $idUser = $commande->getIdUser();
+            $idModePaiement = $commande->getIdModePaiement();
+
+            $result->bindParam('id', $id, PDO::PARAM_INT);
+            $result->bindParam('idUser', $idUser, PDO::PARAM_INT);
+            $result->bindParam('idModePaiement', $idModePaiement, PDO::PARAM_INT);
+            $result->execute();
+            
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }

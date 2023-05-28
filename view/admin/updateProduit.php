@@ -14,7 +14,7 @@
         <?php NavBarreController::readAdminAll($params); ?>
         <div id="all_admin_page">
             <?php 
-                if (isset($params['updated']) && $params['updated'] == false) {
+                if (isset($params['updated']) && $params['updated'] == 2) {
                     echo '<div id="erreur">';
                     echo '<p>Un problème est survenu pendant l\'update</p>';
                     echo '</div>';
@@ -59,11 +59,11 @@
                 </div>
                 <div>
                     <p>Qte en stock produit :</p>
-                    <input type="text" name="qteEnStock" value="<?php echo $params['produit']->getQteEnStock(); ?>">
+                    <input type="number" min="0" name="qteEnStock" value="<?php echo $params['produit']->getQteEnStock(); ?>">
                 </div>
                 <div>
                     <p>Prix de vente UHT du produit :</p>
-                    <input type="text" name="prixVenteUht" value="<?php echo $params['produit']->getPrixVenteUht(); ?>">
+                    <input type="number" step="0.01" min="1" name="prixVenteUht" value="<?php echo $params['produit']->getPrixVenteUht(); ?>">
                 </div>
                 <div>
                     <p>Marque du produit :</p>

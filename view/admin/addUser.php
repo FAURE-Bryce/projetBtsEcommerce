@@ -20,7 +20,7 @@
                     echo '</div>';
                 }
             ?>
-            '<form id="idForm" action="admin/addUser/" method="post">
+            <form id="idForm" action="admin/addUser/" method="post">
                 <div>
                     <p>Nom client : </p>
                     <input type="text" name="nom" <?php if (isset($params['nom']) && isset($params['add']) && $params['add'] == 2) {echo 'value ="'.$params['nom'].'"';}?>>
@@ -55,7 +55,7 @@
                 </div>
                 <div>
                     <p>Email confirmation client : </p>
-                    <input type="mail" name="emailComfirmation" <?php if (isset($params['emailComfirmation']) && isset($params['add']) && $params['add'] == 2) {echo 'value ="'.$params['emailComfirmation'].'"';}?>>
+                    <input type="mail" name="emailConfirmation" <?php if (isset($params['emailConfirmation']) && isset($params['add']) && $params['add'] == 2) {echo 'value ="'.$params['emailConfirmation'].'"';}?>>
                 </div>
                 <div>
                     <p>Mot de passe client : </p>
@@ -63,13 +63,13 @@
                 </div>
                 <div>
                     <p>Mot de passe confirmation client : </p>
-                    <input type="password" name="mdpComfirmation">
+                    <input type="password" name="mdpConfirmation">
                 </div>
                 <div>
                     <p>Role client : </p>
                     <select name="idRole" id="idRole">
                     <?php
-                        if (isset($params['idRole']) && isset($params['updated']) && $params['updated'] == false) {
+                        if (isset($params['idRole']) && isset($params['add']) && $params['add'] == 2) {
                             foreach ($params['listeRole'] as $role) {
                                 if ($role->getId() == $params['idRole']) {
                                     echo '<option value="'.$role->getId().'" selected>'.$role->getLibelle().'</option>';

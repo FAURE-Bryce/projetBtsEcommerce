@@ -18,7 +18,7 @@
 }
 
 #all_nav_bar_admin a{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #ffffff;
     text-decoration: none;
     transition: all 200ms;
@@ -27,7 +27,7 @@
 
 #all_nav_bar_admin a:hover{
     color: #b9f7e6;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 #all_nav_bar_admin form{

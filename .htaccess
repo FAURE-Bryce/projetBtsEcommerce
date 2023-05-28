@@ -31,3 +31,34 @@ RewriteRule ^admin/listUser/$   index.php?controller=admin&action=listUser [nc,q
 RewriteRule ^admin/listUser/([0-9]+)/$   index.php?controller=admin&action=listUser&numPage=$1 [nc,qsa]
 RewriteRule ^admin/updateUser/([0-9]+)/$   index.php?controller=admin&action=updateUser&idUser=$1 [nc,qsa]
 RewriteRule ^admin/addUser/$   index.php?controller=admin&action=addUser [nc,qsa]
+
+RewriteRule ^admin/listCommande/$   index.php?controller=admin&action=listCommande [nc,qsa]
+RewriteRule ^admin/listCommande/([0-9]+)/$   index.php?controller=admin&action=listCommande&numPage=$1 [nc,qsa]
+RewriteRule ^admin/updateCommande/([0-9]+)/$   index.php?controller=admin&action=updateCommande&idCommande=$1 [nc,qsa]
+
+RewriteRule ^admin/updateDetailCommande/([0-9]+)/([0-9]+)/$   index.php?controller=admin&action=updateDetailCommande&idProduit=$1&idCommande=$2 [nc,qsa]
+
+RewriteRule ^admin/listRole/$   index.php?controller=admin&action=listRole [nc,qsa]
+RewriteRule ^admin/listRole/([0-9]+)/$   index.php?controller=admin&action=listRole&numPage=$1 [nc,qsa]
+RewriteRule ^admin/updateRole/([0-9]+)/$   index.php?controller=admin&action=updateRole&idRole=$1 [nc,qsa]
+RewriteRule ^admin/addRole/$   index.php?controller=admin&action=addRole [nc,qsa]
+
+RewriteRule ^admin/listModel/$   index.php?controller=admin&action=listModel [nc,qsa]
+RewriteRule ^admin/listModel/([0-9]+)/$   index.php?controller=admin&action=listModel&numPage=$1 [nc,qsa]
+RewriteRule ^admin/updateModel/([0-9]+)/$   index.php?controller=admin&action=updateModel&idModel=$1 [nc,qsa]
+RewriteRule ^admin/addModel/$   index.php?controller=admin&action=addModel [nc,qsa]
+
+RewriteRule ^admin/listMarque/$   index.php?controller=admin&action=listMarque [nc,qsa]
+RewriteRule ^admin/listMarque/([0-9]+)/$   index.php?controller=admin&action=listMarque&numPage=$1 [nc,qsa]
+RewriteRule ^admin/updateMarque/([0-9]+)/$   index.php?controller=admin&action=updateMarque&idMarque=$1 [nc,qsa]
+RewriteRule ^admin/addMarque/$   index.php?controller=admin&action=addMarque [nc,qsa]
+
+RewriteRule ^admin/listTaille/$   index.php?controller=admin&action=listTaille [nc,qsa]
+RewriteRule ^admin/listTaille/([0-9]+)/$   index.php?controller=admin&action=listTaille&numPage=$1 [nc,qsa]
+RewriteRule ^admin/updateTaille/([0-9]+)/$   index.php?controller=admin&action=updateTaille&idTaille=$1 [nc,qsa]
+RewriteRule ^admin/addTaille/$   index.php?controller=admin&action=addTaille [nc,qsa]
+
+RewriteRule ^admin/listTypeEcran/$   index.php?controller=admin&action=listTypeEcran [nc,qsa]
+RewriteRule ^admin/listTypeEcran/([0-9]+)/$   index.php?controller=admin&action=listTypeEcran&numPage=$1 [nc,qsa]
+RewriteRule ^admin/updateTypeEcran/([0-9]+)/$   index.php?controller=admin&action=updateTypeEcran&idTypeEcran=$1 [nc,qsa]
+RewriteRule ^admin/addTypeEcran/$   index.php?controller=admin&action=addTypeEcran [nc,qsa]

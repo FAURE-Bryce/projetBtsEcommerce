@@ -64,4 +64,56 @@ class DetailCommandeManager {
             die('Erreur : ' . $e->getMessage());
         }
     }
+
+    public static function getLesDetailCommandesByIdCommandeAndByIdProduit(int $idCommande, int $idProduit){
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'SELECT idProduit, qte';
+            $sql .= ' FROM detailcommande';
+            $sql .= ' WHERE idCommande = :idCommande';
+            $sql .= ' AND idProduit = :idProduit';
+            
+            $result = self::$cnx->prepare($sql);
+            
+            $result->bindParam('idCommande', $idCommande, PDO::PARAM_INT);
+            $result->bindParam('idProduit', $idProduit, PDO::PARAM_INT);
+            $result->execute();
+
+            $result->setFetchMode(PDO::FETCH_OBJ);
+            $uneLigne = $result->fetch();
+            $unDetailCommande = new DetailCommande();
+            $unDetailCommande->SetIdProduit($uneLigne->idProduit);
+            $unDetailCommande->SetIdCommande($idCommande);
+            $unDetailCommande->SetQte($uneLigne->qte);
+
+            $unDetailCommande->SetProduit(ProduitManager::getLeProduitById($uneLigne->idProduit));
+            $unDetailCommande->SetCommande(CommandeManager::getLaCommandeById($idCommande));            
+
+            return $unDetailCommande;
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    public static function updateDetailCommandeByIdCOmmandeAndByIdProduit(int $idCommande, int $idProduit, int $qte){
+        try{
+            self::$cnx = DbManager::getConnection();
+            
+            $sql = 'update detailcommande';
+            $sql .= ' set qte = :qte';
+            $sql .= ' where idCommande = :idCommande';
+            $sql .= ' And idProduit = :idProduit';
+            
+            $result = self::$cnx->prepare($sql);
+
+            $result->bindParam('qte', $qte, PDO::PARAM_INT);
+            $result->bindParam('idCommande', $idCommande, PDO::PARAM_INT);
+            $result->bindParam('idProduit', $idProduit, PDO::PARAM_INT);
+            $result->execute();
+            
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
 }

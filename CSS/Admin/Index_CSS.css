@@ -147,6 +147,44 @@
     width: 25%;
     background-color: #03ad1c;
 }
+
+#detailcommande{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#detailcommande h2{
+    text-decoration: underline;
+}
+
+#detailcommande .produit
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0.5%;
+    border: 5px solid #395B64;
+    background-color: #ffffff;
+}
+
+#detailcommande .produit img
+{
+    width: 10%;
+}
+
+#detailcommande .produit .model_libelle
+{
+    width: 20%;
+    text-align: center;
+}
+
+#detailcommande .produit .prix_qte
+{
+    width: 15%;
+    text-align: end;
+}
 /*--- Modification Fin ---*/
 
 /*--- Pagination début ---*/
