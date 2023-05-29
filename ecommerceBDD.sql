@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `Commande` (
     `idModePaiement` integer NOT NULL,
     `idUser` integer NOT NULL,
     CONSTRAINT pk_Commande PRIMARY KEY (`id`),
-    CONSTRAINT fk_Produit_Commande FOREIGN KEY(`idUser`)
+    CONSTRAINT fk_user_Commande FOREIGN KEY(`idUser`)
                                            REFERENCES User(`id`),
     CONSTRAINT fk_Commande_ModePaiement FOREIGN KEY(`idModePaiement`)
                                            REFERENCES ModePaiement(`id`)
@@ -136,13 +136,14 @@ VALUES ('Client'),
 	   
 /*Les Users*/
 INSERT INTO User (`nom`,`prenom`,`dateNaissance`,`numeroTelephone`,`adresse`,`ville`,`codePoste`,`adresseMail`, `motDePasse`,`idRole`)
-VALUES ('FAURE','Bryce','2003-09-01','0613637632','adresse-FAURE-Bryce','Montpellier','34090','faurebryce@gmail.com','ABCD','1'),
-	   ('DUGAS','Adeline','2003-04-06','0666384741','adresse-DUGAS-Adeline','Montpellier','34000','adelinegudas@gmail.com','EFGH','1'),
-	   ('RALLI','Félix','2003-04-16','0638399075','adresse-RALLI-Félix','Montpellier','34080','rallifelix@gmail.com','IJKL','1'),
-	   ('HO','Bob','2000-08-16','0638377076','adresse-HO-Bob','Gap','34080','BobHo@gmail.com','MNOP','1'),
-	   ('MALE','ANNIE','2001-05-13','0634499076','adresse-MALE-Annie','Gap','05000','anniemale@gmail.com','dd94709528bb1c83d08f3088d4043f4742891f4f','3'),
-	   ('FAURE','Bryce','2001-05-13','0634499076','adresse-FAURE-Bryce2','Gap','05500','f@gmail.com','dd94709528bb1c83d08f3088d4043f4742891f4f','2'),
-	   ('FAURE','Bryce','2001-05-13','0634499076','adresse-FAURE-Bryce2','Gap','05500','b@gmail.com','$2y$10$v7VFRBJJ3wtHDV26HRUyYuLPl4/k0AUJr2zoUJgk.GjZvTelWiuZq','1');
+VALUES ('FAURE','Bryce','2003-09-01','0613637632','adresse-FAURE-Bryce','Montpellier','34090','fayce@gmail.com','ABCD','1'),
+	   ('DUGAS','Adeline','2003-04-06','0666384741','adresse-DUGAS-Adeline','Montpellier','34000','adelineudas@gmail.com','EFGH','1'),
+	   ('RALLI','Félix','2003-04-16','0638390075','adresse-RALLI-Félix','Montpellier','34080','rallix@gmail.com','IJKL','1'),
+	   ('HO','Bob','2000-08-16','0638477076','adresse-HO-Bob','Gap','34080','BobHo@gmail.com','MNOP','1'),
+	   ('MALE','ANNIE','2001-05-13','0634419076','adresse-MALE-Annie','Gap','05000','anniemale@gmail.com','dd94709528bb1c83d08f3088d4043f4742891f4f','3'),
+	   ('JAGER','Eren','2001-05-13','0634419076','ile du paradis','Madagascar','12345','client@gmail.com','$2y$10$KJgqxCTnF6TLR4fLVyp7SeHT.OBd2tnM1m9Jrfd4xefz4d7hWyVBS','1'),
+	   ('DRAKE','Nathan','1999-05-23','0621419076','adresse-Nathan-Drake','Paris','75003','admin@gmail.com','$2y$10$xYKXa6mZ3pt03a2ZsWs4E.dXCkZaKHTTyDTEec1XBt9Yvzk.Cwd2K','2'),
+	   ('FAURE','Bryce','2001-05-13','0636499076','adresse-FAURE-Bryce2','Gap','05500','b@gmail.com','$2y$10$v7VFRBJJ3wtHDV26HRUyYuLPl4/k0AUJr2zoUJgk.GjZvTelWiuZq','1');
 	   
 
 /*Les Marques*/
@@ -222,50 +223,7 @@ VALUES ((SELECT id FROM Model WHERE libelle = 'Blaupunkt BNU2132FEB'),'Blaupunkt
 	   ((SELECT id FROM Model WHERE libelle = 'LG QNED916PA'),'LG 75QNED916PA','Téléviseur QNED Mini LED 4K UHD 75" (190 cm) - 100 Hz - Dolby Vision IQ - Wi-Fi/Bluetooth/AirPlay 2 - FreeSync Premium - HDMI 2.1 - Google Assistant/Alexa - Son 2.2 40W Dolby Atmos','La TV 4K HDR LG QNED Mini LED 75QNED916PA hisse votre divertissement vers de nouveaux sommets en associant les technologies Mini LED, Quantum Dot et NanoCell Plus. Cette Smart TV de 75 pouces offre également un environnement gaming optimal et un système audio 2.2 canaux immersif.','img/produit/miniled/1-produit/1img.jpg','3','2','1899.01',(SELECT id FROM Marque WHERE libelle = 'LG'),(SELECT id FROM Taille WHERE libelle = '75'),(SELECT id FROM TypeEcran WHERE libelle = 'MiniLED')),
 	   ((SELECT id FROM Model WHERE libelle = 'LG OLEDC1'),'LG OLED55C1','Téléviseur OLED 4K UHD 55" (140 cm) - 100 Hz - Dolby Vision IQ - Wi-Fi/Bluetooth/AirPlay 2 - G-Sync/FreeSync Premium - 4x HDMI 2.1 - Google Assistant/Alexa - Son 2.2 40W Dolby Atmos','Le téléviseur LG OLED55C1 propulsé par le processeur 4K Alpha 9 Gen 4 offre une image 4K UHD avec Dolby Vision IQ et HDR10 Pro, un son puissant de 40 W avec Dolby Atmos et AI Sound Pro 5.1.2 et des performances gaming élevées avec HDMI 2.1, dalle 100 Hz et certifications G-SYNC et FreeSync Premium.','img/produit/oled/1-produit/1img.jpg','8','2','1168.99',(SELECT id FROM Marque WHERE libelle = 'LG'),(SELECT id FROM Taille WHERE libelle = '55'),(SELECT id FROM TypeEcran WHERE libelle = 'OLED')),
 	   ((SELECT id FROM Model WHERE libelle = 'Samsung QLED QEQ65A'),'Samsung QLED QE75Q65A','Téléviseur QLED 4K 75" (190 cm) - HDR - Wi-Fi/Bluetooth/AirPlay 2 - HDMI 2.0 / ALLM - Son 2.0 20W','Une qualité visuelle supérieure vous attend grâce au téléviseur QLED QE75Q65A signé Samsung. Ce modèle de 75 pouces délivre une image 4K HDR des plus agréables avec des couleurs riches via Quantum Dots et un rétro-éclairage optimisé avec Dual LED.','img/produit/qled/1-produit/1img.jpg','1','1','1299.95',(SELECT id FROM Marque WHERE libelle = 'Samsung'),(SELECT id FROM Taille WHERE libelle = '75'),(SELECT id FROM TypeEcran WHERE libelle = 'QLED'));
-
-
-
-/*Les Mode de Paiement*/
-INSERT INTO ModePaiement (`libelle`)
-VALUES ('Carte Bancaire'),
-	   ('Virement Bancaire'),
-	   ('Paypal');
-
-
-/*Les Commandes*/
-INSERT INTO Commande (`idModePaiement`,`idUser`)
-VALUES ((SELECT id from ModePaiement where libelle = 'Carte Bancaire'),(SELECT id from User where adresseMail = 'faurebryce@gmail.com')),
-	   ((SELECT id from ModePaiement where libelle = 'Virement Bancaire'),(SELECT id from User where adresseMail = 'adelinegudas@gmail.com')),
-	   ((SELECT id from ModePaiement where libelle = 'Paypal'),(SELECT id from User where adresseMail = 'rallifelix@gmail.com'));
-   
-
-/*Les Details Commandes*/
-INSERT INTO DetailCommande (`idProduit`,`idCommande`,`qte`)
-VALUES ((Select id from Produit where libelle = 'Samsung QLED QE75Q65A'),(select Co.id from commande Co join User U on Co.idUser = U.id where adresseMail = 'faurebryce@gmail.com' ),'2'),
-	   ((Select id from Produit where libelle = 'Blaupunkt BN43U2132FEB'),(select Co.id from commande Co join User U on Co.idUser = U.id where adresseMail = 'adelinegudas@gmail.com' ),'1'),
-	   ((Select id from Produit where libelle = 'LG OLED55C1'),(select Co.id from commande Co join User U on Co.idUser = U.id where adresseMail = 'rallifelix@gmail.com' ),'4');
-	   
-	   
-	   
-/*Les Statut Commande*/
-INSERT INTO StatutCommande (`libelle`)
-VALUES ('non validée'),
-	   ('préparation'),
-	   ('pris en charge'),
-	   ('en cours d\'acheminement'),
-	   ('livré');
-	   
-	   
-/*Les Statut Commande*/
-INSERT INTO Posseder (`idStatut`, `idCommande`, `datePosseder`)
-VALUES (1,1,'2022-12-01'),
-	   (2,2,'2022-11-01'),
-	   (3,2,'2022-12-04'),
-	   (4,2,'2022-12-29'),
-	   (5,2,'2023-01-04');
-	   
-	  
-	  
+  
 /*Nouveaux Led Produits*/
 INSERT INTO Produit (`idModel`,`libelle`,`resume`,`description`,`pathPhoto`,`qteEnStock`,`qteLimite`,`prixVenteUHT`,`idMarque`,`idTaille`,`idType`)
 VALUES ((SELECT id FROM Model WHERE libelle = 'Philips The One PUS8807'),'Philips The One 86PUS8807','Téléviseur LED 4K 86" (217 cm) - 120 Hz - Dolby Vision/HDR10+ - Wi-Fi/Bluetooth - 2 x HDMI 2.1 - Android TV - Google Assistant - Ambilight 3 côtés - Son 2.0 20W Dolby Atmos','Gaming 4K/120 Hz, divertissement connecté, immersion Ambilight et image 4K HDR, le téléviseur Philips 86PUS8807 ne vous laissera pas indifférent ! Profitez d\'un rendu exceptionnel, d\'une belle fluidité et d\'une connectique complète en plus d\'une fonction Smart TV Android TV.','img/produit/led/2-produit/1img.jpg','12','2','2599.23',(SELECT id FROM Marque WHERE libelle = 'Philips'),(SELECT id FROM Taille WHERE libelle = '86'),(SELECT id FROM TypeEcran WHERE libelle = 'LED')),
@@ -274,7 +232,6 @@ VALUES ((SELECT id FROM Model WHERE libelle = 'Philips The One PUS8807'),'Philip
 	   ((SELECT id FROM Model WHERE libelle = 'Sony KD-X81K'),'Sony KD-43X81K','Téléviseur LED 4K 43" (109 cm) - HDR Dolby Vision - Google TV - Wi-Fi/Bluetooth/AirPlay 2 - Google Assistant - Son 2.0 20W Dolby Atmos','Installez-vous confortablement et bénéficiez d\'un divertissement 4K HDR connecté avec le téléviseur Sony KD-43X81K ! Avec ses lignes épurées, ses trois bords fins et ses technologies embarquées, ce modèle dévoile un large potentiel pour satisfaire toutes vos envies au quotidien.','img/produit/led/5-produit/1img.jpg','6','1','749.95',(SELECT id FROM Marque WHERE libelle = 'Sony'),(SELECT id FROM Taille WHERE libelle = '43'),(SELECT id FROM TypeEcran WHERE libelle = 'LED')),
 	   ((SELECT id FROM Model WHERE libelle = 'TCL P735'),'TCL 85P735','Téléviseur LED 4K UHD 85" (215 cm) - Dolby Vision/HDR10+ - Google TV - Wi-Fi/Bluetooth - Son 2.0 30W Dolby Atmos','Diagonale de 85 pouces, spectacle 4K HDR, le téléviseur TCL 85P735 dévoile des qualités XXL pour transformer votre quotidien. Bénéficiez d\'un système audio stéréo compatible Dolby Atmos, appréciez le contenu connecté depuis Google TV et découvrez un équipement aux lignes élégantes.','img/produit/led/6-produit/1img.jpg','20','2','1290.23',(SELECT id FROM Marque WHERE libelle = 'TCL'),(SELECT id FROM Taille WHERE libelle = '85'),(SELECT id FROM TypeEcran WHERE libelle = 'LED'));
 
-	  
 /*Nouveaux MiniLed Produits*/
 INSERT INTO Produit (`idModel`,`libelle`,`resume`,`description`,`pathPhoto`,`qteEnStock`,`qteLimite`,`prixVenteUHT`,`idMarque`,`idTaille`,`idType`)
 VALUES ((SELECT id FROM Model WHERE libelle = 'Hisense U8HQ'),'Hisense 55U8HQ','Le téléviseur Mini LED QLED Hisense 55UH8Q se montre à la hauteur de vos attentes avec son image 4K UHD de 140 cm, sa prise en charge HDR10+ Adaptive et Dolby Vision IQ et son système audio 2.1.2 canaux de 70 Watts. Profitez d\'un équipement de jeu optimisé (120 Hz, HDMI 2.1, FreeSync Premium).','Le téléviseur Mini LED QLED Hisense 55UH8Q se montre à la hauteur de vos attentes avec son image 4K UHD de 140 cm, sa prise en charge HDR10+ Adaptive et Dolby Vision IQ et son système audio 2.1.2 canaux de 70 Watts. Profitez d\'un équipement de jeu optimisé (120 Hz, HDMI 2.1, FreeSync Premium).','img/produit/miniled/2-produit/1img.jpg','31','5','689.99',(SELECT id FROM Marque WHERE libelle = 'Hisense'),(SELECT id FROM Taille WHERE libelle = '55'),(SELECT id FROM TypeEcran WHERE libelle = 'MiniLED')),
@@ -299,3 +256,92 @@ VALUES ((SELECT id FROM Model WHERE libelle = 'Samsung The Terrace QELST7T'),'Sa
 	   ((SELECT id FROM Model WHERE libelle = 'TCL C835'),'TCL 65C835','Téléviseur Mini LED QLED 4K UHD 65" (165 cm) - 144 Hz - Dolby Vision IQ/HDR10+ - Google TV - Wi-Fi AX/Bluetooth 5.0 - Assistant Google - 4x HDMI 2.1 - FreeSync Premium Pro - Son 2.1 60W Dolby Atmos','Votre divertissement voit son potentiel augmenté en présence du téléviseur TCL 65C835. Ce modèle 65 pouces offre un spectacle exceptionnel avec résolution 4K HDR, rétro-éclairage Mini LED, technologie Quantum Dot et système audio Onkyo 2.1 canaux 60 Watts.','img/produit/oled/4-produit/1img.jpg','40','5','1090.19',(SELECT id FROM Marque WHERE libelle = 'TCL'),(SELECT id FROM Taille WHERE libelle = '65'),(SELECT id FROM TypeEcran WHERE libelle = 'QLED')),
 	   ((SELECT id FROM Model WHERE libelle = 'TCL C635'),'TCL 55C635','Téléviseur QLED 4K UHD 55" (140 cm) - Dolby Vision/HDR10+ - Google TV - Wi-Fi/Bluetooth - Assistant Google - 3x HDMI 2.1 - Son 2.0 20W Dolby Atmos','Offrez-vous un divertissement de haute qualité avec le téléviseur TCL 55C635. Equipé de la technologie QLED, d\'une résolution 4K UHD et d\'une prise en charge HDR étendue, ce modèle de 55 pouces possède toutes les qualités pour sublimer vos journées et soirées.','img/produit/oled/5-produit/1img.jpg','45','10','549.99',(SELECT id FROM Marque WHERE libelle = 'TCL'),(SELECT id FROM Taille WHERE libelle = '55'),(SELECT id FROM TypeEcran WHERE libelle = 'QLED')),
 	   ((SELECT id FROM Model WHERE libelle = 'Samsung Q50A'),'Samsung 32Q50A','Téléviseur QLED Full HD 32" (81 cm) - Quantum HDR - Wi-Fi/Bluetooth - Son 2.0 20W','Profitez d\'une expérience Smart TV QLED sans limite avec ce téléviseur Samsung 32Q50A. Laissez parler votre curiosité et votre émerveillement en faisant la découverte de sublimes images Full HD enrichies par le HDR.','img/produit/oled/6-produit/1img.jpg','15','3','449.95',(SELECT id FROM Marque WHERE libelle = 'Samsung'),(SELECT id FROM Taille WHERE libelle = '32'),(SELECT id FROM TypeEcran WHERE libelle = 'QLED'));
+
+/*Les Mode de Paiement*/
+INSERT INTO ModePaiement (`libelle`)
+VALUES ('Carte Bancaire'),
+	   ('Virement Bancaire'),
+	   ('Paypal');
+
+
+/*Les Commandes*/
+INSERT INTO Commande (`idModePaiement`,`idUser`)
+VALUES ((SELECT id from ModePaiement where libelle = 'Carte Bancaire'),(SELECT id from User where adresseMail = 'fayce@gmail.com')),
+	   ((SELECT id from ModePaiement where libelle = 'Virement Bancaire'),(SELECT id from User where adresseMail = 'adelineudas@gmail.com')),
+	   ((SELECT id from ModePaiement where libelle = 'Virement Bancaire'),(SELECT id from User where adresseMail = 'client@gmail.com')),
+	   ((SELECT id from ModePaiement where libelle = 'Paypal'),(SELECT id from User where adresseMail = 'client@gmail.com')),
+	   ((SELECT id from ModePaiement where libelle = 'Carte Bancaire'),(SELECT id from User where adresseMail = 'client@gmail.com')),
+	   ((SELECT id from ModePaiement where libelle = 'Virement Bancaire'),(SELECT id from User where adresseMail = 'client@gmail.com')),
+	   ((SELECT id from ModePaiement where libelle = 'Paypal'),(SELECT id from User where adresseMail = 'client@gmail.com')),
+	   ((SELECT id from ModePaiement where libelle = 'Carte Bancaire'),(SELECT id from User where adresseMail = 'client@gmail.com')),
+	   ((SELECT id from ModePaiement where libelle = 'Virement Bancaire'),(SELECT id from User where adresseMail = 'client@gmail.com')),
+	   ((SELECT id from ModePaiement where libelle = 'Paypal'),(SELECT id from User where adresseMail = 'rallix@gmail.com'));
+   
+
+/*Les Details Commandes*/
+INSERT INTO DetailCommande (`idProduit`,`idCommande`,`qte`)
+VALUES ((Select id from Produit where libelle = 'Samsung QLED QE75Q65A'),'1','2'),
+       ((Select id from Produit where libelle = 'Samsung QLED QE75Q65A'),'2','2'),
+	   ((Select id from Produit where libelle = 'Samsung Neo QLED QE55QN85B'),'3','4'),
+	   ((Select id from Produit where libelle = 'TCL 75C935'),'4','1'),
+	   ((Select id from Produit where libelle = 'Sony KD-85X85K'),'4','2'),
+	   ((Select id from Produit where libelle = 'Philips The One 86PUS8807'),'5','3'),
+	   ((Select id from Produit where libelle = 'LG OLED55C1'),'6','1'),
+	   ((Select id from Produit where libelle = 'Blaupunkt BN43U2132FEB'),'7','5'),
+	   ((Select id from Produit where libelle = 'TCL 65C835'),'8','10'),
+	   ((Select id from Produit where libelle = 'LG OLED55C1'),'9','1'),
+	   ((Select id from Produit where libelle = 'TCL 98C735'),'9','5'),
+	   ((Select id from Produit where libelle = 'TCL 55C635'),'9','10'),
+	   ((Select id from Produit where libelle = 'LG OLED55C1'),'10','4');
+	   
+	   
+	   
+/*Les Statut Commande*/
+INSERT INTO StatutCommande (`libelle`)
+VALUES ('non validée'),
+	   ('préparation'),
+	   ('pris en charge'),
+	   ('en cours d\'acheminement'),
+	   ('livré');
+	   
+	   
+/*Les Statut Commande*/
+INSERT INTO Posseder (`idStatut`, `idCommande`, `datePosseder`)
+VALUES (1,1,'2022-12-01'),
+	   (2,2,'2022-11-01'),
+	   (3,2,'2022-12-04'),
+	   (4,2,'2022-12-29'),
+	   (5,2,'2023-01-04'),
+	   (2,3,'2022-11-01'),
+	   (3,3,'2022-12-04'),
+	   (4,3,'2022-12-29'),
+	   (5,3,'2023-01-04'),
+	   (2,4,'2022-11-01'),
+	   (3,4,'2022-12-04'),
+	   (4,4,'2022-12-29'),
+	   (5,4,'2023-01-04'),
+	   (2,5,'2022-11-01'),
+	   (3,5,'2022-12-04'),
+	   (4,5,'2022-12-29'),
+	   (5,5,'2023-01-04'),
+	   (2,6,'2022-11-01'),
+	   (3,6,'2022-12-04'),
+	   (4,6,'2022-12-29'),
+	   (5,6,'2023-01-04'),
+	   (2,7,'2022-11-01'),
+	   (3,7,'2022-12-04'),
+	   (4,7,'2022-12-29'),
+	   (5,7,'2023-01-04'),
+	   (2,8,'2022-11-01'),
+	   (3,8,'2022-12-04'),
+	   (4,8,'2022-12-29'),
+	   (5,8,'2023-01-04'),
+	   (2,9,'2022-11-01'),
+	   (3,9,'2022-12-04'),
+	   (4,9,'2022-12-29'),
+	   (5,9,'2023-01-04'),
+	   (2,10,'2022-11-01'),
+	   (3,10,'2022-12-04'),
+	   (4,10,'2022-12-29'),
+	   (5,10,'2023-01-04');
+	   

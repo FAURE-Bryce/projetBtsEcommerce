@@ -47,10 +47,10 @@ class GestionCompteController
                             }
                             $erreur = "ok";
                         } else {
-                            $erreur = "Mots de passe ou Email incorrect 1!";
+                            $erreur = "Mots de passe ou Email incorrect !";
                         }
                     } else {
-                        $erreur = "Mots de passe ou Email incorrect 2!";
+                        $erreur = "Mots de passe ou Email incorrect !";
                     }
                 } else {
                     $erreur = "Tous les champs doivent être complétés !";
@@ -188,7 +188,6 @@ class GestionCompteController
 
         if (isset($_SESSION['id'])) {
             $listeUsers = UserManager::getLesUsersByIdRole(RoleManager::getRoleByLibelle('Client')->getId());
-            
             $i = 0;
             while ($i < count($listeUsers) - 1 && $listeUsers[$i]->GetId() != $_SESSION['id']) {
                 $i++;
