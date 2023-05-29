@@ -3,17 +3,16 @@
 /**
  * /controller/NavBarreController.php
  * 
- * Contrôleur pour l'entité NavBarreController
+ * Contrôleur pour la barre de navigation pour les page web
  *
- * @author 1sio-slam
- * @date 05/2021
+ * @author B.FAURE
+ * @date 02/2023
  */
 
     class NavBarreController {
 
         /**
-         * Action qui affiche la NavBar
-         * params : tableau des paramètres
+         * Affiche la barre de navigation des users non admin
          */
         public static function readAll($params){
             
@@ -30,21 +29,19 @@
                 $params['lienPanier'] = "gestionCompte/authentification/";
             }
 
-            /**
-            * récupère les typeEcran de la bdd
-            */
             $params['listTypesEcrans'] = TypeEcranManager::getLesTypesEcrans();
 
-            // appelle la vue
             require_once ROOT.'/view/navFooter/nav-barre.php';
 
         }
 
+        /**
+         * Affiche la barre de navigation des users admin
+         */
         public static function readAdminAll($params){
             
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
                 
-                // appelle la vue
                 require_once ROOT.'/view/navFooter/nav-barre-admin.php';
 
             }

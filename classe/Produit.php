@@ -22,7 +22,6 @@ class Produit
     private $idTaille;
     private $idType;
     
-
     /* -- Objet -- */ 
     private $model;
     private $marque;
@@ -33,8 +32,7 @@ class Produit
 
     }
 
-    /* -- Get -- */ 
-    /* Début */ 
+    /* -- Get Début -- */ 
 
     public function GetId(): int
     {
@@ -111,13 +109,10 @@ class Produit
         return $this->type;
     }
 
-    /* -- Get -- */ 
-    /* Fin */ 
+    /* -- Get Fin -- */ 
 
-    /* -- Set -- */ 
-    /* Début */ 
+    /* -- Set Début -- */ 
 
-    //SetId n'est là que pour le chargement des données, on ne peut pas modifier une pk de table !
     public function SetId(int $id)
     {
         $this->id = $id;
@@ -153,25 +148,21 @@ class Produit
         $this->prixVenteUHT = $prixVenteUHT;
     }
 
-    //SetIdModel n'est là que pour le chargement des données, on ne peut pas modifier une pk de table !
     public function SetIdModel(int $idModel)
     {
         $this->idModel = $idModel;
     }
 
-    //SetIdMarque n'est là que pour le chargement des données, on ne peut pas modifier une pk de table !
     public function SetIdMarque(int $idMarque)
     {
         $this->idMarque = $idMarque;
     }
 
-    //SetIdTaille n'est là que pour le chargement des données, on ne peut pas modifier une pk de table !
     public function SetIdTaille(int $idTaille)
     {
         $this->idTaille = $idTaille;
     }
 
-    //SetIdType n'est là que pour le chargement des données, on ne peut pas modifier une pk de table !
     public function SetIdType(int $idType)
     {
         $this->idType = $idType;
@@ -197,7 +188,6 @@ class Produit
         $this->type = $type;
     }
 
-    /* -- Set -- */ 
-    /* Fin */ 
+    /* -- Set Fin -- */ 
 }
 ?>

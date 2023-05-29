@@ -23,8 +23,7 @@ class Posseder
         
     }
 
-    /* -- Get -- */ 
-    /* Début */ 
+    /* -- Get Début -- */ 
 
     public function GetIdStatut(): int
     {
@@ -51,19 +50,15 @@ class Posseder
         return $this->commande;
     }
 
-    /* -- Get -- */ 
-    /* Fin */ 
+    /* -- Get Fin -- */ 
 
-    /* -- Set -- */ 
-    /* Début */ 
+    /* -- Set Début -- */ 
 
-    //SetIdStatut n'est là que pour le chargement des données, on ne peut pas modifier une pk de table !
     public function SetIdStatut(int $idStatut)
     {
         $this->idStatut = $idStatut;
     }
 
-    //SetIdCommande n'est là que pour le chargement des données, on ne peut pas modifier une pk de table !
     public function SetIdCommande(string $idCommande)
     {
         $this->idCommande = $idCommande;
@@ -84,7 +79,6 @@ class Posseder
         $this->commande = $commande;
     }
 
-    /* -- Set -- */ 
-    /* Fin */ 
+    /* -- Set Fin -- */ 
 }
 ?>

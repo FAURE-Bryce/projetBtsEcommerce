@@ -1,16 +1,21 @@
 <?php
 
 /**
- * /controller/TypeEcranController.php
+ * /controller/AdminController.php
  * 
- * Contrôleur pour l'entité TypeEcran
+ * Contrôleur pour tout le pannel Admin
  *
  * @author B.Faure
- * @date 03/2023
+ * @date 04/2023
  */
-                    /* affichafge a faire user, commande, produit */
+
     class AdminController {
 
+        /* Produit Début */
+
+        /**
+         * List des produits
+         */
         public static function listProduit($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -28,18 +33,17 @@
                 $params['nbPage'] = ceil($nbProduit / $nbElementParPage);
     
                 $params['numPage'] = $numPage;
-    
-                /**
-                * récupère les produits de la bdd
-                */
+
                 $params['listProduits'] = ProduitManager::getLesProduitsByPagination($nbElementParPage, $numPage);
     
-                // appelle la vue
                 require_once ROOT.'/view/admin/listProduit.php';
             }
             
         }
 
+        /**
+         * Page de mise à jour d'un produit
+         */
         public static function updateProduit($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -118,17 +122,19 @@
                 }
                 else if (isset($updated) && $updated == 2) {
                     $params['updated'] = $updated;
-                    // appelle la vue
+
                     require_once ROOT.'/view/admin/updateProduit.php';
                 }
                 elseif ($updated == 1){
-                    // appelle la vue
                     require_once ROOT.'/view/admin/updateProduit.php';
                 }
             }
             
         }
 
+        /**
+         * Page d'ajout d'un nouveau produit
+         */
         public static function addProduit($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -211,19 +217,22 @@
                     $params['idTaille'] = filter_input(INPUT_POST, 'idTaille', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                     $params['idType'] = filter_input(INPUT_POST, 'idType', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);    
 
-                    // appelle la vue
                     require_once ROOT.'/view/admin/addProduit.php';
                 }
                 elseif ($add == 1){
-                    // appelle la vue
                     require_once ROOT.'/view/admin/addProduit.php';
                 }
             }
             
         }
 
-        /* User */
+        /* -- Produit Fin -- */
+        
+        /* -- User Début -- */
 
+        /**
+         * List des utilisateurs
+         */
         public static function listUser($params){   
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
                 
@@ -241,17 +250,16 @@
     
                 $params['numPage'] = $numPage;
     
-                /**
-                * récupère les produits de la bdd
-                */
                 $params['listUsers'] = UserManager::getLesUsersByPagination($nbElementParPage, $numPage);
     
-                // appelle la vue
                 require_once ROOT.'/view/admin/listUser.php';
             }
             
         }
 
+        /**
+         * Page mise à jour d'un utilisateur
+         */
         public static function updateUser($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -316,11 +324,11 @@
                 }
                 else if (isset($updated) && $updated == 2) {
                     $params['updated'] = $updated;
-                    // appelle la vue
+
                     require_once ROOT.'/view/admin/updateUser.php';
                 }
                 elseif ($updated == 1){
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateUser.php';
                 }
              
@@ -328,6 +336,9 @@
          
         }
 
+        /**
+         * Page d'ajout d'une nouvel utilisateur
+         */
         public static function addUser($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -422,20 +433,23 @@
                     $params['email'] = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                     $params['emailConfirmation'] = filter_input(INPUT_POST, 'emailConfirmation', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
 
-                    // appelle la vue
                     require_once ROOT.'/view/admin/addUser.php';
                 }
                 elseif ($add == 1) {
-                    // appelle la vue
                     require_once ROOT.'/view/admin/addUser.php';
                 }
              
             }
          
         }
+        
+        /* -- User Fin -- */
+        
+        /* -- Commande Début -- */
 
-        /* Commande */
-
+        /**
+         * List des Commandes
+         */
         public static function listCommande($params){   
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
                 
@@ -452,18 +466,17 @@
                 $params['nbPage'] = ceil($nbCommande / $nbElementParPage);
     
                 $params['numPage'] = $numPage;
-    
-                /**
-                * récupère les produits de la bdd
-                */
+
                 $params['listCommandes'] = CommandeManager::getLesCommandesByPaginationAndIdRoleUser($nbElementParPage, $numPage, RoleManager::getRoleByLibelle('Client')->getId());
     
-                // appelle la vue
                 require_once ROOT.'/view/admin/listCommande.php';
             }
             
         }
 
+        /**
+         * Page de mise à jour d'une Commande, affiche également le detail de cette commande
+         */
         public static function updateCommande($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -506,20 +519,23 @@
                 }
                 else if (isset($updated) && $updated == 2) {
                     $params['updated'] = $updated;
-                    // appelle la vue
                     require_once ROOT.'/view/admin/updateCommande.php';
                 }
                 elseif ($updated == 1){
-                    // appelle la vue
                     require_once ROOT.'/view/admin/updateCommande.php';
                 }
              
             }
          
         }
+        
+        /* -- Commande Fin -- */
 
-        /* Detail commande */
+        /* -- Detail commande Début -- */
 
+        /**
+         * Page de mise à jour d'un détail d'une commande
+         */
         public static function updateDetailCommande($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -553,20 +569,25 @@
                 }
                 else if (isset($updated) && $updated == 2) {
                     $params['updated'] = $updated;
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateDetailCommande.php';
                 }
                 elseif ($updated == 1){
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateDetailCommande.php';
                 }
              
             }
          
         }
+        
+        /* -- Detail Commande Fin -- */
 
-        /* Role */
+        /* -- Role Début -- */
 
+        /**
+         * List des Roles
+         */
         public static function listRole($params){   
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
                 
@@ -584,17 +605,16 @@
     
                 $params['numPage'] = $numPage;
     
-                /**
-                * récupère les produits de la bdd
-                */
                 $params['listRoles'] = RoleManager::getLesRolesByPagination($nbElementParPage, $numPage);
                 
-                // appelle la vue
                 require_once ROOT.'/view/admin/listRole.php';
             }
             
         }
 
+        /**
+         * Page de mise à jour d'un Role
+         */
         public static function updateRole($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -627,11 +647,11 @@
                 }
                 else if (isset($updated) && $updated == 2) {
                     $params['updated'] = $updated;
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateRole.php';
                 }
                 elseif ($updated == 1){
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateRole.php';
                 }
              
@@ -639,6 +659,9 @@
          
         }
 
+        /**
+         * Page d'ajout d'un nouveau Role
+         */
         public static function addRole($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -670,21 +693,26 @@
                     $params['add'] = $add;
 
                     $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
-                    
-                    // appelle la vue
+
                     require_once ROOT.'/view/admin/addRole.php';
                 }
                 elseif ($add == 1) {
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/addRole.php';
                 }
              
             }
          
         }
+        
+        /* -- Role Fin -- */
 
-        /* Model */
+        
+        /* -- Model Début -- */
 
+        /**
+         * List des Models
+         */
         public static function listModel($params){   
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
                 
@@ -702,17 +730,16 @@
     
                 $params['numPage'] = $numPage;
     
-                /**
-                * récupère les produits de la bdd
-                */
                 $params['listModels'] = ModelManager::getLesModelsByPagination($nbElementParPage, $numPage);
                 
-                // appelle la vue
                 require_once ROOT.'/view/admin/listModel.php';
             }
             
         }
 
+        /**
+         * Page de mise à jour d'un Model
+         */
         public static function updateModel($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -745,11 +772,11 @@
                 }
                 else if (isset($updated) && $updated == 2) {
                     $params['updated'] = $updated;
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateModel.php';
                 }
                 elseif ($updated == 1){
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateModel.php';
                 }
              
@@ -757,6 +784,9 @@
          
         }
 
+        /**
+         * Page d'ajout d'un nouveau Model
+         */
         public static function addModel($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -789,11 +819,10 @@
 
                     $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                     
-                    // appelle la vue
                     require_once ROOT.'/view/admin/addModel.php';
                 }
                 elseif ($add == 1) {
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/addModel.php';
                 }
              
@@ -801,8 +830,13 @@
          
         }
 
-        /* Marque */
+        /* -- Model Fin -- */
+        
+        /* -- Marque Début -- */
 
+        /**
+         * List des Marques
+         */
         public static function listMarque($params){   
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
                 
@@ -820,17 +854,16 @@
     
                 $params['numPage'] = $numPage;
     
-                /**
-                * récupère les produits de la bdd
-                */
                 $params['listMarques'] = MarqueManager::getLesMarquesByPagination($nbElementParPage, $numPage);
                 
-                // appelle la vue
                 require_once ROOT.'/view/admin/listMarque.php';
             }
             
         }
 
+        /**
+         * Page de mise à jour d'une Marque
+         */
         public static function updateMarque($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -863,11 +896,11 @@
                 }
                 else if (isset($updated) && $updated == 2) {
                     $params['updated'] = $updated;
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateMarque.php';
                 }
                 elseif ($updated == 1){
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateMarque.php';
                 }
              
@@ -875,6 +908,9 @@
          
         }
 
+        /**
+         * Page d'ajout d'une nouvel Marque
+         */
         public static function addMarque($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -907,11 +943,10 @@
 
                     $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                     
-                    // appelle la vue
                     require_once ROOT.'/view/admin/addMarque.php';
                 }
                 elseif ($add == 1) {
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/addMarque.php';
                 }
              
@@ -919,8 +954,13 @@
          
         }
 
-        /* Taille */
+        /* -- Marque Fin -- */
+        
+        /* -- Taille Début -- */
 
+        /**
+         * List des Tailles
+         */
         public static function listTaille($params){   
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
                 
@@ -938,17 +978,16 @@
     
                 $params['numPage'] = $numPage;
     
-                /**
-                * récupère les produits de la bdd
-                */
                 $params['listTailles'] = TailleManager::getLesTaillesByPagination($nbElementParPage, $numPage);
                 
-                // appelle la vue
                 require_once ROOT.'/view/admin/listTaille.php';
             }
             
         }
 
+        /**
+         * Page de mise à jour d'une Taille
+         */
         public static function updateTaille($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -981,11 +1020,11 @@
                 }
                 else if (isset($updated) && $updated == 2) {
                     $params['updated'] = $updated;
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateTaille.php';
                 }
                 elseif ($updated == 1){
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateTaille.php';
                 }
              
@@ -993,6 +1032,9 @@
          
         }
 
+        /**
+         * Page d'ajout d'une nouvel Taille
+         */
         public static function addTaille($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -1025,11 +1067,10 @@
 
                     $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                     
-                    // appelle la vue
                     require_once ROOT.'/view/admin/addTaille.php';
                 }
                 elseif ($add == 1) {
-                    // appelle la vue
+
                     require_once ROOT.'/view/admin/addTaille.php';
                 }
              
@@ -1037,8 +1078,13 @@
          
         }
 
-        /* TypeEcran */
+        /* -- Taille Fin -- */
+        
+        /* -- TypeEcran Début -- */
 
+        /**
+         * List des TypeEcrans
+         */
         public static function listTypeEcran($params){   
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
                 
@@ -1055,18 +1101,17 @@
                 $params['nbPage'] = ceil($nbTypeEcran / $nbElementParPage);
     
                 $params['numPage'] = $numPage;
-    
-                /**
-                * récupère les produits de la bdd
-                */
+
                 $params['listTypeEcrans'] = TypeEcranManager::getLesTypeEcransByPagination($nbElementParPage, $numPage);
                 
-                // appelle la vue
                 require_once ROOT.'/view/admin/listTypeEcran.php';
             }
             
         }
 
+        /**
+         * Page de mise à jour d'un TypeEcran
+         */
         public static function updateTypeEcran($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -1099,11 +1144,11 @@
                 }
                 else if (isset($updated) && $updated == 2) {
                     $params['updated'] = $updated;
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateTypeEcran.php';
                 }
                 elseif ($updated == 1){
-                    // appelle la vue
+                    
                     require_once ROOT.'/view/admin/updateTypeEcran.php';
                 }
              
@@ -1111,6 +1156,9 @@
          
         }
 
+        /**
+         * Page d'ajout d'un TypeEcran
+         */
         public static function addTypeEcran($params){
 
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] = true) {
@@ -1143,17 +1191,17 @@
 
                     $params['libelle'] = filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
                     
-                    // appelle la vue
                     require_once ROOT.'/view/admin/addTypeEcran.php';
                 }
                 elseif ($add == 1) {
-                    // appelle la vue
                     require_once ROOT.'/view/admin/addTypeEcran.php';
                 }
              
             }
          
         }
+
+        /* -- TypeEcran Fin -- */
     }
 
 ?>

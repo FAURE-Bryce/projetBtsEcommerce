@@ -10,6 +10,10 @@
  */
 
     class UtilitaireController {
+
+        /**
+         * verrifie que le mot de passe posséde bien tout ses carractèristique 
+         */
         public static function check_password($password) {
             $mdpBon = true;
             // Vérifier si le mot de passe est d'au moins 12 caractères de long

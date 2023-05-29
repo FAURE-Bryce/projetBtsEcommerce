@@ -11,6 +11,9 @@
 
     class PanierController {
 
+        /**
+         * Ajout d'un élément dans le panier de l'utilisateur et redirige vers celui-ci
+         */
         public static function ajout($params){
 
             $params['modePaiement'] = ModePaiementManager::getModePaiement();
@@ -69,18 +72,22 @@
                 }
             }
 
-            // appelle la vue
             require_once ROOT.'/view/panier/listArticle.php';
         }
 
+        /**
+         * Affiche la list des éléments du panier de l'utilisateur
+         */
         public static function list($params){
 
             $params['modePaiement'] = ModePaiementManager::getModePaiement();
 
-            // appelle la vue
             require_once ROOT.'/view/panier/listArticle.php';
         }
 
+        /**
+         * Ajout ou retire un à la quantité d'un élément du panier de l'utilisateur
+         */
         public static function quantitePlusMoins($params){
 
             $params['modePaiement'] = ModePaiementManager::getModePaiement();
@@ -130,10 +137,12 @@
             
             }
 
-            // appelle la vue
             require_once ROOT.'/view/panier/listArticle.php';
         }
 
+        /**
+         * Vide le panier et ajout les éléments du panier à une nouvelle commande en prennent en compte le mode de paiement selectionné par l'utilisateur
+         */
         public static function passerCommande($params){
 
             $params['modePaiement'] = ModePaiementManager::getModePaiement();
@@ -156,8 +165,6 @@
                 $params['commandeOk'] = true;
             }
             
-
-            // appelle la vue
             require_once ROOT.'/view/panier/listArticle.php';
         }
     }

@@ -3,7 +3,7 @@
 /**
  * /controller/GestionCompteController.php
  * 
- * Contrôleur GestionCompteController
+ * Contrôleur  de gestion des compte
  *
  * @author B.Faure
  * @date 03/2023
@@ -66,7 +66,7 @@ class GestionCompteController
                 ProduitController::list(array_splice($params, 0));
             }
             else {
-                // appelle la vue
+                
                 require_once ROOT . '/view/gestionCompte/connexion.php';
             }
         }
@@ -180,7 +180,7 @@ class GestionCompteController
                 $params['erreur'] = "Tous les champs doivent être complétés !";
             }
         }
-        // appelle la vue
+        
         require_once ROOT . '/view/gestionCompte/inscription.php';
     }
 
@@ -194,7 +194,7 @@ class GestionCompteController
             }
             if ($listeUsers[$i]->GetId() == $_SESSION['id']) {
                 $params['user'] = $listeUsers[$i];
-                // appelle la vue
+                
                 require_once ROOT . '/view/gestionCompte/compte.php';
             }
             

@@ -17,8 +17,7 @@ class ModePaiement
         
     }
 
-    /* -- Get -- */ 
-    /* Début */ 
+    /* -- Get Début -- */ 
 
     public function GetId(): int
     {
@@ -29,14 +28,11 @@ class ModePaiement
     {
         return $this->libelle;
     }
+    
+    /* -- Get Fin -- */ 
 
-    /* -- Get -- */ 
-    /* Fin */ 
+    /* -- Set Début -- */ 
 
-    /* -- Set -- */ 
-    /* Début */ 
-
-    //SetId n'est là que pour le chargement des données, on ne peut pas modifier une pk de table !
     public function SetId(int $id)
     {
         $this->id = $id;
@@ -47,7 +43,6 @@ class ModePaiement
         $this->libelle = $libelle;
     }
 
-    /* -- Set -- */ 
-    /* Fin */ 
+    /* -- Set Fin -- */ 
 }
 ?>

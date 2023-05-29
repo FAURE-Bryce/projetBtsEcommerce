@@ -17,8 +17,7 @@ class ArticlePanier
         
     }
 
-    /* -- Get -- */ 
-    /* Début */ 
+    /* -- Get Début-- */ 
 
     public function GetProduit(): Produit
     {
@@ -30,11 +29,9 @@ class ArticlePanier
         return $this->qte;
     }
 
-    /* -- Get -- */ 
-    /* Fin */ 
+    /* -- Get Fin -- */ 
 
-    /* -- Set -- */ 
-    /* Début */ 
+    /* -- Set Début -- */ 
 
     public function SetProduit(Produit $produit)
     {
@@ -45,7 +42,6 @@ class ArticlePanier
     {
         $this->qte = $qte;
     }
-    /* -- Set -- */ 
-    /* Fin */ 
+    /* -- Set Fin -- */
 }
 ?>

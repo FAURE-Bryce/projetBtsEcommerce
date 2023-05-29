@@ -13,7 +13,6 @@ class DetailCommande
     private $idProduit;
     private $idCommande;
     private $qte;
-    
 
     /* -- Objet -- */ 
     private $produit;
@@ -23,8 +22,7 @@ class DetailCommande
         
     }
 
-    /* -- Get -- */ 
-    /* Début */ 
+    /* -- Get Début -- */
 
     public function GetIdProduit(): int
     {
@@ -51,11 +49,9 @@ class DetailCommande
         return $this->commande;
     }
 
-    /* -- Get -- */ 
-    /* Fin */ 
+    /* -- Get Fin -- */
 
-    /* -- Set -- */ 
-    /* Début */ 
+    /* -- Set Début -- */
 
     //SetIdProduit n'est là que pour le chargement des données, on ne peut pas modifier une pk de table !
     public function SetIdProduit(int $idProduit)
@@ -84,7 +80,6 @@ class DetailCommande
         $this->commande = $commande;
     }
     
-    /* -- Set -- */ 
-    /* Fin */ 
+    /* -- Set Fin -- */
 }
 ?>
