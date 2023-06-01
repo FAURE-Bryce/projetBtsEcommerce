@@ -1,17 +1,20 @@
 <?php
 
 /**
- * /model/TailleManager.php
- * Définition de la class TailleManager
+ * /model/StatutCommandeManager.php
+ * Définition de la class StatutCommandeManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class StatutCommandeManager {
     
     private static ?\PDO $cnx;
     
+    /**
+     * Récupère l'id statut par rapport à un libelle passé en parramétre
+     */
     public static function getIdStatutCommandeByLibelle(string $libelle){
         try{
             self::$cnx = DbManager::getConnection();
@@ -35,6 +38,9 @@ class StatutCommandeManager {
         }
     }
     
+    /**
+     * Récupère le statut qui posséde l'id passé en parramétre
+     */
     public static function getLeStatutById(int $id){
         try{
             self::$cnx = DbManager::getConnection();

@@ -12,7 +12,6 @@
 </head>
 <body>
     <?php NavBarreController::readAll($params); ?>
-    <!-- Selection de connexion -->
     <div id = "div_all_Compte">
         <div id="all_connexion">
             <h1>Connexion</h1>

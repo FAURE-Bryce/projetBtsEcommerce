@@ -1,18 +1,21 @@
 <?php
 
 /**
- * /model/TailleManager.php
- * Définition de la class TailleManager
+ * /model/PossederManager.php
+ * Définition de la class PossederManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class PossederManager {
     
     private static ?\PDO $cnx;
     
-    // $date doit être au format Y-m-d
+    /**
+     * Ajout un nouveau posseder entre une commande et un statut de commande 
+     * $date doit être au format Y-m-d
+     */
     public static function insertPosseder(int $idStatut, int $idCommande, string $date){
         try{
             self::$cnx = DbManager::getConnection();
@@ -32,6 +35,9 @@ class PossederManager {
         }
     }
 
+    /**
+     * Récupère le statut de commande d'une commande avec l'id passé en paramétre
+     */
     public static function getLeSatutByIdCommande(int $idCommande){
         try{
             self::$cnx = DbManager::getConnection();

@@ -6,7 +6,7 @@
  * Class qui implémente toutes les fonctions d'accès à la base de données
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class DbManager {
@@ -15,8 +15,8 @@ class DbManager {
     private const HOST = '127.0.0.1';
     private const PORT = '3306'; // 3307:MariaDB / 3306: MySQL
     private const DBNAME = 'bddEcommerce';
-    private const LOGIN = 'root';
-    private const MDP = '';
+    private const LOGIN = 'ecommerceUser';
+    private const MDP = '#?K?5eFFgdtyH';
     private static ?\PDO $cnx = null;
     
     public static function getConnection(){

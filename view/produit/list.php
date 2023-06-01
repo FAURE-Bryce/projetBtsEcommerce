@@ -1,15 +1,3 @@
-<?php
-
-/**
- * /view/produit/list.php
- * 
- * Affiche la table des produits
- *
- * @author B.FAURE
- * @date 02/2023
- */
-
-?>
 <!DOCTYPE html>
 <html>
     <head>

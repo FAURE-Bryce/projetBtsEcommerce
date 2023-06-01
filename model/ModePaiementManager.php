@@ -1,18 +1,20 @@
 <?php
 
 /**
- * /model/TailleManager.php
- * Définition de la class TailleManager
+ * /model/ModePaiementManager.php
+ * Définition de la class ModePaiementManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class ModePaiementManager {
     
     private static ?\PDO $cnx;
-    private static $unModePaiement;
 
+    /**
+     * Récupère la list des modes de paiements
+     */
     public static function getModePaiement(){
         $lesModesPaiement = array();
         try{
@@ -38,6 +40,9 @@ class ModePaiementManager {
         }
     }
 
+    /**
+     * Récupère le mode de paiement par l'id passé en paramétre
+     */
     public static function getModePaiementById(int $id){
         try{
             self::$cnx = DbManager::getConnection();

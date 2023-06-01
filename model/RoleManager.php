@@ -5,13 +5,16 @@
  * Définition de la class RoleManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class RoleManager {
     
     private static ?\PDO $cnx;
     
+    /**
+     * Récupère la list des roles 
+     */
     public static function getLesRoles(){
         $lesRoles = array();
         try{
@@ -38,6 +41,9 @@ class RoleManager {
         }
     }
     
+    /**
+     * Donne le role qui posséde l'id passé en paramétre
+     */
     public static function getRoleById(int $id){
         try{
             self::$cnx = DbManager::getConnection();
@@ -64,6 +70,9 @@ class RoleManager {
         }
     }
 
+    /**
+     * Récupère un role par rapport au libelle donnée en parramétre
+     */
     public static function getRoleByLibelle(string $libelle){
         try{
             self::$cnx = DbManager::getConnection();
@@ -90,6 +99,9 @@ class RoleManager {
         }
     }
 
+    /**
+     * Donne les roles par rapport à la pagination
+     */
     public static function getLesRolesByPagination(int $nbElementParPage, int $numPage){
         $lesRoles = array();
 
@@ -122,6 +134,9 @@ class RoleManager {
         }
     }
 
+    /**
+     * Met à jour le role dont l'id est passé en parramétre
+     */
     public static function updateRoleById(int $id, string $libelle){
         try{
             self::$cnx = DbManager::getConnection();
@@ -141,6 +156,9 @@ class RoleManager {
         }
     }
 
+    /**
+     * ajout un role
+     */
     public static function addRole(Role $role){
         try{
             self::$cnx = DbManager::getConnection();
@@ -160,6 +178,9 @@ class RoleManager {
         }
     }
 
+    /**
+     * Récupère le nombre de role
+     */
     public static function getNbRoles(){
         try{
             self::$cnx = DbManager::getConnection();

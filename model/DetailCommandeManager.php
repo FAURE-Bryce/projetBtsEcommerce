@@ -1,17 +1,20 @@
 <?php
 
 /**
- * /model/TailleManager.php
- * Définition de la class TailleManager
+ * /model/DetailCommandeManager.php
+ * Définition de la class DetailCommandeManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class DetailCommandeManager {
     
     private static ?\PDO $cnx;
     
+    /**
+     * Insert un nouveau detail commande
+     */
     public static function insertDetailCommande(int $idProduit, int $idCommande, int $qte){
         try{
             self::$cnx = DbManager::getConnection();
@@ -31,6 +34,9 @@ class DetailCommandeManager {
         }
     }
 
+    /**
+     * Récupère la list des details de la commandes d'une commande dont sont id est passé en paramétre 
+     */
     public static function getLesDetailCommandesByIdCommande(int $idCommande){
         try{
             self::$cnx = DbManager::getConnection();
@@ -65,6 +71,9 @@ class DetailCommandeManager {
         }
     }
 
+    /**
+     * Récupère le detail d'une commande qui comporte l'id de la commande et l'id du produit passé en paramètre
+     */
     public static function getLesDetailCommandesByIdCommandeAndByIdProduit(int $idCommande, int $idProduit){
         try{
             self::$cnx = DbManager::getConnection();
@@ -96,6 +105,9 @@ class DetailCommandeManager {
         }
     }
 
+    /**
+     * Met à jour le detail d'un commande avec les ilformation donné en paramétre
+     */
     public static function updateDetailCommandeByIdCOmmandeAndByIdProduit(int $idCommande, int $idProduit, int $qte){
         try{
             self::$cnx = DbManager::getConnection();

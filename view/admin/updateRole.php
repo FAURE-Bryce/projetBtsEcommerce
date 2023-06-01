@@ -8,7 +8,7 @@
         <!-- CSS only -->
         <link rel="stylesheet" href="CSS/Admin/Index_CSS.css">
         <link rel="stylesheet" href="CSS/Admin/Header_Footer.css">
-        <link rel="stylesheet" href="CSS/bootstrap-5.1.3-dist/css/bootstrap-grid.css">  <!-- à refaire sans Bootstrap -->
+        <link rel="stylesheet" href="CSS/bootstrap-5.1.3-dist/css/bootstrap-grid.css">
     </head>
     <body>
         <?php NavBarreController::readAdminAll($params); ?>

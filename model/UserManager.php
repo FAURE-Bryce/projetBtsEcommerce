@@ -5,13 +5,16 @@
  * Définition de la class UserManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 03/2023
  */
 
 class UserManager {
     
     private static ?\PDO $cnx;
     
+    /**
+     * Récupères la list des utilisateurs 
+     */
     public static function getLesUsers(){
         $lesUsers = array();
         try{
@@ -48,6 +51,9 @@ class UserManager {
         }
     }
     
+    /**
+     * Récupères la list des utilisateurs qui ont l'idRole passé en parramétre 
+     */
     public static function getLesUsersByIdRole(int $id){
         $lesUsers = array();
         try{
@@ -87,6 +93,9 @@ class UserManager {
         }
     }
 
+    /**
+     * Récupère la list des emails par rapport a l'idRole passé en paramétre 
+     */
     public static function getLesEmailsUsersByIdRole(int $id){
         $lesUsers = array();
         try{
@@ -114,6 +123,9 @@ class UserManager {
         }
     }
 
+    /**
+     * Ajout un utilisateur
+     */
     public static function addUser($nom, $prenom, $dateNaissance, $numeroTelephone, $adresse, $ville, $codePoste, $adresseMail, $motDePasse, $idRole){
         try{
             self::$cnx = DbManager::getConnection();
@@ -140,6 +152,9 @@ class UserManager {
         }
     }
 
+    /**
+     * Récupère l'utilisateur par rapport a l'email passé en parramétre
+     */
     public static function getUserByAdresseMail(string $adresseMail){
         try{
             self::$cnx = DbManager::getConnection();
@@ -177,6 +192,9 @@ class UserManager {
         }
     }
 
+    /**
+     * Récupère un utilisateur avec un id passé en paramétre 
+     */
     public static function getUserById(int $id){
         try{
             self::$cnx = DbManager::getConnection();
@@ -214,6 +232,9 @@ class UserManager {
         }
     }
 
+    /**
+     * Met à jour un Utilisateur par rapport au information donné en paramétre
+     */
     public static function updateUser($nom, $prenom, $adresse, $cp, $ville, $id){
         try{
             echo "coucou";
@@ -238,6 +259,9 @@ class UserManager {
         }
     }
 
+    /**
+     * Donne le nombre d'utilisateur
+     */
     public static function getNbUsers(){
         try{
             self::$cnx = DbManager::getConnection();
@@ -258,6 +282,9 @@ class UserManager {
         }
     }
 
+    /**
+     * Récupère les utilisateurs avec la pagination
+     */
     public static function getLesUsersByPagination(int $nbElementParPage, int $numPage){
         $lesUsers = array();
 
@@ -300,6 +327,9 @@ class UserManager {
         }
     }
 
+    /**
+     * Met a jour l'utilisateur qui posséde l'id passé paramétre
+     */
     public static function updateUserById(int $id, User $user){
         try{
             self::$cnx = DbManager::getConnection();
@@ -342,6 +372,9 @@ class UserManager {
         }
     }
 
+    /**
+     * Ajout un utilisateur avec un objet de type User
+     */
     public static function addUserWithObjet(User $user){
         try{
             self::$cnx = DbManager::getConnection();

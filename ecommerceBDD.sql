@@ -3,10 +3,9 @@ DROP DATABASE `bddEcommerce`;
 CREATE DATABASE IF NOT EXISTS `bddEcommerce`;
 USE `bddEcommerce`;
 
--- CREATE USER 'mobileUser'@localhost IDENTIFIED BY '#?K?5eFyH';
+CREATE USER 'ecommerceUser'@localhost IDENTIFIED BY '#?K?5eFFgdtyH';
 
--- GRANT INSERT PRIVILEGES ON 'ecommerce'.* TO 'mobileUser'@localhost IDENTIFIED BY '#?K?5eFyH';
--- GRANT UPDATE PRIVILEGES ON 'ecommerce'.* TO 'mobileUser'@localhost IDENTIFIED BY '#?K?5eFyH';
+GRANT SELECT, INSERT, UPDATE, DELETE ON bddecommerce.* TO 'ecommerceUser'@'localhost' IDENTIFIED BY '#?K?5eFFgdtyH';
 
 CREATE TABLE IF NOT EXISTS `Marque` (
     `id` integer NOT NULL AUTO_INCREMENT,

@@ -1,15 +1,3 @@
-<?php
-
-/**
- * /view/produit/compte.php
- * 
- * Affiche le compte de l'user connecté 
- *
- * @author B.FAURE
- * @date 02/2023
- */
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,14 +9,13 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="CSS/GestionCompte.css">
     <link rel="stylesheet" href="CSS/Header_Footer.css">
-    <link rel="stylesheet" href="CSS/bootstrap-5.1.3-dist/css/bootstrap-grid.css">  <!-- à refaire sans Bootstrap -->
+    <link rel="stylesheet" href="CSS/bootstrap-5.1.3-dist/css/bootstrap-grid.css">
 </head>
 <body>
     
     <?php NavBarreController::readAll($params); ?>
 
     <div id="all_mon_compte">
-        <!-- Selection d'inscription ou de connexion -->
         <?php
             echo "<p id='bonjourClient'>Bonjour ".$_SESSION['prenom']." ".$_SESSION['nom'];            
         ?>
@@ -42,27 +29,27 @@
             <form action="" method="post">
                 <div>
                     <p>Nom : </p>
-                    <input type="text" name = "nom" id = "nom" value =<?php echo $params['user']->GetNom(); ?>>
+                    <input type="text" name = "nom" id = "nom" value ="<?php echo $params['user']->GetNom(); ?>">
                 </div>
 
                 <div>
                     <p>Prenom : </p>
-                    <input type="text" name ="prenom" id ="prenom" value =<?php echo $params['user']->GetPrenom(); ?>>
+                    <input type="text" name ="prenom" id ="prenom" value ="<?php echo $params['user']->GetPrenom(); ?>">
                 </div>
 
                 <div>
                     <p>Adresse : </p>
-                    <input type="text" name ="adresse" id ="adresse" value =<?php echo $params['user']->GetAdresse(); ?>>
+                    <input type="text" name ="adresse" id ="adresse" value ="<?php echo $params['user']->GetAdresse(); ?>">
                 </div>
 
                 <div>
                     <p>Ville : </p>
-                    <input type="text" name ="ville" id ="ville" value =<?php echo $params['user']->GetVille(); ?>>
+                    <input type="text" name ="ville" id ="ville" value ="<?php echo $params['user']->GetVille(); ?>">
                 </div>
 
                 <div> 
                     <p>Code Postal : </p>
-                    <input type="number" name ="cp" id ="cp" value =<?php echo $params['user']->GetCodePostal(); ?>>
+                    <input type="number" name ="cp" id ="cp" value ="<?php echo $params['user']->GetCodePostal(); ?>">
                 </div>
                 <input type="submit" value = "Valider" name="formUpdateCompte" id="submit">
             </form>

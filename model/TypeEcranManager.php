@@ -5,7 +5,7 @@
  * Définition de la class TypeEcranManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 03/2023
  */
 
 class TypeEcranManager {
@@ -15,9 +15,7 @@ class TypeEcranManager {
     private static $lesTypesEcrans = array();
     
     /**
-     * Obtient un tableau d'objets de tous les typesEcrans
-     * à l'aide d'une requête SQL
-     * @return TypeEcran array
+     * Récupère la list des Types Ecrans 
      */
     public static function getLesTypesEcrans(){
         try{
@@ -43,9 +41,7 @@ class TypeEcranManager {
     }
     
     /**
-     * Obtient un typeEcran qui a pour libelle $libelle
-     * à l'aide d'une requête SQL
-     * @return int 
+     * Récupère l'id d'un type ecran d'on le libelle est passé en paramétre
      */
     public static function getIdTypeEcranByLibelle(string $libelle){
         try{
@@ -71,9 +67,7 @@ class TypeEcranManager {
     }
     
     /**
-     * Obtient un typeEcran qui a pour id $id
-     * à l'aide d'une requête SQL
-     * @return TypeEcran 
+     * Récupère le type Ecran qui poséde l'id passé en paramétre
      */
     public static function getTypeEcranById(int $id){
         try{
@@ -102,7 +96,9 @@ class TypeEcranManager {
         }
     }
     
-
+    /**
+     * Récupère la list des types écrans avec la pagination
+     */
     public static function getLesTypeEcransByPagination(int $nbElementParPage, int $numPage){
         $lesTypeEcrans = array();
 
@@ -135,6 +131,9 @@ class TypeEcranManager {
         }
     }
 
+    /**
+     * Met a jour le type écran avec les informations passé en paramétre
+     */
     public static function updateTypeEcranById(int $id, string $libelle){
         try{
             self::$cnx = DbManager::getConnection();
@@ -154,6 +153,9 @@ class TypeEcranManager {
         }
     }
 
+    /**
+     * Ajout un Type d'écran
+     */
     public static function addTypeEcran(TypeEcran $typeEcran){
         try{
             self::$cnx = DbManager::getConnection();
@@ -173,6 +175,9 @@ class TypeEcranManager {
         }
     }
 
+    /**
+     * Donne le nombre de Type d'écran
+     */
     public static function getNbTypeEcrans(){
         try{
             self::$cnx = DbManager::getConnection();

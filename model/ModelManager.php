@@ -5,7 +5,7 @@
  * Définition de la class ModelManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class ModelManager {
@@ -13,9 +13,7 @@ class ModelManager {
     private static ?\PDO $cnx;
     
     /**
-     * Obtient un model qui a pour id $id
-     * à l'aide d'une requête SQL
-     * @return Model 
+     * Récupère un model par rapport à l'id passé en paramétre  
      */
     public static function getModelById(int $id){
         try{
@@ -43,6 +41,9 @@ class ModelManager {
         }
     }
 
+    /**
+     * Met à jour un model avec les informations passé en paramétre
+     */
     public static function updateLibelleModelById(int $id, string $libelle){
         try{
             self::$cnx = DbManager::getConnection();
@@ -62,6 +63,9 @@ class ModelManager {
         }
     }
     
+    /**
+     * Récupère la list des model
+     */
     public static function getLesModels(){
         $lesModels = array();
         try{
@@ -86,6 +90,9 @@ class ModelManager {
         }
     }
 
+    /**
+     * Récupère une list des models par rapport a la pagination
+     */
     public static function getLesModelsByPagination(int $nbElementParPage, int $numPage){
         $lesModels = array();
 
@@ -118,6 +125,9 @@ class ModelManager {
         }
     }
 
+    /**
+     * Met à jour un model avec les inforamtion en paramétre
+     */
     public static function updateModelById(int $id, string $libelle){
         try{
             self::$cnx = DbManager::getConnection();
@@ -137,6 +147,9 @@ class ModelManager {
         }
     }
 
+    /**
+     * Ajout un nouveau model
+     */
     public static function addModel(Model $model){
         try{
             self::$cnx = DbManager::getConnection();
@@ -156,6 +169,9 @@ class ModelManager {
         }
     }
 
+    /**
+     * Récupère le nombre de model
+     */
     public static function getNbModels(){
         try{
             self::$cnx = DbManager::getConnection();

@@ -1,17 +1,20 @@
 <?php
 
 /**
- * /model/TailleManager.php
- * Définition de la class TailleManager
+ * /model/CommandeManager.php
+ * Définition de la class CommandeManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class CommandeManager {
     
     private static ?\PDO $cnx;
     
+    /**
+     * Insert une nouvelle commande
+     */
     public static function insertCommande(int $idModePaiement, int $idUser){
         try{
             self::$cnx = DbManager::getConnection();
@@ -30,6 +33,9 @@ class CommandeManager {
         }
     }
 
+    /**
+     * Récupère la dernière commande effectuer
+     */
     public static function getLastIdCommande(){
         try{
             self::$cnx = DbManager::getConnection();
@@ -54,6 +60,9 @@ class CommandeManager {
         }
     }
 
+    /**
+     * Récupère la list des commandes d'un utilisateur dont l'id et passé en paramétre
+     */
     public static function getLesCommandesByIdUser(int $idUser, int $nbElementParPage, int $numPage){
         try{
 
@@ -95,6 +104,9 @@ class CommandeManager {
         }
     }
 
+    /**
+     * Récupère la list des commandes par rapport à la pagination 
+     */
     public static function getLesCommandesByPagination(int $nbElementParPage, int $numPage){
         try{
 
@@ -133,7 +145,10 @@ class CommandeManager {
             die('Erreur : ' . $e->getMessage());
         }
     }
-
+    
+    /**
+     * Récupère la list des commandes par rapport à la pagination et à le role donné en paramétre
+     */
     public static function getLesCommandesByPaginationAndIdRoleUser(int $nbElementParPage, int $numPage, int $idRole){
         try{
             $numPage = ($numPage-1)*$nbElementParPage;
@@ -174,6 +189,9 @@ class CommandeManager {
         }
     }
 
+    /**
+     * Récupère la commande qui à l'id donné en paramétre
+     */
     public static function getLaCommandeById(int $id){
         try{
             self::$cnx = DbManager::getConnection();
@@ -207,6 +225,9 @@ class CommandeManager {
         }
     }
 
+    /**
+     * Récupère le nombre de commande pour un utilisateur dont l'id est passé en paramétre
+     */
     public static function getNbCommandesByIdUser(int $id){
         try{
             self::$cnx = DbManager::getConnection();
@@ -230,6 +251,9 @@ class CommandeManager {
         }
     }
 
+    /**
+     * Récupère le nombre de commande
+     */
     public static function getNbCommandes(){
         try{
             self::$cnx = DbManager::getConnection();
@@ -250,6 +274,9 @@ class CommandeManager {
         }
     }
 
+    /**
+     * Update un commande dont l'id est passé en paramètre 
+     */
     public static function updateCommandeById(int $id, Commande $commande){
         try{
             self::$cnx = DbManager::getConnection();

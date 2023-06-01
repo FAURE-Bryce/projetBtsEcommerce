@@ -5,7 +5,7 @@
  * Définition de la class TailleManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class TailleManager {
@@ -13,9 +13,7 @@ class TailleManager {
     private static ?\PDO $cnx;
     
     /**
-     * Obtient un typeEcran qui a pour id $id
-     * à l'aide d'une requête SQL
-     * @return Taille 
+     * Récupère la taille qui posséde l'id passé en parramétre
      */
     public static function getTailleById(int $id){
         try{
@@ -43,6 +41,9 @@ class TailleManager {
         }
     }
 
+    /**
+     * Donne la list des tailles d'écrans
+     */
     public static function getLesTailles(){
         $lesTailles = array();
         try{
@@ -67,6 +68,9 @@ class TailleManager {
         }
     }
 
+    /**
+     * Récupère la list des tailles d'écrans par rapport a la pagination
+     */
     public static function getLesTaillesByPagination(int $nbElementParPage, int $numPage){
         $lesTailles = array();
 
@@ -99,6 +103,9 @@ class TailleManager {
         }
     }
 
+    /**
+     * Met à jour la la taille avec des info passé en parramétre
+     */
     public static function updateTailleById(int $id, string $libelle){
         try{
             self::$cnx = DbManager::getConnection();
@@ -118,6 +125,9 @@ class TailleManager {
         }
     }
 
+    /**
+     * Ajout une taille d'écran
+     */
     public static function addTaille(Taille $taille){
         try{
             self::$cnx = DbManager::getConnection();
@@ -137,6 +147,9 @@ class TailleManager {
         }
     }
 
+    /**
+     * Récupère le nombre de tailles d'écrans
+     */
     public static function getNbTailles(){
         try{
             self::$cnx = DbManager::getConnection();

@@ -5,7 +5,7 @@
  * Définition de la class ProduitManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class ProduitManager {
@@ -13,9 +13,7 @@ class ProduitManager {
     private static ?\PDO $cnx;
     
     /**
-     * Obtient un tableau d'objets de tous les Produits
-     * à l'aide d'une requête SQL
-     * @return type array
+     * Récupère la list des produits
      */
     public static function getLesProduits(){
         $lesProduits = array();
@@ -56,6 +54,9 @@ class ProduitManager {
         }
     }
     
+    /**
+     * Récupère la list des produits avec la pagination
+     */
     public static function getLesProduitsByPagination(int $nbElementParPage, int $numPage){
         $lesProduits = array();
 
@@ -102,6 +103,9 @@ class ProduitManager {
         }
     }
 
+    /**
+     * Récupère le nombre de produits
+     */
     public static function getNbProduits(){
         try{
             self::$cnx = DbManager::getConnection();
@@ -122,6 +126,9 @@ class ProduitManager {
         }
     }
 
+    /**
+     * Récupère le nombre de produit pour une catégorie
+     */
     public static function getNbProduitsByIdTypeEcran(int $id){
         try{
             self::$cnx = DbManager::getConnection();
@@ -145,6 +152,9 @@ class ProduitManager {
         }
     }
 
+    /**
+     * Récupère le nombre de produit d'une recherche 
+     */
     public static function getNbProduitsBySearch(string $search){
         try{
             self::$cnx = DbManager::getConnection();
@@ -173,9 +183,7 @@ class ProduitManager {
     }
     
     /**
-     * Obtient un tableau des produits qui a pour idType $id
-     * à l'aide d'une requête SQL
-     * @return int 
+     * Récupère la list des produit avec une pagination
      */
     public static function getLesProduitsByPaginationAndByIdTypeEcran(int $id, int $numPage, int $nbElementParPage){
         $lesProduits = array();
@@ -225,6 +233,9 @@ class ProduitManager {
         }
     }
     
+    /**
+     * Récupère les produits d'une recherche
+     */
     public static function getLesProduitsBySearch(string $search, int $numPage, int $nbElementParPage){
         $lesProduits = array();
         
@@ -278,9 +289,7 @@ class ProduitManager {
     }
 
     /**
-     * Obtient un produits qui a pour id $id
-     * à l'aide d'une requête SQL
-     * @return int 
+     * Récupère le produit avec une id passé en paramétre 
      */
     public static function getLeProduitById(int $id){
         try{
@@ -322,6 +331,9 @@ class ProduitManager {
         }
     }
 
+    /**
+     * Récupère l'id model d'un produit d'on l'id est passé en parramétre
+     */
     public static function getIdModelByIdProduit(int $id){
         try{
             self::$cnx = DbManager::getConnection();
@@ -346,9 +358,7 @@ class ProduitManager {
     }
     
     /**
-     * Obtient un tableau des produits qui a pour idModel $idModel
-     * à l'aide d'une requête SQL
-     * @return int 
+     * Récupères les produit d'un model donnée
      */
     public static function getLesProduitsByModel(int $idModel){
         $lesProduits = array();
@@ -395,6 +405,9 @@ class ProduitManager {
         }
     }
 
+    /**
+     * Met à jour la qte en stock d'un produit
+     */
     public static function setQteEnStock(int $idProduit, int $newQte){
         try{
             self::$cnx = DbManager::getConnection();
@@ -414,6 +427,9 @@ class ProduitManager {
         }
     }
 
+    /**
+     * Met à jour le produit par rapport à l'id donnée en paramétre
+     */
     public static function updateProduitById(int $id, Produit $produit){
         try{
             self::$cnx = DbManager::getConnection();
@@ -462,6 +478,9 @@ class ProduitManager {
         }
     }
 
+    /**
+     * Ajout un produit 
+     */
     public static function addProduit(Produit $produit){
         try{
             self::$cnx = DbManager::getConnection();

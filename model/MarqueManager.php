@@ -5,7 +5,7 @@
  * Définition de la class MarqueManager
  *
  * @author B.FAURE
- * @date 05/2021
+ * @date 02/2023
  */
 
 class MarqueManager {
@@ -13,9 +13,7 @@ class MarqueManager {
     private static ?\PDO $cnx;
     
     /**
-     * Obtient un marque qui a pour id $id
-     * à l'aide d'une requête SQL
-     * @return Marque 
+     * Récupère la marque qui posséde l'id passé en paramétre
      */
     public static function getMarqueById(int $id){
         try{
@@ -43,6 +41,9 @@ class MarqueManager {
         }
     }
     
+    /**
+     * Récupère la list des marques
+     */
     public static function getLesMarques(){
         $lesMarques = array();
         try{
@@ -67,6 +68,9 @@ class MarqueManager {
         }
     }
 
+    /**
+     * Récupère une list des marques par rapport à la pagination
+     */
     public static function getLesMarquesByPagination(int $nbElementParPage, int $numPage){
         $lesMarques = array();
 
@@ -99,6 +103,9 @@ class MarqueManager {
         }
     }
 
+    /**
+     * Met à jour une maque avec les varriables passé en parramétre
+     */
     public static function updateMarqueById(int $id, string $libelle){
         try{
             self::$cnx = DbManager::getConnection();
@@ -118,6 +125,9 @@ class MarqueManager {
         }
     }
 
+    /**
+     * Ajout une nouvelle marque
+     */
     public static function addMarque(Marque $marque){
         try{
             self::$cnx = DbManager::getConnection();
@@ -137,6 +147,9 @@ class MarqueManager {
         }
     }
 
+    /**
+     * Donne le nombre de marque
+     */
     public static function getNbMarques(){
         try{
             self::$cnx = DbManager::getConnection();
